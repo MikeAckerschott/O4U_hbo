@@ -15,14 +15,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/test")
-    public String test() {
-        return "test";
-    }
-
     @PostMapping("/signup")
     public String signUp(@RequestBody UserSignupDTO user) {
         return userService.signUp(user);
+    }
+
+    @GetMapping("/login")
+    public String login(@RequestBody UserSignupDTO user) {
+        return userService.login(user);
     }
 
 }
