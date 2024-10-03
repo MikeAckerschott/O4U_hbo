@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <RouterLink class="nav-link" to="/">
+      <RouterLink class="nav-link" to="/" @click.native="reloadPage">
         <img src="@/assets/onderwijs4u.png" alt="Onderwijs4U" class="navbar-logo"/>
       </RouterLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,12 +9,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-          </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="role === 'student'">
             <RouterLink class="nav-link" to="/rubrics">Rubrics</RouterLink>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" v-if="role === 'student'">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Projects
             </a>
@@ -31,7 +29,25 @@
 
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  data() {
+    return {
+      role: null
+    }
+  },
+  created() {
+    this.getRoleFromSession();
+  },
+  methods: {
+    getRoleFromSession() {
+      this.role = sessionStorage.getItem('role') || 'guest';
+    },
+    reloadPage() {
+      this.$router.push('/').then(() => {
+        window.location.reload();
+      });
+    }
+  }
 }
 </script>
 
