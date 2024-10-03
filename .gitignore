@@ -1,0 +1,8 @@
+back-end/mvnw
+.idea/modules.xml
+.idea/UncenShow.iml
+.idea/vcs.xml
+*.cmd
+/.idea/
+front-end/uncenshow/src/assets/Images/profile-images/
+/node_modules
