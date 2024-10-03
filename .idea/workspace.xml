@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00514c56-7cff-492b-a1b8-96733569fb33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Deployment/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +18,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2mvSHjhvLlsQRKwXnIyCovS2HZR" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,7 +29,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "frontendsetup",
+    "git-widget-placeholder": "feature/back-end-setup",
     "last_opened_file_path": "C:/Users/woute/Documents/GitHub/AVISICODECHALLENGE/Deployment",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
