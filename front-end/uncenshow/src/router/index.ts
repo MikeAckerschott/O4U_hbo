@@ -25,20 +25,20 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  store.dispatch('clearErrorMessage');
-  const isAuthenticated = store.getters.isAuthenticated;
-  const redirectUrl = localStorage.getItem('redirectUrl');
-
-  if (!isAuthenticated && to.path !== '/signup' && to.path !== '/login') {
-    localStorage.setItem('redirectUrl', to.fullPath);
-    next('/signup');
-  } else if (isAuthenticated && redirectUrl) {
-    localStorage.removeItem('redirectUrl');
-    next(redirectUrl);
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   store.dispatch('clearErrorMessage');
+//   const isAuthenticated = store.getters.isAuthenticated;
+//   const redirectUrl = localStorage.getItem('redirectUrl');
+//
+//   if (!isAuthenticated && to.path !== '/signup' && to.path !== '/login') {
+//     localStorage.setItem('redirectUrl', to.fullPath);
+//     next('/signup');
+//   } else if (isAuthenticated && redirectUrl) {
+//     localStorage.removeItem('redirectUrl');
+//     next(redirectUrl);
+//   } else {
+//     next();
+//   }
+// });
 
 export default router
