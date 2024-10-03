@@ -57,6 +57,28 @@ De overeenkomende user stories gaan vaak over basistaken zoals inloggen, uitlogg
    - **Inlezen studentgegevens:** Het importeren van studentgegevens is een unieke beheertaak.
    - **Foto bij student toevoegen:** Een unieke actie van de beheerder om visuele informatie toe te voegen.
    - **Studenten koppelen aan LBC:** Het koppelen van studenten aan LBC’s is een specifieke taak van de beheerder.
-   - **Studentgegevens wijzigen:** Het aanpassen van studentgegevens om ze up-to-date te houden, behoort tot de unieke beheertaken. 
+   - **Studentgegevens wijzigen:** Het aanpassen van studentgegevens om ze up-to-date te houden, behoort tot de unieke beheertaken.
+  
+# Kernfunctionaliteit
+
+De kernfunctionaliteit draait om het creëren van een doorlopend, geïntegreerd leer- en beoordelingssysteem waar **voortgang, reflectie, verantwoording, feedback**, en **automatische registratie** van beoordelingen in één omgeving samenkomen. Het doel is om het examen niet langer een losstaand eindpunt te maken, maar een **integraal onderdeel** van het dagelijkse leerproces. Dit maakt de onderwijsvisie van **Lerend Kwalificeren** mogelijk, wat uniek is vergeleken met traditionele onderwijssystemen.
+
+1. **Continue voortgangsbewaking en beoordeling:**
+   - Studenten en docenten (PO's en LBC's) moeten voortdurend inzicht hebben in de **voortgang van de student** op basis van de criteria uit het kwalificatiedossier, die normaal pas bij een examen geëvalueerd zouden worden. Hierdoor wordt de traditionele scheiding tussen onderwijs en examen opgeheven.
+
+2. **Verantwoording door de student en directe feedback:**
+   - Studenten moeten kunnen **verantwoorden** waarom zij denken dat ze aan specifieke criteria voldoen. Deze verantwoording wordt direct besproken met de PO, die de student meteen kan beoordelen en **feedback** of **feed-forward** kan geven, wat bijdraagt aan het leerproces.
+   
+3. **Rubric-gebaseerde beoordelingen geïntegreerd in het leerproces:**
+   - De **onderwijsrubric**, die normaal tijdens het examen wordt gebruikt, wordt nu doorlopend toegepast in de verschillende fasen van de opleiding. Deze rubric maakt het mogelijk dat studenten en docenten altijd weten waar een student staat qua ontwikkeling in de opleiding, of deze zich in de **oriëntatiefase**, **developmentfase**, of **expertfase** bevindt.
+
+4. **Automatische voortgangsregistratie op basis van fasen:**
+   - Het systeem moet automatisch **beoordelingen en voortgang** bijhouden per criterium, waarbij het niveau waarop de student staat (oriëntatie, development of expert) duidelijk zichtbaar is. Dit helpt studenten te zien waar ze nog aan moeten werken en waar ze al succesvol zijn.
+
+5. **Rol van de PO en LBC als begeleiders in plaats van enkel examinatoren:**
+   - Docenten nemen de rol aan van **Product Owner (PO)** of **Loopbaancoach (LBC)**, waarbij ze studenten doorlopend begeleiden en beoordelen. Ze fungeren niet alleen als beoordelaars aan het einde van de opleiding, maar als continue **begeleiders en beoordelaars** tijdens de leerfasen van de student.
+
+# Domein model
 
 ![Alt text](./domeinmodel.drawio.png)
+
