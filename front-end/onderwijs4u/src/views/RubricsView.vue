@@ -8,6 +8,17 @@
           <option v-for="fase in uniqueFases" :key="fase" :value="fase">{{ fase }}</option>
         </select>
       </div>
+      <div class="col-md-9 text-end">
+        <div>
+          <strong>Percentage Completed:</strong> {{ percentageCompleted }}%
+        </div>
+        <div>
+          <strong>Percentage Voldoende:</strong> {{ percentageVoldoende }}%
+        </div>
+        <div>
+          <strong>Percentage Goed:</strong> {{ percentageGoed }}%
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col-12">
@@ -198,18 +209,20 @@ const getBadgeClass = (beoordeling) => {
       return 'badge bg-danger';
   }
 };
+
+// Calculate percentages
+const percentageCompleted = computed(() => {
+  const completed = data.value.filter(item => item.beoordeling === 'Goed' || item.beoordeling === 'Voldoende').length;
+  return ((completed / data.value.length) * 100).toFixed(2);
+});
+
+const percentageVoldoende = computed(() => {
+  const voldoende = data.value.filter(item => item.beoordeling === 'Voldoende').length;
+  return ((voldoende / data.value.length) * 100).toFixed(2);
+});
+
+const percentageGoed = computed(() => {
+  const goed = data.value.filter(item => item.beoordeling === 'Goed').length;
+  return ((goed / data.value.length) * 100).toFixed(2);
+});
 </script>
-
-<style scoped>
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.table {
-  width: 100%;
-}
-
-.bg-light-blue {
-  background-color: #3498db;
-}
-</style>
