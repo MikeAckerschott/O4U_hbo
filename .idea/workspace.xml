@@ -5,79 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00514c56-7cff-492b-a1b8-96733569fb33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/router/router.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/HomeView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/components/Header.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/ProjectView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/.eslintrc.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/.prettierrc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/.vscode/extensions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/env.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/api.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/Images/Icons/add.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/Images/Icons/bad answer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/Images/Icons/desktop keyboard mouse 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/Images/Icons/gaming 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/Images/Icons/gaming.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/Images/Icons/good answer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/Images/Icons/lobby.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/Images/Icons/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/Images/standard-profile-icon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/assets/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/ContentPanel.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/Drop-down-new.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/ErrorMessage.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/Header.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/LoginBox.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/PrimaryButton.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/SidePanelCloseButton.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/Signup.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/TextBox.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/VueSidePanel.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/colorpicker/Alpha.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/colorpicker/Box.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/colorpicker/ColorPicker.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/colorpicker/Colors.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/colorpicker/Hue.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/colorpicker/Preview.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/colorpicker/Saturation.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/colorpicker/Sucker.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/colorpicker/composible.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/icons/IconCommunity.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/icons/IconDocumentation.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/icons/IconEcosystem.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/icons/IconSupport.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/components/icons/IconTooling.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/dom-to-image-more.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/router/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/services/ApiService.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/services/Login-Signup-Service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/stores/counter.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/views/HomeView.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/views/LoginView.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/views/Projectview.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/views/SignupView.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/src/vuex.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/tsconfig.app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/tsconfig.node.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/tsconfig.vitest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/vite.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/vite.config.ts.timestamp-1706893476262-008d1e697597b.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/vite.config.ts.timestamp-1714066642296-53a2a4f87f1be.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/uncenshow/vitest.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/router/router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/router/router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/HomeView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Composition API Component" />
         <option value="TypeScript File" />
+        <option value="Vue Composition API Component" />
       </list>
     </option>
   </component>

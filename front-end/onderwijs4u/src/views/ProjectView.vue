@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<p>his</p>
+<p>hi</p>
 </template>
 
 <style scoped>
