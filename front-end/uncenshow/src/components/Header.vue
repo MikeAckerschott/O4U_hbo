@@ -28,7 +28,7 @@ import store from '@/store';
 
         <!-- User Profile Dropdown with External Image -->
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item dropdown" v-if="store && store.getters.isAuthenticated">
+          <li class="nav-item dropdown" >
             <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fyt3.ggpht.com%2Fa%2FAGF-l7_Fk9PfNwgM55wZ3IP-y31KqrEavzZ9DoOHqA%3Ds900-c-k-c0xffffffff-no-rj-mo&f=1&nofb=1&ipt=67faa5336aec87e631f7cd4a575dc9af9230ae29b5b72d630efb81ef44e4c0b9&ipo=images"
                    class="profileIcon rounded-circle"
@@ -56,9 +56,11 @@ import store from '@/store';
 }
 /* Navbar link hover effect */
 .nav-link:hover {
-  background: linear-gradient(to right, #ff9800, #5e35b1) !important;  color: #5e35b1; /* Purple text */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  background: transparent; /* Purple text */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  transform: scale(1.1); /* Grow the link */
 }
+
 
 /* Profile Icon */
 .profileIcon {

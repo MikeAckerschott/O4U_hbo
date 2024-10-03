@@ -138,3 +138,47 @@ De kernfunctionaliteit draait om het creëren van een doorlopend, geïntegreerd 
 
 ![Alt text](./domeinmodel.drawio.png)
 
+
+# Endpoints
+
+| Endpoint                                 | Methode   | Beschrijving                                                                                   | Relevante User Stories                            |
+|------------------------------------------|-----------|-----------------------------------------------------------------------------------------------|--------------------------------------------------|
+| `/login`                                 | POST      | Inloggen met e-mail en wachtwoord                                                             | US1, US8, US26, US38                             |
+| `/logout`                                | POST      | Uitloggen en sessie beëindigen                                                                | US7, US25, US37, US48                            |
+| `/password-reset`                        | POST      | Wachtwoordreset aanvragen                                                                     | N.v.t.                                            |
+| `/users/:user_id`                        | GET       | Gebruikersgegevens ophalen                                                                    | N.v.t.                                            |
+| `/users/:user_id/roles`                  | PUT       | Wijzig de rollen van een gebruiker                                                            | US41, US42                                        |
+| `/students/:student_id`                  | GET       | Haal de gegevens van een specifieke student op                                                | Meerdere user stories (student specifieke data)   |
+| `/students`                              | GET       | Haal een lijst van studenten op, met optionele filters                                         | US9, US27, US32                                   |
+| `/students/:student_id/criteria`         | POST      | Selecteren van criteria waaraan student gaat werken                                            | US2                                               |
+| `/students/:student_id/progress`         | GET       | Haal overzicht van behaalde en niet behaalde criteria                                          | US5                                               |
+| `/students/:student_id/progress/period/:period_id` | GET       | Haal overzicht op van criteria per periode                                                    | US6                                               |
+| `/students/:student_id/verantwoordingen` | POST      | Verantwoording schrijven                                                                      | US3                                               |
+| `/students/:student_id/verantwoordingen/:verantwoording_id` | PUT | Verantwoording wijzigen                                                                       | US4                                               |
+| `/teachers/:teacher_id/students`         | GET       | Haal een lijst van studenten van een PO/LBC op                                                 | US9, US27                                         |
+| `/students/:student_id/criteria`         | GET       | Bekijk criteria waaraan student werkt                                                         | US11                                              |
+| `/students/:student_id/verantwoordingen` | GET       | Verantwoordingen van een student lezen                                                        | US12                                              |
+| `/verantwoordingen/:verantwoording_id/beoordelingen` | POST | Verantwoording goed- of afkeuren en beoordeling toevoegen                                      | US13, US14, US15                                  |
+| `/beoordelingen/:beoordeling_id`         | PUT       | Feedback toevoegen of beoordeling wijzigen                                                    | US16, US18                                        |
+| `/notities`                              | POST      | Voeg een nieuwe notitie toe                                                                   | US10, US30                                        |
+| `/notities/:notitie_id`                  | PUT       | Wijzig een bestaande notitie                                                                  | US21, US31                                        |
+| `/teachers/:teacher_id/students?period=:period_id` | GET | Terugkijken naar eerdere periodes                                                             | US19                                              |
+| `/students?all=true`                     | GET       | Haal alle studenten op om werk van collega's over te nemen                                     | US20, US32                                        |
+| `/teachers/:teacher_id/students?filter=...&sort=...` | GET | Filteren en sorteren van de studentenlijst                                                    | US22, US28                                        |
+| `/students/:student_id/po`               | POST      | Koppel PO aan student                                                                         | US24                                              |
+| `/crebos`                                | POST      | Beheerder voegt een nieuw kwalificatiedossier toe                                              | US39                                              |
+| `/rubrics`                               | POST      | Beheerder voegt een nieuwe onderwijsrubric toe                                                | US40                                              |
+| `/teachers`                              | POST      | Beheerder voegt een nieuwe docent toe                                                         | US42                                              |
+| `/teachers/:teacher_id/active`           | PUT       | Beheerder zet docent op actief/inactief                                                       | US43                                              |
+| `/students/import`                       | POST      | Beheerder importeert studentgegevens                                                          | US44                                              |
+| `/students/:student_id/photo`            | POST      | Foto toevoegen aan studentgegevens                                                            | US45                                              |
+| `/students/:student_id/lbc`              | POST      | Student koppelen aan LBC                                                                      | US46                                              |
+| `/students/:student_id`                  | PUT       | Studentgegevens wijzigen                                                                     | US47                                              |
+| `/periods`                               | GET/POST  | Haal periodes op of voeg nieuwe periodes toe                                                  | Meerdere user stories gerelateerd aan periodes    |
+| `/fases`                                 | GET       | Haal de lijst van fasen op                                                                    | N.v.t.                                            |
+| `/criteria`                              | GET/POST  | Haal criteria op of voeg nieuwe criteria toe                                                  | Meerdere user stories gerelateerd aan criteria    |
+| `/lbc/:lbc_id/notifications`             | GET       | Seintje als student diplomeerbaar is                                                          | US33                                              |
+| `/students/:student_id/beslissingsdocument` | GET     | Genereer beslissingsdocument voor student                                                     | US34                                              |
+| `/students/:student_id/beslissingsdocument/pdf` | GET   | Exporteer beslissingsdocument naar PDF                                                       | US35                                              |
+| `/users/:user_id/switch-role`            | POST      | Gebruiker wisselt van rol (PO naar LBC of vice versa)                                         | US23, US36                                        |
+
