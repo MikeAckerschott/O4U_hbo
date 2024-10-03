@@ -17,6 +17,16 @@ a,
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
+
+  .nav-link {
+  transition: transform 0.5s ease; /* Smooth transition for the transform property */
+    max-width: min-content;
+}
+
+.nav-link:hover {
+  transform: scale(1.1); /* Grow the nav item on hover */
+  background: transparent;
+}
 }
 
 @media (min-width: 1024px) {
@@ -24,4 +34,5 @@ a,
     display: flex;
     place-items: center;
   }
+
 }

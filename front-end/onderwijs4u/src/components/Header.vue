@@ -42,14 +42,6 @@ export default {
   z-index: 1000; /* Ensures the navbar is above other elements */
 }
 
-.nav-link {
-  transition: transform 0.5s ease; /* Smooth transition for the transform property */
-}
-
-.nav-link:hover {
-  transform: scale(1.1); /* Grow the nav item on hover */
-  background: transparent;
-}
 
 body {
   padding-top: 56px; /* Adjust this value based on the height of your navbar */
