@@ -58,3 +58,5 @@ De overeenkomende user stories gaan vaak over basistaken zoals inloggen, uitlogg
    - **Foto bij student toevoegen:** Een unieke actie van de beheerder om visuele informatie toe te voegen.
    - **Studenten koppelen aan LBC:** Het koppelen van studenten aan LBC’s is een specifieke taak van de beheerder.
    - **Studentgegevens wijzigen:** Het aanpassen van studentgegevens om ze up-to-date te houden, behoort tot de unieke beheertaken. 
+
+![Alt text](./domeinmodel.drawio.png)
