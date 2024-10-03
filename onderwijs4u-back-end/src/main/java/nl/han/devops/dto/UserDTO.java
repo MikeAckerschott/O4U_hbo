@@ -14,6 +14,7 @@ import lombok.*;
 public class UserDTO {
 
     @Id
+    @Setter
     private int id;
 
     @Getter
