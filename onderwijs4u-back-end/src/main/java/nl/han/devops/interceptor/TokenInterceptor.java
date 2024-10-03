@@ -15,7 +15,7 @@ public class TokenInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();
-        if (requestURI.endsWith("/login") || requestURI.endsWith("/signup") || requestURI.endsWith("/image")) {
+        if (requestURI.endsWith("/login") || requestURI.endsWith("/signup")) {
             return true;
         }
 
