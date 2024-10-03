@@ -9,59 +9,8 @@ import { useRouter } from 'vue-router'
 
 const store = useStore()
 const $router = useRouter()
-var quizzes = [] as any[]
 
-const getQuizzes = async function () {
-  // get all quizzes
-  const body = new FormData()
-  body.append('username', store.getters.getUser?.username)
-  try {
-    const response = await post('/user/quizzes', body)
-    // console.log(response)
-    quizzes = response // Set the quizzes property
-  } catch (error) {
-    console.error(error)
-  }
-}
 
-const exportQuiz = async function () {
-  try {
-    var quizName = ''
-    var creator = {
-      id: '',
-      token: '',
-      username: '',
-      password: '',
-      image: ''
-    } as User
-
-    var quizUploaded = {
-      name: 'todo',
-      creator: creator,
-      quiz: '[{"quizButtons": [{}],"quizTexts": [{}]}]',
-      editableQuiz: '',
-      img: ''
-    } as Quiz
-
-    await getQuizzes()
-    quizUploaded.name = 'New Quiz (' + (quizzes.length + 1) + ')'
-
-    store.dispatch('uploadQuiz', {
-      quiz: quizUploaded
-    })
-
-    await getQuizzes()
-
-    $router.push('/createQuiz/' + quizUploaded.name + '_' + store.getters.getUser?.id)
-  } catch (error) {
-    console.error('Failed to capture image or export quiz', error)
-  }
-}
-
-const getAllQuizzes = async function () {
-  var quizzes = await get('/quiz')
-  console.log(quizzes)
-}
 </script>
 
 <template>
@@ -71,11 +20,13 @@ const getAllQuizzes = async function () {
       <div class="column">
         <div class="main-text-container">
           <div class="column main-text">
-            <h1 class="title-text">Welkom bij CreatiQuiz</h1>
+            <h1 class="title-text">Welkom</h1>
             <p class="paragraph">
-              Maak in 5 simpele stappen je eigen (Pub-)Quiz. Hou het simpel of ga tekeer met de vele
-              verschillende mogelijkheden die hier worden aangeboden. Geen zin om te maken? Spelen
-              kan ook! Neem een kijkje naar wat andere gebruikers voor jou hebben gemaakt.
+              lorum ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec,
+              mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed
+              eleifend tristique, tortor mauris molestie elit, et luctus enim justo non nisi. Donec a semper turpis.
+              Nunc eget ultricies sem. Morbi porta, libero id ullamcorper semper, sapien justo venenatis odio, non
+              euismod felis turpis ut quam. Sed id dui mi.
             </p>
           </div>
           <img src="../assets/Images/Icons/logo.png" class="logo-image" />
@@ -85,29 +36,16 @@ const getAllQuizzes = async function () {
             <div class="align-center">
               <div class="row">
                 <div class="column">
-                  <h1 class="title-text">Design</h1>
+                  <h1 class="title-text">Title</h1>
 
-                  <p class="paragraph">Maak een nieuwe quiz of ga verder waar je gebleven was</p>
+                  <p class="paragraph">lorum ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec,</p>
                 </div>
-                <img
-                  src="../assets/Images/Icons/desktop keyboard mouse 1.png"
-                  alt="Arrow icon"
-                  class="lobby-image"
-                />
+                <img src="../assets/Images/Icons/desktop keyboard mouse 1.png" alt="Arrow icon" class="lobby-image" />
               </div>
               <div class="row">
-                <PrimaryButton
-                  class="create-button"
-                  label="Nieuwe Quiz"
-                  icon-right="src\assets\Images\Icons\add.png"
-                  @click="exportQuiz"
-                >
+                <PrimaryButton class="create-button" label="button" icon-right="src\assets\Images\Icons\add.png">
                 </PrimaryButton>
-                <PrimaryButton
-                  class="create-button"
-                  label="Jouw Quizzes"
-                  href="/quizList"
-                ></PrimaryButton>
+                <PrimaryButton class="create-button" label="button"></PrimaryButton>
               </div>
             </div>
           </ContentPanel>
@@ -115,23 +53,15 @@ const getAllQuizzes = async function () {
             <div class="align-center">
               <div class="row">
                 <div class="column">
-                  <h1 class="title-text">Speel</h1>
+                  <h1 class="title-text">Title</h1>
 
-                  <p class="paragraph">Speel één van de vele gebruiker gemaakte quizzen!</p>
+                  <p class="paragraph">lorum ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec,</p>
                 </div>
-                <img
-                  class="game-image"
-                  src="../assets/Images/Icons/gaming 2.png"
-                  alt="Arrow icon"
-                />
+                <img class="game-image" src="../assets/Images/Icons/gaming 2.png" alt="Arrow icon" />
               </div>
               <div class="row">
-                <PrimaryButton
-                  class="create-button"
-                  label="Speel Quizzes"
-                  @click="console.log('todo')"
-                  href="/quizList"
-                >
+                <PrimaryButton class="create-button" label="button" @click="console.log('todo')"
+                  href="/quizList">
                 </PrimaryButton>
               </div>
             </div>
@@ -202,6 +132,7 @@ const getAllQuizzes = async function () {
   margin: 0 10px;
   height: 100%;
 }
+
 .title-text {
   font-size: 30px;
   font-weight: 700;
@@ -209,14 +140,17 @@ const getAllQuizzes = async function () {
   text-align: left;
   max-width: 100%;
 }
+
 .create-button {
   width: 50%;
 }
+
 .align-center {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .paragraph {
   font-size: 14px;
   font-weight: 400;
@@ -224,6 +158,7 @@ const getAllQuizzes = async function () {
   text-align: left;
   max-width: 100%;
 }
+
 .lobby-image {
   display: flex;
   justify-content: center;
@@ -247,6 +182,7 @@ const getAllQuizzes = async function () {
   height: 200px;
   margin-bottom: 10px;
 }
+
 .divider {
   width: 100%;
   height: 1px;
