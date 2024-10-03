@@ -95,7 +95,7 @@ export default defineComponent({
         max: 50
       },
       passwordLength: {
-        min: 8,
+        min: 10,
         max: 50
       }
     }
