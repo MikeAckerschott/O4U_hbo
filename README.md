@@ -2,8 +2,8 @@
 
 ## Overzicht Alle User Stories
 
-| Title                                                        | Description                                                                                                                                                                                                                                                                                                           |
-|--------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Titel | Omschrijving |
+| - | - |
 | Inloggen (student)                                           | ## User story:<br>Als student wil ik kunnen inloggen, zodat ik snel inzicht kan krijgen in de voortgang van mijn studie<br><br>## Acceptatiecriteria:<br>- [ ] 2fa<br>- [ ] wachtwoord minimaal 10 lang<br>- [ ] minimaal één kleine letter<br>- [ ] minimaal één hoofdletter<br>- [ ] minimaal één cijfer<br>- [ ] minimaal één vreemd karakter<br>- [ ] wachtwoord moet minimaal met een hash en een salt opgeslagen worden |
 | Selecteren criteria (student)                                | ## User story:<br>Als student wil ik bij het begin van een project kunnen aangeven aan welke criteria ik ga werken, zodat ik zelf mijn opleiding kan sturen                                                                                                                                                       |
 | Verantwoording schrijven (student)                           | ## User story:<br>Als student wil ik bij een criterium in de rubric kunnen invullen/verantwoorden waarom ik denk dat ik aan een bepaald criterium heb voldaan, zodat ik dat samen met de PO kan bespreken en tot een definitieve beoordeling/feedback kan komen                                                |
