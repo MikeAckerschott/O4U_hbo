@@ -55,8 +55,6 @@ Here’s the updated table with additional columns for the user story codes (US1
 | US47 | Studentgegevens wijzigen (beheerder)                         | Als beheerder wil ik gegevens van studenten kunnen wijzigen, zodat ik de gegevens correct houd |  |  | |
 | US48 | Uitloggen  (beheerder)                                       | Als beheerder wil ik kunnen uitloggen, zodat ik met ander werk verder kan |  |  | |
 
-Let me know if you need any more changes!
-
 
 
 ### **Overeenkomende User Stories**
