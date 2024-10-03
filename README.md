@@ -2,8 +2,6 @@
 
 # User Stories
 
-Here’s the updated table with additional columns for the user story codes (US1, US2, etc.) and MoSCoW prioritization:
-
 | Code | Title | Description | Acceptatiecriteria (AC) | MoSCoW Prioritering | Done |
 | --- | --- | --- | --- | --- | --- |
 | US1 | Inloggen (student)                                           | Als student wil ik kunnen inloggen, zodat ik snel inzicht kan krijgen in de voortgang van mijn studie | - [ ] 2fa <br> - [ ] wachtwoord minimaal 10 lang <br> - [ ] minimaal één kleine letter <br> - [ ] minimaal één hoofdletter <br> - [ ] minimaal één cijfer <br> - [ ] minimaal één vreemd karakter <br> - [ ] wachtwoord moet minimaal met een hash en een salt opgeslagen worden |  | |
