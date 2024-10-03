@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="00514c56-7cff-492b-a1b8-96733569fb33" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/RubricView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/RubricView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/RubricsView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/RubricsView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/assets/main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

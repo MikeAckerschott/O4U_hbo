@@ -5,6 +5,10 @@
     </header>
     <main>
          <RouterView />
+      <div class="blob"></div>
+<div class="blob"></div>
+<div class="blob"></div>
+
     </main>
     <footer>
       <p>© 2024 My Website</p>
