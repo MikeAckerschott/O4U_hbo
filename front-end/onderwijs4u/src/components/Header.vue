@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-                  <RouterLink class="nav-link" to="/">Onderwijs4U</RouterLink>
+      <RouterLink class="nav-link" to="/">
+        <img src="@/assets/onderwijs4u.png" alt="Onderwijs4U" class="navbar-logo"/>
+      </RouterLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -17,8 +19,8 @@
               Projects
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <RouterLink class="nav-link" to="/currentproject">Current project</RouterLink>
-            <RouterLink class="nav-link" to="/allprojects">All projects</RouterLink>
+              <RouterLink class="nav-link" to="/currentproject">Current project</RouterLink>
+              <RouterLink class="nav-link" to="/allprojects">All projects</RouterLink>
             </ul>
           </li>
         </ul>
@@ -42,6 +44,11 @@ export default {
   z-index: 1000; /* Ensures the navbar is above other elements */
 }
 
+.navbar-logo {
+  height: 56px; /* Adjust this value based on the height of your navbar */
+  width: 56px; /* Make it a square */
+  border-radius: 50%; /* Make it circular */
+}
 
 body {
   padding-top: 56px; /* Adjust this value based on the height of your navbar */
