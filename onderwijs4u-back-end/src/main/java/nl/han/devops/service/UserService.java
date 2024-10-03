@@ -25,8 +25,8 @@ public class UserService {
         String token = UUID.randomUUID().toString();
 
         UserDTO user = UserDTO.builder()
-                .username(userSignupDTO.getUsername())
-                .password(passwordEncoder.encode(userSignupDTO.getPassword()))
+                .email(userSignupDTO.getEmail())
+                .password_hash(passwordEncoder.encode(userSignupDTO.getPassword()))
                 .token(token)
                 .build();
 
@@ -36,10 +36,10 @@ public class UserService {
     }
 
     public String login(UserSignupDTO userSignupDTO) {
-        UserDTO user = userRepository.findByUsername(userSignupDTO.getUsername())
+        UserDTO user = userRepository.findByEmail(userSignupDTO.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        if (passwordEncoder.matches(userSignupDTO.getPassword(), user.getPassword())) {
+        if (passwordEncoder.matches(userSignupDTO.getPassword(), user.getPassword_hash())) {
             user.setToken(UUID.randomUUID().toString());
             return user.getToken();
         } else {

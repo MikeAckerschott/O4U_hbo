@@ -2,17 +2,17 @@ package nl.han.devops.dto;
 
 public class UserSignupDTO {
 
-    private String username;
+    private String email;
 
     private String password;
 
     UserSignupDTO(String username, String password) {
-        this.username = username;
+        this.email = username;
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
     public String getPassword() {

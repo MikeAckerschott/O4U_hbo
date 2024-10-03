@@ -8,22 +8,25 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Builder
-@Table(name="app_user")
+@Table(name="users")
 public class UserDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int user_id;
 
     @Getter
     @Setter
-    private String username;
+    private String email;
 
     @Getter
     @Setter
-    private String password;
+    private String password_hash;
 
     @Getter
     @Setter
     private String token;
+
+    @Getter
+    private int role_id;
 }

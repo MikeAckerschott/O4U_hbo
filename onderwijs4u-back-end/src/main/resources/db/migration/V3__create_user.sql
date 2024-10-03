@@ -11,7 +11,8 @@ CREATE TABLE users (
     password_hash VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    role_id INT NOT NULL REFERENCES roles(role_id) ON DELETE CASCADE
+    role_id INT NOT NULL REFERENCES roles(role_id) ON DELETE CASCADE,
+    token VARCHAR(255)
 );
 
 -- Invoegen van rollen
@@ -113,8 +114,6 @@ CREATE TABLE projects (
     name VARCHAR(255) NOT NULL,
     description TEXT,
     period INT NOT NULL REFERENCES periods(period),
-    start_date DATE,
-    end_date DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
