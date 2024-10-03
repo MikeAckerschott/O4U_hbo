@@ -1,14 +1,13 @@
 <template>
   <div class="root-container">
     <header>
-  <Header></Header>
+      <Header></Header>
     </header>
     <main>
-         <RouterView />
+      <RouterView/>
       <div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
-
+      <div class="blob"></div>
+      <div class="blob"></div>
     </main>
     <footer>
       <p>© 2024 My Website</p>
