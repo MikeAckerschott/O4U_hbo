@@ -56,9 +56,11 @@ import store from '@/store';
 }
 /* Navbar link hover effect */
 .nav-link:hover {
-  background: linear-gradient(to right, #ff9800, #5e35b1) !important;  color: #5e35b1; /* Purple text */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  background: transparent; /* Purple text */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  transform: scale(1.1); /* Grow the link */
 }
+
 
 /* Profile Icon */
 .profileIcon {
