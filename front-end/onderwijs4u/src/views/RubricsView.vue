@@ -8,15 +8,31 @@
           <option v-for="fase in uniqueFases" :key="fase" :value="fase">{{ fase }}</option>
         </select>
       </div>
-      <div class="col-md-9 text-end">
-        <div>
-          <strong>Percentage Completed:</strong> {{ percentageCompleted }}%
-        </div>
-        <div>
-          <strong>Percentage Voldoende:</strong> {{ percentageVoldoende }}%
-        </div>
-        <div>
-          <strong>Percentage Goed:</strong> {{ percentageGoed }}%
+      <div class="col-md-3">
+        <label for="beoordelingFilter" class="form-label">Filter by Beoordeling:</label>
+        <select id="beoordelingFilter" v-model="selectedBeoordeling" @change="filterData" class="form-select">
+          <option value="">All</option>
+          <option v-for="beoordeling in uniqueBeoordelingen" :key="beoordeling" :value="beoordeling">{{ beoordeling }}</option>
+        </select>
+      </div>
+      <div class="col-md-6 text-end">
+        <div class="d-flex justify-content-end">
+          <div class="chart-container me-3">
+            <div class="donut-chart" :style="getDonutStyle(percentageCompleted, '#007bff')"></div>
+            <div class="chart-label">Completed</div>
+          </div>
+          <div class="chart-container me-3">
+            <div class="donut-chart" :style="getDonutStyle(percentageVoldoende, '#ffc107')"></div>
+            <div class="chart-label">Voldoende</div>
+          </div>
+          <div class="chart-container me-3">
+            <div class="donut-chart" :style="getDonutStyle(percentageGoed, '#28a745')"></div>
+            <div class="chart-label">Goed</div>
+          </div>
+          <div class="chart-container">
+            <div class="donut-chart" :style="getDonutStyle(percentageOnvoldoende, '#dc3545')"></div>
+            <div class="chart-label">Onvoldoende</div>
+          </div>
         </div>
       </div>
     </div>
@@ -74,7 +90,7 @@
 </template>
 
 <script setup>
-import {ref, computed} from 'vue';
+import { ref, computed } from 'vue';
 
 const data = ref([
   {id: 1, beoordelingscriteria: '25192', fase: 'Ontwikkeling', beoordeling: 'Goed'},
@@ -122,6 +138,7 @@ const data = ref([
 const sortKey = ref('');
 const sortOrder = ref('asc');
 const selectedFase = ref('');
+const selectedBeoordeling = ref('');
 const currentPage = ref(1);
 const itemsPerPage = 10;
 
@@ -148,12 +165,12 @@ const sortedData = computed(() => {
 
       if (typeof aValue === 'string') {
         return sortOrder.value === 'asc'
-            ? aValue.localeCompare(bValue)
-            : bValue.localeCompare(aValue);
+          ? aValue.localeCompare(bValue)
+          : bValue.localeCompare(aValue);
       } else {
         return sortOrder.value === 'asc'
-            ? aValue - bValue
-            : bValue - aValue;
+          ? aValue - bValue
+          : bValue - aValue;
       }
     });
   }
@@ -165,9 +182,20 @@ const uniqueFases = computed(() => {
   return [...new Set(fases)];
 });
 
+const uniqueBeoordelingen = computed(() => {
+  const beoordelingen = data.value.map(item => item.beoordeling);
+  return [...new Set(beoordelingen)];
+});
+
 const filteredData = computed(() => {
-  if (!selectedFase.value) return sortedData.value;
-  return sortedData.value.filter(item => item.fase === selectedFase.value);
+  let filtered = sortedData.value;
+  if (selectedFase.value) {
+    filtered = filtered.filter(item => item.fase === selectedFase.value);
+  }
+  if (selectedBeoordeling.value) {
+    filtered = filtered.filter(item => item.beoordeling === selectedBeoordeling.value);
+  }
+  return filtered;
 });
 
 const totalPages = computed(() => Math.ceil(filteredData.value.length / itemsPerPage));
@@ -225,4 +253,40 @@ const percentageGoed = computed(() => {
   const goed = data.value.filter(item => item.beoordeling === 'Goed').length;
   return ((goed / data.value.length) * 100).toFixed(2);
 });
+
+const percentageOnvoldoende = computed(() => {
+  const onvoldoende = data.value.filter(item => item.beoordeling === 'Onvoldoende').length;
+  return ((onvoldoende / data.value.length) * 100).toFixed(2);
+});
+
+// Donut chart styles
+const getDonutStyle = (percentage, color) => {
+  const rotation = (percentage / 100) * 360;
+  return {
+    background: `conic-gradient(${color} ${rotation}deg, #e9ecef ${rotation}deg)`,
+  };
+};
 </script>
+
+<style>
+.chart-container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.donut-chart {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(#007bff 0deg, #e9ecef 0deg);
+}
+
+.chart-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
+</style>
