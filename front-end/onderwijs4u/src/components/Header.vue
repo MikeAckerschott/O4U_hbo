@@ -14,12 +14,6 @@
           <li class="nav-item">
     <RouterLink to="/project">Go to project</RouterLink>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -33,6 +27,3 @@ export default {
 }
 </script>
 
-<style scoped>
-/* Add any custom styles here */
-</style>
