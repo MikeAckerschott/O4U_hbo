@@ -1,6 +1,5 @@
 package nl.lpp.uncenshow.controller
 
-
 import nl.lpp.uncenshow.dto.user.UserDTO
 import nl.lpp.uncenshow.dto.user.UserSignupDTO
 import nl.lpp.uncenshow.service.authentication.AuthenticationService

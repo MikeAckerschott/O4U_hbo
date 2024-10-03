@@ -20,6 +20,10 @@ import org.springframework.web.multipart.MultipartFile
 @Service
 class UserService(private val userDAO: UserDAO, private val authenticationDAO: AuthenticationDAO) {
 
+    fun test() {
+        userDAO.test()
+    }
+
     fun signUpUser(user: UserSignupDTO): UserDTO {
 
         if (!user.isValidUsername()) {

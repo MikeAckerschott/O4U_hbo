@@ -1,0 +1,40 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://root:root123@localhost:27018/?authSource=admin
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=none
+    networks:
+      - app-network
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27018:27017"
+    environment:
+      MONGODB_INITDB_ROOT_USERNAME: root
+      MONGODB_INITDB_ROOT_PASSWORD: root123
+      MONGO_INITDB_DATABASE: onderwijs4u
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/admin --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
+    driver: bridge

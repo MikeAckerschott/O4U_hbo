@@ -7,6 +7,7 @@ import nl.lpp.uncenshow.dto.user.UserDTO
 import nl.lpp.uncenshow.dto.user.UserRepository
 import nl.lpp.uncenshow.exceptionhandling.exceptions.NotFoundException
 import nl.lpp.uncenshow.exceptionhandling.exceptions.NotSavedException
+import org.apache.catalina.User
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories
 import org.springframework.stereotype.Component
 
@@ -15,6 +16,15 @@ import org.springframework.stereotype.Component
 class UserDAO(
         private val userRepository: UserRepository,
 ) {
+
+    fun test() {
+        try {
+            val user = UserDTO(null, "Test", "Test", "Test", "Test")
+            userRepository.save(user);
+        } catch (e: Exception) {
+            throw NotSavedException()
+        }
+    }
 
     fun getUser(token: String, id: String): UserDTO {
         try {
