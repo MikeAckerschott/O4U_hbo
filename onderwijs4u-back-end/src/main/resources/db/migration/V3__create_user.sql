@@ -27,14 +27,14 @@ INSERT INTO users (email, password_hash, role_id) VALUES ('student@gmail.com', '
 
 -- Tabel voor crebo's (kwalificatiedossiers)
 CREATE TABLE crebos (
-    crebo_number VARCHAR(50) PRIMARY KEY,
+    crebonumber VARCHAR(50) PRIMARY KEY,
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Insert voorbeeld crebo
-INSERT INTO     crebos (crebo_number, description)
+INSERT INTO     crebos (crebonumber, description)
                 VALUES ('12345', 'Voorbeeld kwalificatiedossier');
 
 -- Tabel voor studenten
@@ -47,7 +47,7 @@ CREATE TABLE students (
     last_name VARCHAR(255) NOT NULL,
     klas VARCHAR(50),
     cohort VARCHAR(4), -- bijv. '2023'
-    crebo_number VARCHAR(50) NOT NULL REFERENCES crebos(crebo_number),
+    crebonumber VARCHAR(50) NOT NULL REFERENCES crebos(crebonumber),
     geboortedatum DATE,
     photo BYTEA,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -55,7 +55,7 @@ CREATE TABLE students (
 );
 
 -- Insert voorbeeld student
-INSERT INTO     students (user_id, student_number, first_name, last_name, crebo_number)
+INSERT INTO     students (user_id, student_number, first_name, last_name, crebonumber)
                 VALUES (3, '123456', 'Jan', 'Jansen', '12345');
 
 -- Tabel voor docenten
@@ -73,7 +73,7 @@ CREATE TABLE teachers (
 -- Tabel voor kerntaken
 CREATE TABLE kerntaken (
     kerntaak_id SERIAL PRIMARY KEY,
-    crebo_number VARCHAR(50) NOT NULL REFERENCES crebos(crebo_number),
+    crebonumber VARCHAR(50) NOT NULL REFERENCES crebos(crebonumber),
     name VARCHAR(255) NOT NULL,
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -188,10 +188,10 @@ CREATE TABLE student_teacher_assignments (
 -- Optionele tabel voor rubrics (indien nodig)
 CREATE TABLE rubrics (
     rubric_id SERIAL PRIMARY KEY,
-    crebo_number VARCHAR(50) NOT NULL REFERENCES crebos(crebo_number),
+    crebonumber VARCHAR(50) NOT NULL REFERENCES crebos(crebonumber),
     fase_id INT NOT NULL REFERENCES fases(fase_id),
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE (crebo_number, fase_id)
+    UNIQUE (crebonumber, fase_id)
 );

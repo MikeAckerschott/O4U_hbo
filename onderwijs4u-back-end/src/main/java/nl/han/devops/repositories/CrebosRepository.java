@@ -8,7 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface CrebosRepository extends CrudRepository<CrebosDTO, String> {
-    Optional<CrebosDTO> findByCrebo_number(String crebo_number);
-    Optional<CrebosDTO> findByDescription(String description);
+    Optional<CrebosDTO> findByCrebonumber(String crebonumber);
 }
 

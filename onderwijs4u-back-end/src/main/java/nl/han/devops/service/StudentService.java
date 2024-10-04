@@ -11,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class StudentService {
 
@@ -25,5 +23,9 @@ public class StudentService {
         this.userRepository = userRepository;
         this.projectRepository = projectRepository;
         this.studentRepository = studentRepository;
+    }
+
+    public ResponseEntity<String> currentProject(String token) {
+        return null;
     }
 }

@@ -3,10 +3,7 @@ package nl.han.devops.dto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
@@ -14,11 +11,19 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @Table(name="crebos")
-
 public class CrebosDTO {
     @Id
-    private String crebo_number;
+    private String crebonumber;
+
+    @Getter
+    @Setter
     private String description;
+
+    @Getter
+    @Setter
     private String created_at;
+
+    @Getter
+    @Setter
     private String updated_at;
 }
