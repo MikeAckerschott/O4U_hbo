@@ -25,7 +25,7 @@ export default {
     },
     enterAsTeacher() {
       sessionStorage.setItem('role', 'teacher');
-      this.$router.push('/students').then(() => {
+      this.$router.push('/roles').then(() => {
         window.location.reload();
       });
     }
@@ -39,12 +39,6 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 100vh;
-}
-
-.left-button, .right-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
 }
 
 .image-container {
