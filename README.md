@@ -136,6 +136,10 @@ De kernfunctionaliteit draait om het creëren van een doorlopend, geïntegreerd 
 
 ![Alt text](./domeinmodel.drawio.png)
 
+# Database model
+
+![Alt text](./ER_TEST.png)
+
 
 # Endpoints
 
