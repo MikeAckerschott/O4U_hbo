@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00514c56-7cff-492b-a1b8-96733569fb33" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/GameView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/components/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/router/router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/router/router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/HomeView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
