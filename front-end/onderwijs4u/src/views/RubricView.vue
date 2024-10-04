@@ -12,7 +12,10 @@
         <label for="beoordelingFilter" class="form-label">Filter by Beoordeling:</label>
         <select id="beoordelingFilter" v-model="selectedBeoordeling" @change="filterData" class="form-select">
           <option value="">All</option>
-          <option v-for="beoordeling in uniqueBeoordelingen" :key="beoordeling" :value="beoordeling">{{ beoordeling }}</option>
+          <option v-for="beoordeling in uniqueBeoordelingen" :key="beoordeling" :value="beoordeling">{{
+              beoordeling
+            }}
+          </option>
         </select>
       </div>
     </div>
@@ -21,39 +24,41 @@
         <div class="table-responsive">
           <table class="table table-striped table-hover table-bordered w-100">
             <thead class="bg-light-blue text-white">
-              <tr>
-                <th @click="sort('project')" class="cursor-pointer">
-                  Project
-                  <i :class="getSortIcon('project')"></i>
-                </th>
-                <th @click="sort('verantwoording')" class="cursor-pointer">
-                  Verantwoording
-                  <i :class="getSortIcon('verantwoording')"></i>
-                </th>
-                <th @click="sort('fase')" class="cursor-pointer">
-                  Fase
-                  <i :class="getSortIcon('fase')"></i>
-                </th>
-                <th @click="sort('feedback')" class="cursor-pointer">
-                  Feedback
-                  <i :class="getSortIcon('feedback')"></i>
-                </th>
-                <th @click="sort('beoordeling')" class="cursor-pointer">
-                  Beoordeling
-                  <i :class="getSortIcon('beoordeling')"></i>
-                </th>
-              </tr>
+            <tr>
+              <th @click="sort('project')" class="cursor-pointer">
+                Project
+                <i :class="getSortIcon('project')"></i>
+              </th>
+              <th @click="sort('verantwoording')" class="cursor-pointer">
+                Verantwoording
+                <i :class="getSortIcon('verantwoording')"></i>
+              </th>
+              <th @click="sort('fase')" class="cursor-pointer">
+                Fase
+                <i :class="getSortIcon('fase')"></i>
+              </th>
+              <th @click="sort('feedback')" class="cursor-pointer">
+                Feedback
+                <i :class="getSortIcon('feedback')"></i>
+              </th>
+              <th @click="sort('beoordeling')" class="cursor-pointer">
+                Beoordeling
+                <i :class="getSortIcon('beoordeling')"></i>
+              </th>
+            </tr>
             </thead>
             <tbody>
-              <tr v-for="item in paginatedData" :key="item.id" :class="getRowClass(item.beoordeling)">
-                <td>{{ item.project }}</td>
-                <td>{{ item.verantwoording }}</td>
-                <td>{{ item.fase }}</td>
-                <td>{{ item.feedback }}</td>
-                <td>
-                  <span :class="getBadgeClass(item.beoordeling)">{{ item.beoordeling }}</span>
-                </td>
-              </tr>
+            <tr v-for="item in paginatedData" :key="item.id" :class="getRowClass(item.beoordeling)">
+              <td><RouterLink class="nav-link" :to="`/project/${item.project}`">
+                {{ item.project }}
+              </RouterLink></td>
+              <td>{{ item.verantwoording }}</td>
+              <td>{{ item.fase }}</td>
+              <td>{{ item.feedback }}</td>
+              <td>
+                <span :class="getBadgeClass(item.beoordeling)">{{ item.beoordeling }}</span>
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>
@@ -76,49 +81,337 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import {ref, computed} from 'vue';
 
 const data = ref([
-  { id: 1, project: '25192', verantwoording: 'I worked diligently on this project, ensuring all requirements were met.', fase: 'Ontwikkeling', feedback: 'Excellent effort and attention to detail.', beoordeling: 'Goed' },
-  { id: 2, project: '25194', verantwoording: 'I collaborated effectively with my team to complete the tasks.', fase: 'Uitvoerings', feedback: 'Good teamwork, but some areas need improvement.', beoordeling: 'Voldoende' },
-  { id: 3, project: '25191', verantwoording: 'I struggled with some concepts but sought help to understand them.', fase: 'Afronding', feedback: 'Needs more understanding of key concepts.', beoordeling: 'Onvoldoende' },
-  { id: 4, project: '25193', verantwoording: 'I planned the project timeline and followed it closely.', fase: 'Voorbereiding', feedback: 'Planning was good, but execution lacked.', beoordeling: 'Onvoldoende' },
-  { id: 5, project: '25195', verantwoording: 'I applied innovative solutions to solve problems.', fase: 'Ontwikkeling', feedback: 'Creative approach and well-executed.', beoordeling: 'Goed' },
-  { id: 6, project: '25196', verantwoording: 'I ensured all tasks were completed on time.', fase: 'Uitvoerings', feedback: 'Timely completion, but quality can improve.', beoordeling: 'Voldoende' },
-  { id: 7, project: '25197', verantwoording: 'I reviewed all work thoroughly before submission.', fase: 'Afronding', feedback: 'Thorough review, excellent quality.', beoordeling: 'Goed' },
-  { id: 8, project: '25198', verantwoording: 'I faced challenges but overcame them with persistence.', fase: 'Voorbereiding', feedback: 'Good effort, but more persistence needed.', beoordeling: 'Onvoldoende' },
-  { id: 9, project: '25199', verantwoording: 'I balanced multiple tasks efficiently.', fase: 'Ontwikkeling', feedback: 'Efficient multitasking, but some errors present.', beoordeling: 'Voldoende' },
-  { id: 10, project: '25200', verantwoording: 'I took initiative to lead the project.', fase: 'Uitvoerings', feedback: 'Strong leadership, well done.', beoordeling: 'Goed' },
-  { id: 11, project: '25201', verantwoording: 'I learned from my mistakes and improved.', fase: 'Afronding', feedback: 'Improvement noted, but more effort needed.', beoordeling: 'Onvoldoende' },
-  { id: 12, project: '25202', verantwoording: 'I prepared thoroughly for each phase.', fase: 'Voorbereiding', feedback: 'Good preparation, but execution needs work.', beoordeling: 'Voldoende' },
-  { id: 13, project: '25203', verantwoording: 'I integrated feedback to enhance my work.', fase: 'Ontwikkeling', feedback: 'Feedback integration was excellent.', beoordeling: 'Goed' },
-  { id: 14, project: '25204', verantwoording: 'I encountered difficulties but sought solutions.', fase: 'Uitvoerings', feedback: 'Needs better problem-solving skills.', beoordeling: 'Onvoldoende' },
-  { id: 15, project: '25205', verantwoording: 'I ensured all deliverables met the criteria.', fase: 'Afronding', feedback: 'Criteria met, good job.', beoordeling: 'Voldoende' },
-  { id: 16, project: '25206', verantwoording: 'I organized my tasks effectively.', fase: 'Voorbereiding', feedback: 'Well-organized, excellent work.', beoordeling: 'Goed' },
-  { id: 17, project: '25207', verantwoording: 'I faced setbacks but remained focused.', fase: 'Ontwikkeling', feedback: 'Focus is good, but results need improvement.', beoordeling: 'Onvoldoende' },
-  { id: 18, project: '25208', verantwoording: 'I communicated regularly with my team.', fase: 'Uitvoerings', feedback: 'Good communication, but more clarity needed.', beoordeling: 'Voldoende' },
-  { id: 19, project: '25209', verantwoording: 'I ensured high quality in all tasks.', fase: 'Afronding', feedback: 'High quality work, well done.', beoordeling: 'Goed' },
-  { id: 20, project: '25210', verantwoording: 'I planned each step carefully.', fase: 'Voorbereiding', feedback: 'Planning was good, but execution lacked.', beoordeling: 'Onvoldoende' },
-  { id: 21, project: '25211', verantwoording: 'I managed my time effectively.', fase: 'Ontwikkeling', feedback: 'Good time management, but some delays noted.', beoordeling: 'Voldoende' },
-  { id: 22, project: '25212', verantwoording: 'I took responsibility for my tasks.', fase: 'Uitvoerings', feedback: 'Responsible and reliable, good job.', beoordeling: 'Goed' },
-  { id: 23, project: '25213', verantwoording: 'I learned from feedback and improved.', fase: 'Afronding', feedback: 'Improvement noted, but more effort needed.', beoordeling: 'Onvoldoende' },
-  { id: 24, project: '25214', verantwoording: 'I prepared all necessary materials.', fase: 'Voorbereiding', feedback: 'Materials prepared well, good job.', beoordeling: 'Voldoende' },
-  { id: 25, project: '25215', verantwoording: 'I applied my knowledge effectively.', fase: 'Ontwikkeling', feedback: 'Knowledge application was excellent.', beoordeling: 'Goed' },
-  { id: 26, project: '25216', verantwoording: 'I encountered issues but resolved them.', fase: 'Uitvoerings', feedback: 'Issue resolution needs improvement.', beoordeling: 'Onvoldoende' },
-  { id: 27, project: '25217', verantwoording: 'I ensured all tasks were completed.', fase: 'Afronding', feedback: 'Tasks completed, but quality needs work.', beoordeling: 'Voldoende' },
-  { id: 28, project: '25218', verantwoording: 'I organized my work efficiently.', fase: 'Voorbereiding', feedback: 'Well-organized, excellent work.', beoordeling: 'Goed' },
-  { id: 29, project: '25219', verantwoording: 'I faced challenges but remained determined.', fase: 'Ontwikkeling', feedback: 'Determination is good, but results need improvement.', beoordeling: 'Onvoldoende' },
-  { id: 30, project: '25220', verantwoording: 'I communicated effectively with my team.', fase: 'Uitvoerings', feedback: 'Good communication, but more clarity needed.', beoordeling: 'Voldoende' },
-  { id: 31, project: '25221', verantwoording: 'I ensured high standards in my work.', fase: 'Afronding', feedback: 'High standards maintained, well done.', beoordeling: 'Goed' },
-  { id: 32, project: '25222', verantwoording: 'I planned each phase meticulously.', fase: 'Voorbereiding', feedback: 'Planning was good, but execution lacked.', beoordeling: 'Onvoldoende' },
-  { id: 33, project: '25223', verantwoording: 'I managed my workload effectively.', fase: 'Ontwikkeling', feedback: 'Good workload management, but some delays noted.', beoordeling: 'Voldoende' },
-  { id: 34, project: '25224', verantwoording: 'I took initiative in my tasks.', fase: 'Uitvoerings', feedback: 'Strong initiative, well done.', beoordeling: 'Goed' },
-  { id: 35, project: '25225', verantwoording: 'I learned from my mistakes.', fase: 'Afronding', feedback: 'Learning noted, but more effort needed.', beoordeling: 'Onvoldoende' },
-  { id: 36, project: '25226', verantwoording: 'I prepared thoroughly for each task.', fase: 'Voorbereiding', feedback: 'Good preparation, but execution needs work.', beoordeling: 'Voldoende' },
-  { id: 37, project: '25227', verantwoording: 'I applied feedback to improve my work.', fase: 'Ontwikkeling', feedback: 'Feedback application was excellent.', beoordeling: 'Goed' },
-  { id: 38, project: '25228', verantwoording: 'I encountered difficulties but sought solutions.', fase: 'Uitvoerings', feedback: 'Needs better problem-solving skills.', beoordeling: 'Onvoldoende' },
-  { id: 39, project: '25229', verantwoording: 'I ensured all deliverables met the criteria.', fase: 'Afronding', feedback: 'Criteria met, good job.', beoordeling: 'Voldoende' },
-  { id: 40, project: '25230', verantwoording: 'I organized my tasks effectively.', fase: 'Voorbereiding', feedback: 'well done', beoordeling: 'Voldoende' }]);
+  {
+    id: 1,
+    project: 'Website Redesign',
+    verantwoording: 'I worked diligently on this project, ensuring all requirements were met.',
+    fase: 'Development',
+    feedback: 'Excellent effort and attention to detail.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 2,
+    project: 'Mobile App Development',
+    verantwoording: 'I collaborated effectively with my team to complete the tasks.',
+    fase: 'Development',
+    feedback: 'Good teamwork, but some areas need improvement.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 3,
+    project: 'Data Migration',
+    verantwoording: 'I struggled with some concepts but sought help to understand them.',
+    fase: 'Expert',
+    feedback: 'Needs more understanding of key concepts.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 4,
+    project: 'System Integration',
+    verantwoording: 'I planned the project timeline and followed it closely.',
+    fase: 'Oriëntatie',
+    feedback: 'Planning was good, but execution lacked.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 5,
+    project: 'Cloud Implementation',
+    verantwoording: 'I applied innovative solutions to solve problems.',
+    fase: 'Development',
+    feedback: 'Creative approach and well-executed.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 6,
+    project: 'Network Upgrade',
+    verantwoording: 'I ensured all tasks were completed on time.',
+    fase: 'Development',
+    feedback: 'Timely completion, but quality can improve.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 7,
+    project: 'Security Enhancement',
+    verantwoording: 'I reviewed all work thoroughly before submission.',
+    fase: 'Expert',
+    feedback: 'Thorough review, excellent quality.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 8,
+    project: 'Software Evaluation',
+    verantwoording: 'I faced challenges but overcame them with persistence.',
+    fase: 'Oriëntatie',
+    feedback: 'Good effort, but more persistence needed.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 9,
+    project: 'Database Optimization',
+    verantwoording: 'I balanced multiple tasks efficiently.',
+    fase: 'Development',
+    feedback: 'Efficient multitasking, but some errors present.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 10,
+    project: 'Project Management Tool',
+    verantwoording: 'I took initiative to lead the project.',
+    fase: 'Development',
+    feedback: 'Strong leadership, well done.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 11,
+    project: 'API Development',
+    verantwoording: 'I learned from my mistakes and improved.',
+    fase: 'Expert',
+    feedback: 'Improvement noted, but more effort needed.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 12,
+    project: 'IT Infrastructure Setup',
+    verantwoording: 'I prepared thoroughly for each phase.',
+    fase: 'Oriëntatie',
+    feedback: 'Good preparation, but execution needs work.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 13,
+    project: 'User Interface Design',
+    verantwoording: 'I integrated feedback to enhance my work.',
+    fase: 'Development',
+    feedback: 'Feedback integration was excellent.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 14,
+    project: 'Bug Fixing',
+    verantwoording: 'I encountered difficulties but sought solutions.',
+    fase: 'Development',
+    feedback: 'Needs better problem-solving skills.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 15,
+    project: 'Performance Testing',
+    verantwoording: 'I ensured all deliverables met the criteria.',
+    fase: 'Expert',
+    feedback: 'Criteria met, good job.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 16,
+    project: 'Technical Documentation',
+    verantwoording: 'I organized my tasks effectively.',
+    fase: 'Oriëntatie',
+    feedback: 'Well-organized, excellent work.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 17,
+    project: 'Feature Implementation',
+    verantwoording: 'I faced setbacks but remained focused.',
+    fase: 'Development',
+    feedback: 'Focus is good, but results need improvement.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 18,
+    project: 'Team Collaboration',
+    verantwoording: 'I communicated regularly with my team.',
+    fase: 'Development',
+    feedback: 'Good communication, but more clarity needed.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 19,
+    project: 'Quality Assurance',
+    verantwoording: 'I ensured high quality in all tasks.',
+    fase: 'Expert',
+    feedback: 'High quality work, well done.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 20,
+    project: 'Deployment Planning',
+    verantwoording: 'I planned each step carefully.',
+    fase: 'Oriëntatie',
+    feedback: 'Planning was good, but execution lacked.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 20,
+    project: 'Deployment Planning',
+    verantwoording: 'I planned each step carefully.',
+    fase: 'Oriëntatie',
+    feedback: 'Planning was good, but execution lacked.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 21,
+    project: 'Time Management System',
+    verantwoording: 'I managed my time effectively.',
+    fase: 'Development',
+    feedback: 'Good time management, but some delays noted.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 22,
+    project: 'Task Responsibility',
+    verantwoording: 'I took responsibility for my tasks.',
+    fase: 'Development',
+    feedback: 'Responsible and reliable, good job.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 23,
+    project: 'Feedback Improvement',
+    verantwoording: 'I learned from feedback and improved.',
+    fase: 'Expert',
+    feedback: 'Improvement noted, but more effort needed.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 24,
+    project: 'Material Preparation',
+    verantwoording: 'I prepared all necessary materials.',
+    fase: 'Oriëntatie',
+    feedback: 'Materials prepared well, good job.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 25,
+    project: 'Knowledge Application',
+    verantwoording: 'I applied my knowledge effectively.',
+    fase: 'Development',
+    feedback: 'Knowledge application was excellent.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 26,
+    project: 'Issue Resolution',
+    verantwoording: 'I encountered issues but resolved them.',
+    fase: 'Development',
+    feedback: 'Issue resolution needs improvement.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 27,
+    project: 'Task Completion',
+    verantwoording: 'I ensured all tasks were completed.',
+    fase: 'Expert',
+    feedback: 'Tasks completed, but quality needs work.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 28,
+    project: 'Work Organization',
+    verantwoording: 'I organized my work efficiently.',
+    fase: 'Oriëntatie',
+    feedback: 'Well-organized, excellent work.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 29,
+    project: 'Challenge Management',
+    verantwoording: 'I faced challenges but remained determined.',
+    fase: 'Development',
+    feedback: 'Determination is good, but results need improvement.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 30,
+    project: 'Team Communication',
+    verantwoording: 'I communicated effectively with my team.',
+    fase: 'Development',
+    feedback: 'Good communication, but more clarity needed.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 31,
+    project: 'High Standards Maintenance',
+    verantwoording: 'I ensured high standards in my work.',
+    fase: 'Expert',
+    feedback: 'High standards maintained, well done.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 32,
+    project: 'Phase Planning',
+    verantwoording: 'I planned each phase meticulously.',
+    fase: 'Oriëntatie',
+    feedback: 'Planning was good, but execution lacked.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 33,
+    project: 'Workload Management',
+    verantwoording: 'I managed my workload effectively.',
+    fase: 'Development',
+    feedback: 'Good workload management, but some delays noted.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 34,
+    project: 'Initiative Taking',
+    verantwoording: 'I took initiative in my tasks.',
+    fase: 'Development',
+    feedback: 'Strong initiative, well done.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 35,
+    project: 'Mistake Learning',
+    verantwoording: 'I learned from my mistakes.',
+    fase: 'Expert',
+    feedback: 'Learning noted, but more effort needed.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 36,
+    project: 'Task Preparation',
+    verantwoording: 'I prepared thoroughly for each task.',
+    fase: 'Oriëntatie',
+    feedback: 'Good preparation, but execution needs work.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 37,
+    project: 'Feedback Application',
+    verantwoording: 'I applied feedback to improve my work.',
+    fase: 'Development',
+    feedback: 'Feedback application was excellent.',
+    beoordeling: 'Goed'
+  },
+  {
+    id: 38,
+    project: 'Problem Solving',
+    verantwoording: 'I encountered difficulties but sought solutions.',
+    fase: 'Development',
+    feedback: 'Needs better problem-solving skills.',
+    beoordeling: 'Onvoldoende'
+  },
+  {
+    id: 39,
+    project: 'Deliverable Criteria',
+    verantwoording: 'I ensured all deliverables met the criteria.',
+    fase: 'Expert',
+    feedback: 'Criteria met, good job.',
+    beoordeling: 'Voldoende'
+  },
+  {
+    id: 40,
+    project: 'Task Organization',
+    verantwoording: 'I organized my tasks effectively.',
+    fase: 'Oriëntatie',
+    feedback: 'Well done.',
+    beoordeling: 'Voldoende'
+  }]);
 
 const sortKey = ref('');
 const sortOrder = ref('asc');
