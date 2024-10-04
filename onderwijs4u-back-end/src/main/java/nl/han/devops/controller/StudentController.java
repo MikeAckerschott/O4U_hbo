@@ -2,10 +2,8 @@ package nl.han.devops.controller;
 
 import nl.han.devops.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/student")
@@ -20,8 +18,8 @@ public class StudentController {
 
     @GetMapping("/currentproject")
     @RequestMapping(produces = "application/json")
-    public String currentProject(@RequestBody ) {
-        return studentService.currentProject();
+    public ResponseEntity<String> currentProject(@RequestParam String token) {
+        return studentService.currentProject(token);
     }
 
 }
