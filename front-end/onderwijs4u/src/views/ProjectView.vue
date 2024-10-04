@@ -57,12 +57,13 @@ import {useRoute} from 'vue-router'
 const route = useRoute()
 const project = route.params.project
 
+// Initialize criteria with existing data
 const criteria = ref([
-  {id: 1, name: 'Research', active: false, text: ''},
-  {id: 2, name: 'Analysis', active: false, text: ''},
-  {id: 3, name: 'Presentation', active: false, text: ''},
-  {id: 4, name: 'Innovation', active: false, text: ''},
-  {id: 5, name: 'Teamwork', active: false, text: ''},
+  {id: 1, name: 'Research', active: true, text: 'Existing research data...'},
+  {id: 2, name: 'Analysis', active: true, text: 'Existing analysis data...'},
+  {id: 3, name: 'Presentation', active: false, text: 'Existing presentation data...'},
+  {id: 4, name: 'Innovation', active: false, text: 'Existing innovation data...'},
+  {id: 5, name: 'Teamwork', active: true, text: 'Existing teamwork data...'},
 ])
 
 const activeCriteria = computed(() => {
