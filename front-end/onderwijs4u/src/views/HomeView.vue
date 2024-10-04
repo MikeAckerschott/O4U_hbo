@@ -14,6 +14,7 @@ export default {
   created() {
     // Clear session variable when entering the homepage
     sessionStorage.removeItem('role');
+    sessionStorage.removeItem('navcolor');
   },
   methods: {
     enterAsStudent() {

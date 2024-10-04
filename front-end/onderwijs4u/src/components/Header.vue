@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav :class="['navbar', 'navbar-expand-lg']" :style="{ backgroundColor: navbarColorClass }">
     <div class="container-fluid">
       <RouterLink class="nav-link" to="/" @click.native="reloadPage">
         <img src="@/assets/onderwijs4u.png" alt="Onderwijs4U" class="navbar-logo"/>
@@ -21,6 +21,9 @@
               <RouterLink class="nav-link" to="/projects">All projects</RouterLink>
             </ul>
           </li>
+          <li class="nav-item" v-if="role === 'student'">
+            <RouterLink class="nav-link" to="/game">Rewards</RouterLink>
+          </li>
         </ul>
       </div>
     </div>
@@ -32,20 +35,30 @@ export default {
   name: 'Navbar',
   data() {
     return {
-      role: null
+      role: null,
+      navcolor: null
     }
   },
   created() {
     this.getRoleFromSession();
+    this.getNavColorFromSession();
   },
   methods: {
     getRoleFromSession() {
       this.role = sessionStorage.getItem('role') || 'guest';
     },
+    getNavColorFromSession() {
+      this.navcolor = sessionStorage.getItem('navcolor') || '#f8f9fa';
+    },
     reloadPage() {
       this.$router.push('/').then(() => {
         window.location.reload();
       });
+    }
+  },
+  computed: {
+    navbarColorClass() {
+      return this.navcolor || '#f8f9fa';
     }
   }
 }
