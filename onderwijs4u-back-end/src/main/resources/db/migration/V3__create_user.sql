@@ -80,6 +80,13 @@ CREATE TABLE kerntaken (
     updatedat TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Insert voor kerntaken
+INSERT INTO kerntaken (kerntaakid, crebonumber, name, description)
+VALUES
+    (1, 'CREBO12345', 'B1-K1', 'Realiseert software'),
+    (2, 'CREBO12345', 'B1-K2', 'Voert ICT-projecten uit');
+
+
 -- Tabel voor werkprocessen
 CREATE TABLE werkprocessen (
     werkprocesid SERIAL PRIMARY KEY,
@@ -90,12 +97,32 @@ CREATE TABLE werkprocessen (
     updatedat TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Insert voor werkprocessen
+INSERT INTO werkprocessen (werkprocesid, kerntaakid, name, description)
+VALUES
+    (1, 1, 'B1-K1-W1', 'Stemt opdracht af, plant werkzaamheden en bewaakt de voortgang'),
+    (2, 1, 'B1-K1-W2', 'Maakt een technisch ontwerp voor software'),
+    (3, 1, 'B1-K1-W3', 'Realiseert (onderdelen van) software'),
+    (4, 1, 'B1-K1-W4', 'Test software en doet verbetervoorstellen'),
+    (5, 2, 'B1-K2-W1', 'Werkt samen in een projectteam'),
+    (6, 2, 'B1-K2-W2', 'Presenteert het opgeleverde werk'),
+    (7, 2, 'B1-K2-W3', 'Evalueert de samenwerking');
+
+-- Insert voorbeeld werkproces
+INSERT INTO     werkprocessen (kerntaakid, name, description)
+                VALUES (1, 'Werkt samen in project team', 'De student werkt samen in een project team');
+
 -- Tabel voor fasen
 CREATE TABLE fases (
     faseid SERIAL PRIMARY KEY,
-    fasename VARCHAR(50) NOT NULL UNIQUE, -- bijv. 'oriëntatiefase', 'developmentfase', 'expertfase'
+    fasename VARCHAR(50) NOT NULL UNIQUE,
     description TEXT
 );
+
+-- Insert fases
+INSERT INTO fases (fasename, description) VALUES ('Oriëntatiefase', 'In deze fase oriënteert de student zich op het project');
+INSERT INTO fases (fasename, description) VALUES ('Developmentfase', 'In deze fase werkt de student aan het project');
+INSERT INTO fases (fasename, description) VALUES ('Expertfase', 'In deze fase is de student een expert op het gebied van het project');
 
 -- Tabel voor criteria
 CREATE TABLE criteria (
@@ -107,6 +134,17 @@ CREATE TABLE criteria (
     updatedat TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Insert voor criteria
+INSERT INTO criteria (criteriaid, werkprocesid, description, faseid)
+VALUES
+    (1, 1, 'Heeft de werkzaamheden effectief afgestemd met de opdrachtgever', 1),
+    (2, 2, 'Heeft een gedetailleerd en technisch correct ontwerp gemaakt', 2),
+    (3, 3, 'Heeft de software correct geïmplementeerd volgens het ontwerp', 2),
+    (4, 4, 'Heeft de software effectief getest en verbetervoorstellen gedaan', 3),
+    (5, 5, 'Heeft constructief samengewerkt binnen het projectteam', 1),
+    (6, 6, 'Heeft het opgeleverde werk effectief gepresenteerd aan de opdrachtgever', 2),
+    (7, 7, 'Heeft de samenwerking geëvalueerd en feedback gegeven', 3);
+
 -- Tabel voor periodes
 CREATE TABLE periods (
     period INT PRIMARY KEY,
@@ -117,7 +155,14 @@ CREATE TABLE periods (
 
 -- Insert voorbeeld periode
 INSERT INTO     periods (period, startdate, enddate, description)
-                VALUES (1, '2023-09-01', '2023-12-31', 'Eerste periode');
+                VALUES
+                (1, '2023-09-01', '2023-12-31', 'Eerste periode'),
+                (2, '2024-01-01', '2024-04-30', 'Tweede periode'),
+                (3, '2024-05-01', '2024-08-31', 'Derde periode'),
+                (4, '2024-09-01', '2024-12-31', 'Vierde periode'),
+                (5, '2025-01-01', '2025-04-30', 'Vijfde periode'),
+                (6, '2025-05-01', '2025-08-31', 'Zesde periode');
+
 
 -- Tabel voor projecten
 CREATE TABLE projects (
@@ -132,7 +177,9 @@ CREATE TABLE projects (
 
 -- Insert voorbeeld project
 INSERT INTO     projects (studentid, name, description, period)
-                VALUES (1, 'Project 1', 'Dit is een voorbeeld project', 1);
+                VALUES (1, 'Project: havik-oog', 'In dit project programmeer je een arduino om een verkeerslicht te simuleren.', 1),
+                (1, 'Project: spinnen-oog', 'Dit project maak je een html/css website', 2),
+                (1, 'Project: berg', 'Dit project maak je een micro front-end.', 3);
 
 -- Tabel voor verantwoordingen
 CREATE TABLE verantwoordingen (
@@ -159,7 +206,6 @@ CREATE TABLE beoordelingen (
     createdat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedat TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
 
 -- Tabel voor notities
 CREATE TABLE notities (
