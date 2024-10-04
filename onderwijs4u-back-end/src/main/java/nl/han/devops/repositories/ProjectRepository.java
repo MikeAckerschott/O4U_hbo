@@ -11,7 +11,5 @@ import java.util.Optional;
 
 @Repository
 public interface ProjectRepository extends CrudRepository<ProjectDTO, Integer> {
-//    Optional<ProjectDTO> findByStudent_Id(int student_id);
-//    Optional<ProjectDTO> findFirstByStudent_idOrderByUpdated_atDesc(int studentId);
     Optional<ProjectDTO> findFirstByStudentidOrderByUpdatedatDesc(int studentId);
 }

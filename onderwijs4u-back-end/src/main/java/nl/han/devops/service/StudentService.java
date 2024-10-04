@@ -26,6 +26,10 @@ public class StudentService {
     }
 
     public ResponseEntity<String> currentProject(String token) {
-        return null;
+        return userRepository.findByToken(token)
+                .flatMap(user -> studentRepository.findById(user.getUserid()))
+                .flatMap(student -> projectRepository.findFirstByStudentidOrderByUpdatedatDesc(student.getStudent_id()))
+                .map(project -> ResponseEntity.ok(project.getName()))
+                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body("No current project found"));
     }
 }
