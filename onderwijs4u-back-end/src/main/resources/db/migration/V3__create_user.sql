@@ -35,7 +35,8 @@ CREATE TABLE crebos (
 
 -- Insert voorbeeld crebo
 INSERT INTO     crebos (crebonumber, description)
-                VALUES ('12345', 'Voorbeeld kwalificatiedossier');
+                VALUES ('12345', 'Voorbeeld kwalificatiedossier'),
+                       ('CREBO12345', 'Voorbeeld kwalificatiedossier voor kerntaken');
 
 -- Tabel voor studenten
 CREATE TABLE students (
@@ -108,9 +109,9 @@ VALUES
     (6, 2, 'B1-K2-W2', 'Presenteert het opgeleverde werk'),
     (7, 2, 'B1-K2-W3', 'Evalueert de samenwerking');
 
--- Insert voorbeeld werkproces
-INSERT INTO     werkprocessen (kerntaakid, name, description)
-                VALUES (1, 'Werkt samen in project team', 'De student werkt samen in een project team');
+-- -- Insert voorbeeld werkproces
+-- INSERT INTO     werkprocessen (kerntaakid, name, description)
+--                 VALUES (1, 'Werkt samen in project team', 'De student werkt samen in een project team');
 
 -- Tabel voor fasen
 CREATE TABLE fases (
