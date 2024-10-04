@@ -2,27 +2,35 @@
   <div class="container mt-5">
     <h1 class="mb-4">Student Progress Overview</h1>
 
-    <div class="mb-3">
-      <button @click="toggleSort" class="btn btn-primary">
-        Sort by Need for Help ({{ sortOrder === 'desc' ? 'Descending' : 'Ascending' }})
-      </button>
-    </div>
-
     <div class="table-responsive">
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Progress</th>
-            <th>Year of Study</th>
-            <th>Support score</th>
+            <th @click="sort('name')" class="sortable">
+              Name
+              <SortIcon :active="sortColumn === 'name'" :ascending="sortOrder === 'asc'" />
+            </th>
+            <th @click="sort('progress')" class="sortable">
+              Progress
+              <SortIcon :active="sortColumn === 'progress'" :ascending="sortOrder === 'asc'" />
+            </th>
+            <th @click="sort('yearOfStudy')" class="sortable">
+              Year of Study
+              <SortIcon :active="sortColumn === 'yearOfStudy'" :ascending="sortOrder === 'asc'" />
+            </th>
+            <th @click="sort('needForHelp')" class="sortable">
+              Support score
+              <SortIcon :active="sortColumn === 'needForHelp'" :ascending="sortOrder === 'asc'" />
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="student in paginatedStudents" :key="student.id" :class="getRowClass(student.needForHelp)">
-            <td><RouterLink class="nav-link" :to="`/rubrics`">
-                    {{ student.name }}
-                  </RouterLink>   </td>
+            <td class="name-cell">
+              <RouterLink class="nav-link" :to="`/rubrics`">
+                {{ student.name }}
+              </RouterLink>
+            </td>
             <td>
               <div class="progress" style="height: 20px;">
                 <div
@@ -66,7 +74,22 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import {ref, computed, h} from 'vue'
+import { ChevronUp, ChevronDown } from 'lucide-vue-next'
+
+const SortIcon = {
+  props: {
+    active: Boolean,
+    ascending: Boolean
+  },
+  setup(props) {
+    return () => h('span', { class: `sort-icon ${props.active ? 'active' : ''}` }, [
+      props.active && props.ascending
+        ? h(ChevronUp, { size: 14 })
+        : h(ChevronDown, { size: 14 })
+    ])
+  }
+}
 
 const students = ref([
   { id: 1, name: 'Alice Johnson', progress: 75, yearOfStudy: 3 },
@@ -111,6 +134,7 @@ const students = ref([
   { id: 40, name: 'Neo Anderson', progress: 95, yearOfStudy: 4 },
 ])
 
+const sortColumn = ref('needForHelp')
 const sortOrder = ref('desc')
 const currentPage = ref(1)
 const itemsPerPage = 10
@@ -120,11 +144,17 @@ const calculateNeedForHelp = (student) => {
   return expectedProgress - student.progress
 }
 
+// Add needForHelp property to each student
+students.value.forEach(student => {
+  student.needForHelp = calculateNeedForHelp(student)
+})
+
 const sortedStudents = computed(() => {
   return [...students.value].sort((a, b) => {
-    const needA = calculateNeedForHelp(a)
-    const needB = calculateNeedForHelp(b)
-    return sortOrder.value === 'desc' ? needB - needA : needA - needB
+    let comparison = 0
+    if (a[sortColumn.value] < b[sortColumn.value]) comparison = -1
+    if (a[sortColumn.value] > b[sortColumn.value]) comparison = 1
+    return sortOrder.value === 'asc' ? comparison : -comparison
   })
 })
 
@@ -136,8 +166,13 @@ const paginatedStudents = computed(() => {
 
 const totalPages = computed(() => Math.ceil(students.value.length / itemsPerPage))
 
-const toggleSort = () => {
-  sortOrder.value = sortOrder.value === 'desc' ? 'asc' : 'desc'
+const sort = (column) => {
+  if (sortColumn.value === column) {
+    sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
+  } else {
+    sortColumn.value = column
+    sortOrder.value = 'asc'
+  }
 }
 
 const changePage = (page) => {
@@ -157,11 +192,6 @@ const getRowClass = (needForHelp) => {
   if (needForHelp > 25) return 'table-warning'
   return 'table-success'
 }
-
-// Add needForHelp property to each student
-students.value.forEach(student => {
-  student.needForHelp = calculateNeedForHelp(student)
-})
 </script>
 
 <style scoped>
@@ -173,5 +203,32 @@ students.value.forEach(student => {
 }
 .table-responsive {
   margin-bottom: 1rem;
+}
+.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+.sort-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.sort-icon.active {
+  color: #007bff;
+}
+.name-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+.table th, .table td {
+  vertical-align: middle;
+}
+.badge {
+  font-size: 0.9em;
+  padding: 0.4em 0.6em;
 }
 </style>

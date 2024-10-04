@@ -10,10 +10,12 @@ import Roles from '../views/RolesView.vue';
 import Game from '../views/GameView.vue';
 import Coach from '../views/CoachView.vue';
 import RubricDetail from '../views/RubricView.vue';
+import Graduation from '../views/GraduationView.vue';
 
 const routes = [
   { path: '/', component: Home },
   { path: '/projects', component: Projects },
+  { path: '/graduation', component: Graduation },
   { path: '/teacherprojects', component: TeacherProjects },
   { path: '/teacherproject/:project', component: TeacherProject },
   { path: '/student/:project/:student', component: Student },

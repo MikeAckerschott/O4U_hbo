@@ -46,7 +46,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="notificationDropdown">
               <li>
-                <RouterLink class="dropdown-item" to="/student">Rick passed their exam!!!! ^_^</RouterLink>
+                <RouterLink class="dropdown-item" to="/graduation">Rick passed their exam!!!! ^_^</RouterLink>
               </li>
             </ul>
           </li>
