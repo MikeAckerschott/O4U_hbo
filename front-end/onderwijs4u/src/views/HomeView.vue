@@ -50,7 +50,7 @@ export default {
 
 .spinning-image {
   border-radius: 50%;
-  animation: spin 5s linear infinite;
+  animation: spin 15s linear infinite;
 }
 
 @keyframes spin {

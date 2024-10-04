@@ -7,6 +7,7 @@ import TeacherProjects from '../views/TeacherProjectsView.vue';
 import Student from '../views/StudentView.vue';
 import TeacherProject from '../views/TeacherProjectView.vue';
 import Roles from '../views/RolesView.vue';
+import Presentation from "../views/PresentationView.vue";
 import Game from '../views/GameView.vue';
 import Coach from '../views/CoachView.vue';
 import RubricDetail from '../views/RubricView.vue';
@@ -23,6 +24,7 @@ const routes = [
   { path: '/game', component: Game },
   { path: '/roles', component: Roles },
   { path: '/coach', component: Coach},
+  { path: '/present', component: Presentation},
   { path: '/rubric/:rubric', component: RubricDetail}, // Add dynamic route
   { path: '/project/:project', component: Project}, // Add dynamic route
 
