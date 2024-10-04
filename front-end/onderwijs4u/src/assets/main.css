@@ -15,12 +15,12 @@ a,
 
 body {
   background: #ff7e5f;
-  overflow: hidden;
+  overflow: auto; /* Allow scrolling */
   position: relative;
 }
 
 .blob {
-  position: absolute;
+  position: fixed; /* Change to fixed to keep them in place */
   z-index: -100;
   border-radius: 50%;
   background: radial-gradient(circle, #ff7e5f, #feb47b);
@@ -31,6 +31,7 @@ body {
 .blob:nth-child(1) {
   width: 500px;
   height: 500px;
+  top: 20%;
   left: 20%;
   animation-duration: 25s;
 }
@@ -38,6 +39,7 @@ body {
 .blob:nth-child(2) {
   width: 200px;
   height: 200px;
+  top: 70%;
   left: 70%;
   animation-duration: 30s;
 }
@@ -45,6 +47,7 @@ body {
 .blob:nth-child(3) {
   width: 300px;
   height: 300px;
+  top: 45%;
   left: 45%;
   animation-duration: 35s;
 }
@@ -52,6 +55,7 @@ body {
 .blob:nth-child(4) {
   width: 400px;
   height: 400px;
+  top: 10%;
   left: 10%;
   animation-duration: 35s;
 }

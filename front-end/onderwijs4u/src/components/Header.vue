@@ -18,7 +18,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <RouterLink class="nav-link" to="/currentproject">Current project</RouterLink>
-              <RouterLink class="nav-link" to="/allprojects">All projects</RouterLink>
+              <RouterLink class="nav-link" to="/projects">All projects</RouterLink>
             </ul>
           </li>
         </ul>
