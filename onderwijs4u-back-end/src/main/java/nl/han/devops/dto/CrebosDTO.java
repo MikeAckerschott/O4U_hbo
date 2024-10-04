@@ -21,9 +21,9 @@ public class CrebosDTO {
 
     @Getter
     @Setter
-    private String created_at;
+    private String createdat;
 
     @Getter
     @Setter
-    private String updated_at;
+    private String updatedat;
 }
