@@ -33,6 +33,10 @@ CREATE TABLE crebos (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Insert voorbeeld crebo
+INSERT INTO     crebos (crebo_number, description)
+                VALUES ('12345', 'Voorbeeld kwalificatiedossier');
+
 -- Tabel voor studenten
 CREATE TABLE students (
     student_id SERIAL PRIMARY KEY,
@@ -49,6 +53,10 @@ CREATE TABLE students (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Insert voorbeeld student
+INSERT INTO     students (user_id, student_number, first_name, last_name, crebo_number)
+                VALUES (3, '123456', 'Jan', 'Jansen', '12345');
 
 -- Tabel voor docenten
 CREATE TABLE teachers (
@@ -107,6 +115,10 @@ CREATE TABLE periods (
     description TEXT
 );
 
+-- Insert voorbeeld periode
+INSERT INTO     periods (period, start_date, end_date, description)
+                VALUES (1, '2023-09-01', '2023-12-31', 'Eerste periode');
+
 -- Tabel voor projecten
 CREATE TABLE projects (
     project_id SERIAL PRIMARY KEY,
@@ -117,6 +129,10 @@ CREATE TABLE projects (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Insert voorbeeld project
+INSERT INTO     projects (student_id, name, description, period)
+                VALUES (1, 'Project 1', 'Dit is een voorbeeld project', 1);
 
 -- Tabel voor verantwoordingen
 CREATE TABLE verantwoordingen (
