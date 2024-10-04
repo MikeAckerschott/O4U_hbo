@@ -49,7 +49,7 @@
             </thead>
             <tbody>
             <tr v-for="item in paginatedData" :key="item.id" :class="getRowClass(item.beoordeling)">
-              <td><RouterLink class="nav-link" :to="`/project/${item.project}`">
+              <td><RouterLink class="nav-link" :to="`/project/${item.project}`"  style="white-space: nowrap">
                 {{ item.project }}
               </RouterLink></td>
               <td>{{ item.verantwoording }}</td>

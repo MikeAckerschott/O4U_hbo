@@ -20,7 +20,9 @@
         <label for="WerkprocesFilter" class="form-label">Selected Workprocess:</label>
         <select id="WerkprocesFilter" v-model="currentWerkProces" @change="filterData" class="form-select">
           <!-- <option v-for="beoordeling in uniqueBeoordelingen" :key="beoordeling" :value="beoordeling">{{ beoordeling }}          </option> -->
-          <option v-for="werkproces, index in data[0].werkproces" :key="werkproces" :value="index">{{ werkproces.description }}</option>
+          <option v-for="werkproces, index in data[0].werkproces" :key="werkproces" :value="index">
+            {{ werkproces.description }}
+          </option>
         </select>
       </div>
       <div class="col-md-6 text-end">
@@ -49,33 +51,33 @@
         <div class="table-responsive">
           <table class="table table-striped table-hover table-bordered w-100">
             <thead class="bg-light-blue text-white">
-              <tr>
-                <th @click="sort('beoordelingscriteria')" class="cursor-pointer">
-                  Criteria
-                  <i :class="getSortIcon('beoordelingscriteria')"></i>
-                </th>
-                <th @click="sort('fase')" class="cursor-pointer">
-                  Fase
-                  <i :class="getSortIcon('fase')"></i>
-                </th>
-                <th @click="sort('beoordeling')" class="cursor-pointer">
-                  Beoordeling
-                  <i :class="getSortIcon('beoordeling')"></i>
-                </th>
-              </tr>
+            <tr>
+              <th @click="sort('beoordelingscriteria')" class="cursor-pointer">
+                Criteria
+                <i :class="getSortIcon('beoordelingscriteria')"></i>
+              </th>
+              <th @click="sort('fase')" class="cursor-pointer">
+                Fase
+                <i :class="getSortIcon('fase')"></i>
+              </th>
+              <th @click="sort('beoordeling')" class="cursor-pointer">
+                Beoordeling
+                <i :class="getSortIcon('beoordeling')"></i>
+              </th>
+            </tr>
             </thead>
             <tbody>
-              <tr v-for="item in paginatedData" :key="item.id" :class="getRowClass(item.beoordeling)">
-                <td>
-                  <RouterLink class="nav-link" :to="`/rubric/${item.beoordelingscriteria}`">
-                    {{ item.beoordelingscriteria }}
-                  </RouterLink>
-                </td>
-                <td>{{ item.fase }}</td>
-                <td>
-                  <span :class="getBadgeClass(item.beoordeling)">{{ item.beoordeling }}</span>
-                </td>
-              </tr>
+            <tr v-for="item in paginatedData" :key="item.id" :class="getRowClass(item.beoordeling)">
+              <td  style="white-space: nowrap">
+                <RouterLink class="nav-link" :to="`/rubric/${item.beoordelingscriteria}`">
+                  {{ item.beoordelingscriteria }}
+                </RouterLink>
+              </td>
+              <td>{{ item.fase }}</td>
+              <td>
+                <span :class="getBadgeClass(item.beoordeling)">{{ item.beoordeling }}</span>
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>
@@ -98,61 +100,76 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-
+import {ref, computed} from 'vue';
 
 
 const data = ref([
   {
     werkproces: [
       {
-        description: "Werkproces 1 Description",
-        criteria: [
-          { id: 1, beoordelingscriteria: '25192', fase: 'Development', beoordeling: 'Goed' },
-          { id: 2, beoordelingscriteria: '25194', fase: 'Development', beoordeling: 'Voldoende' },
-          { id: 3, beoordelingscriteria: '25191', fase: 'Expert', beoordeling: 'Onvoldoende' },
-          { id: 4, beoordelingscriteria: '25193', fase: 'Oriëntatie', beoordeling: 'Onvoldoende' },
-          { id: 5, beoordelingscriteria: '25195', fase: 'Development', beoordeling: 'Goed' },
-          { id: 6, beoordelingscriteria: '25196', fase: 'Development', beoordeling: 'Voldoende' },
-          { id: 7, beoordelingscriteria: '25197', fase: 'Expert', beoordeling: 'Goed' },
-          { id: 8, beoordelingscriteria: '25198', fase: 'Oriëntatie', beoordeling: 'Onvoldoende' },
-          { id: 9, beoordelingscriteria: '25199', fase: 'Development', beoordeling: 'Voldoende' },
-          { id: 10, beoordelingscriteria: '25200', fase: 'Development', beoordeling: 'Goed' },
-          { id: 11, beoordelingscriteria: '25201', fase: 'Expert', beoordeling: 'Onvoldoende' },
-          { id: 12, beoordelingscriteria: '25202', fase: 'Oriëntatie', beoordeling: 'Voldoende' },
-          { id: 13, beoordelingscriteria: '25203', fase: 'Development', beoordeling: 'Goed' },
-          { id: 14, beoordelingscriteria: '25204', fase: 'Development', beoordeling: 'Onvoldoende' },
-          { id: 15, beoordelingscriteria: '25205', fase: 'Expert', beoordeling: 'Voldoende' },
-          { id: 16, beoordelingscriteria: '25206', fase: 'Oriëntatie', beoordeling: 'Goed' },
-          { id: 17, beoordelingscriteria: '25207', fase: 'Development', beoordeling: 'Onvoldoende' },
-          { id: 18, beoordelingscriteria: '25208', fase: 'Development', beoordeling: 'Voldoende' },
-          { id: 19, beoordelingscriteria: '25209', fase: 'Expert', beoordeling: 'Goed' },
-          { id: 20, beoordelingscriteria: '25210', fase: 'Oriëntatie', beoordeling: 'Onvoldoende' }
+        "description": "Werkproces 1",
+        "criteria": [
+          {"id": 1, "beoordelingscriteria": "Code Kwaliteit", "fase": "Development", "beoordeling": "Goed"},
+          {"id": 2, "beoordelingscriteria": "Documentatie", "fase": "Development", "beoordeling": "Voldoende"},
+          {
+            "id": 3,
+            "beoordelingscriteria": "Probleemoplossend Vermogen",
+            "fase": "Expert",
+            "beoordeling": "Onvoldoende"
+          },
+          {"id": 4, "beoordelingscriteria": "Onderzoek", "fase": "Oriëntatie", "beoordeling": "Onvoldoende"},
+          {"id": 5, "beoordelingscriteria": "Code Efficiëntie", "fase": "Development", "beoordeling": "Goed"},
+          {"id": 6, "beoordelingscriteria": "Testen en Debuggen", "fase": "Development", "beoordeling": "Voldoende"},
+          {"id": 7, "beoordelingscriteria": "Innovatie", "fase": "Expert", "beoordeling": "Goed"},
+          {"id": 8, "beoordelingscriteria": "Marktonderzoek", "fase": "Oriëntatie", "beoordeling": "Onvoldoende"},
+          {"id": 9, "beoordelingscriteria": "Samenwerking", "fase": "Development", "beoordeling": "Voldoende"},
+          {"id": 10, "beoordelingscriteria": "Projectbeheer", "fase": "Development", "beoordeling": "Goed"},
+          {"id": 11, "beoordelingscriteria": "Technische Vaardigheden", "fase": "Expert", "beoordeling": "Onvoldoende"},
+          {"id": 12, "beoordelingscriteria": "Initiatief", "fase": "Oriëntatie", "beoordeling": "Voldoende"},
+          {"id": 13, "beoordelingscriteria": "Kwaliteitsborging", "fase": "Development", "beoordeling": "Goed"},
+          {"id": 14, "beoordelingscriteria": "Veiligheid", "fase": "Development", "beoordeling": "Onvoldoende"},
+          {"id": 15, "beoordelingscriteria": "Leiderschap", "fase": "Expert", "beoordeling": "Voldoende"},
+          {"id": 16, "beoordelingscriteria": "Creativiteit", "fase": "Oriëntatie", "beoordeling": "Goed"},
+          {"id": 17, "beoordelingscriteria": "Communicatie", "fase": "Development", "beoordeling": "Onvoldoende"},
+          {"id": 18, "beoordelingscriteria": "Probleemanalyse", "fase": "Development", "beoordeling": "Voldoende"},
+          {"id": 19, "beoordelingscriteria": "Strategisch Denken", "fase": "Expert", "beoordeling": "Goed"},
+          {
+            "id": 20,
+            "beoordelingscriteria": "Onderzoeksvaardigheden",
+            "fase": "Oriëntatie",
+            "beoordeling": "Onvoldoende"
+          }
         ]
-      },
+      }
+      ,
       {
-        description: "Werkproces 2 Description",
-        criteria: [
-          { id: 1, beoordelingscriteria: '26192', fase: 'Development', beoordeling: 'Goed' },
-          { id: 2, beoordelingscriteria: '26194', fase: 'Development', beoordeling: 'Goed' },
-          { id: 3, beoordelingscriteria: '26191', fase: 'Expert', beoordeling: 'Goed' },
-          { id: 4, beoordelingscriteria: '26193', fase: 'Oriëntatie', beoordeling: 'Goed' },
-          { id: 5, beoordelingscriteria: '26195', fase: 'Development', beoordeling: 'Goed' },
-          { id: 6, beoordelingscriteria: '26196', fase: 'Development', beoordeling: 'Goed' },
-          { id: 7, beoordelingscriteria: '26197', fase: 'Expert', beoordeling: 'Goed' },
-          { id: 8, beoordelingscriteria: '26198', fase: 'Oriëntatie', beoordeling: 'Onvoldoende' },
-          { id: 9, beoordelingscriteria: '26199', fase: 'Development', beoordeling: 'Voldoende' },
-          { id: 10, beoordelingscriteria: '26200', fase: 'Development', beoordeling: 'Goed' },
-          { id: 11, beoordelingscriteria: '26201', fase: 'Expert', beoordeling: 'Onvoldoende' },
-          { id: 12, beoordelingscriteria: '26202', fase: 'Oriëntatie', beoordeling: 'Voldoende' },
-          { id: 13, beoordelingscriteria: '26203', fase: 'Development', beoordeling: 'Goed' },
-          { id: 14, beoordelingscriteria: '26204', fase: 'Development', beoordeling: 'Onvoldoende' },
-          { id: 15, beoordelingscriteria: '26205', fase: 'Expert', beoordeling: 'Voldoende' },
-          { id: 16, beoordelingscriteria: '26206', fase: 'Oriëntatie', beoordeling: 'Goed' },
-          { id: 17, beoordelingscriteria: '26207', fase: 'Development', beoordeling: 'Onvoldoende' },
-          { id: 18, beoordelingscriteria: '26208', fase: 'Development', beoordeling: 'Voldoende' },
-          { id: 19, beoordelingscriteria: '26209', fase: 'Expert', beoordeling: 'Goed' },
-          { id: 20, beoordelingscriteria: '26210', fase: 'Oriëntatie', beoordeling: 'Onvoldoende' }
+        "description": "Werkproces 2",
+        "criteria": [
+          {"id": 1, "beoordelingscriteria": "Code Kwaliteit", "fase": "Development", "beoordeling": "Goed"},
+          {"id": 2, "beoordelingscriteria": "Documentatie", "fase": "Development", "beoordeling": "Goed"},
+          {"id": 3, "beoordelingscriteria": "Probleemoplossend Vermogen", "fase": "Expert", "beoordeling": "Goed"},
+          {"id": 4, "beoordelingscriteria": "Onderzoek", "fase": "Oriëntatie", "beoordeling": "Goed"},
+          {"id": 5, "beoordelingscriteria": "Code Efficiëntie", "fase": "Development", "beoordeling": "Goed"},
+          {"id": 6, "beoordelingscriteria": "Testen en Debuggen", "fase": "Development", "beoordeling": "Goed"},
+          {"id": 7, "beoordelingscriteria": "Innovatie", "fase": "Expert", "beoordeling": "Goed"},
+          {"id": 8, "beoordelingscriteria": "Marktonderzoek", "fase": "Oriëntatie", "beoordeling": "Onvoldoende"},
+          {"id": 9, "beoordelingscriteria": "Samenwerking", "fase": "Development", "beoordeling": "Voldoende"},
+          {"id": 10, "beoordelingscriteria": "Projectbeheer", "fase": "Development", "beoordeling": "Goed"},
+          {"id": 11, "beoordelingscriteria": "Technische Vaardigheden", "fase": "Expert", "beoordeling": "Onvoldoende"},
+          {"id": 12, "beoordelingscriteria": "Initiatief", "fase": "Oriëntatie", "beoordeling": "Voldoende"},
+          {"id": 13, "beoordelingscriteria": "Kwaliteitsborging", "fase": "Development", "beoordeling": "Goed"},
+          {"id": 14, "beoordelingscriteria": "Veiligheid", "fase": "Development", "beoordeling": "Onvoldoende"},
+          {"id": 15, "beoordelingscriteria": "Leiderschap", "fase": "Expert", "beoordeling": "Voldoende"},
+          {"id": 16, "beoordelingscriteria": "Creativiteit", "fase": "Oriëntatie", "beoordeling": "Goed"},
+          {"id": 17, "beoordelingscriteria": "Communicatie", "fase": "Development", "beoordeling": "Onvoldoende"},
+          {"id": 18, "beoordelingscriteria": "Probleemanalyse", "fase": "Development", "beoordeling": "Voldoende"},
+          {"id": 19, "beoordelingscriteria": "Strategisch Denken", "fase": "Expert", "beoordeling": "Goed"},
+          {
+            "id": 20,
+            "beoordelingscriteria": "Onderzoeksvaardigheden",
+            "fase": "Oriëntatie",
+            "beoordeling": "Onvoldoende"
+          }
         ]
       }
     ]
@@ -166,7 +183,6 @@ const selectedFase = ref('');
 const selectedBeoordeling = ref('');
 const currentPage = ref(1);
 const itemsPerPage = 10;
-
 
 
 const sort = (key) => {
@@ -193,12 +209,12 @@ const sortedData = computed(() => {
 
       if (typeof aValue === 'string') {
         return sortOrder.value === 'asc'
-          ? aValue.localeCompare(bValue)
-          : bValue.localeCompare(aValue);
+            ? aValue.localeCompare(bValue)
+            : bValue.localeCompare(aValue);
       } else {
         return sortOrder.value === 'asc'
-          ? aValue - bValue
-          : bValue - aValue;
+            ? aValue - bValue
+            : bValue - aValue;
       }
     });
   }

@@ -60,16 +60,16 @@ const student = ref({
 });
 
 const rubrics = ref([
-  {id: 1, beoordelingscriteria: '25192', fase: 'Ontwikkeling', beoordeling: 'Goed'},
-  {id: 2, beoordelingscriteria: '25194', fase: 'Uitvoerings', beoordeling: 'Voldoende'},
-  {id: 3, beoordelingscriteria: '25191', fase: 'Afronding', beoordeling: 'Voldoende'},
-  {id: 4, beoordelingscriteria: '25193', fase: 'Voorbereiding', beoordeling: 'Goed'},
-  {id: 5, beoordelingscriteria: '25195', fase: 'Ontwikkeling', beoordeling: 'Goed'},
-  {id: 6, beoordelingscriteria: '25196', fase: 'Uitvoerings', beoordeling: 'Voldoende'},
-  {id: 7, beoordelingscriteria: '25197', fase: 'Afronding', beoordeling: 'Goed'},
-  {id: 8, beoordelingscriteria: '25198', fase: 'Voorbereiding', beoordeling: 'Voldoende'},
-  {id: 9, beoordelingscriteria: '25199', fase: 'Ontwikkeling', beoordeling: 'Voldoende'},
-  {id: 10, beoordelingscriteria: '25200', fase: 'Uitvoerings', beoordeling: 'Goed'},
+  {id: 1, beoordelingscriteria: 'Onderzoek', fase: 'Development', beoordeling: 'Goed'},
+  {id: 2, beoordelingscriteria: 'Code Efficiëntie', fase: 'Development', beoordeling: 'Voldoende'},
+  {id: 3, beoordelingscriteria: 'Testen en Debuggen', fase: 'Expert', beoordeling: 'Voldoende'},
+  {id: 4, beoordelingscriteria: 'Innovatie', fase: 'Oriëntatie', beoordeling: 'Goed'},
+  {id: 5, beoordelingscriteria: 'Marktonderzoek', fase: 'Development', beoordeling: 'Goed'},
+  {id: 6, beoordelingscriteria: 'Samenwerking', fase: 'Development', beoordeling: 'Voldoende'},
+  {id: 7, beoordelingscriteria: 'Projectbeheer', fase: 'Expert', beoordeling: 'Goed'},
+  {id: 8, beoordelingscriteria: 'Technische Vaardigheden', fase: 'Oriëntatie', beoordeling: 'Voldoende'},
+  {id: 9, beoordelingscriteria: 'Initiatief', fase: 'Development', beoordeling: 'Voldoende'},
+  {id: 10, beoordelingscriteria: 'Veiligheid', fase: 'Development', beoordeling: 'Goed'},
 ]);
 
 const sortKey = ref('');
