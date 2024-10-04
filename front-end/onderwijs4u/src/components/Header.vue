@@ -24,6 +24,32 @@
           <li class="nav-item" v-if="role === 'student'">
             <RouterLink class="nav-link" to="/game">Rewards</RouterLink>
           </li>
+
+
+          <li class="nav-item" v-if="role === 'teacher'">
+            <RouterLink class="nav-link" to="/roles">Roles</RouterLink>
+          </li>
+
+          <li class="nav-item" v-if="role === 'teacher' && teacherrole === 'loopbaancoach'">
+            <RouterLink class="nav-link" to="/coach">Students</RouterLink>
+          </li>
+
+
+          <li class="nav-item" v-if="role === 'teacher' && teacherrole === 'productowner'">
+            <RouterLink class="nav-link" to="/teacherprojects">Projects</RouterLink>
+          </li>
+
+          <li class="nav-item dropdown" v-if="role === 'teacher' && teacherrole === 'loopbaancoach'">
+            <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-bell"></i>
+              <span class="badge">1</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="notificationDropdown">
+              <li>
+                <RouterLink class="dropdown-item" to="/student">Rick passed their exam!!!! ^_^</RouterLink>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -36,7 +62,8 @@ export default {
   data() {
     return {
       role: null,
-      navcolor: null
+      navcolor: null,
+      teacherrole: null
     }
   },
   created() {
@@ -46,6 +73,7 @@ export default {
   methods: {
     getRoleFromSession() {
       this.role = sessionStorage.getItem('role') || 'guest';
+      this.teacherrole = sessionStorage.getItem('teacherrole') || 'loopbaancoach';
     },
     getNavColorFromSession() {
       this.navcolor = sessionStorage.getItem('navcolor') || '#f8f9fa';
@@ -81,5 +109,23 @@ export default {
 
 body {
   padding-top: 56px; /* Adjust this value based on the height of your navbar */
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}
+
+.fa-bell{
+  padding-top: 8px;
 }
 </style>
