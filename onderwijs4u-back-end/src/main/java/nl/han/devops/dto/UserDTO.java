@@ -13,7 +13,7 @@ public class UserDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int user_id;
+    private int userid;
 
     @Getter
     @Setter
@@ -21,12 +21,12 @@ public class UserDTO {
 
     @Getter
     @Setter
-    private String password_hash;
+    private String passwordhash;
 
     @Getter
     @Setter
     private String token;
 
     @Getter
-    private int role_id;
+    private int roleid;
 }

@@ -15,13 +15,13 @@ import java.time.LocalDateTime;
 @Table(name="projects")
 public class ProjectDTO {
     @Id
-    private int project_id;
+    private int projectid;
     @Getter
     @Setter
-    private int student_id;
+    private int studentid;
     private String name;
     private String description;
     private int period;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
+    private LocalDateTime createdat;
+    private LocalDateTime updatedat;
 }

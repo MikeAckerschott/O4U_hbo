@@ -26,7 +26,7 @@ public class UserService {
 
         UserDTO user = UserDTO.builder()
                 .email(userSignupDTO.getEmail())
-                .password_hash(passwordEncoder.encode(userSignupDTO.getPassword()))
+                .passwordhash(passwordEncoder.encode(userSignupDTO.getPassword()))
                 .token(token)
                 .build();
 
@@ -39,7 +39,7 @@ public class UserService {
         UserDTO user = userRepository.findByEmail(userSignupDTO.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        if (passwordEncoder.matches(userSignupDTO.getPassword(), user.getPassword_hash())) {
+        if (passwordEncoder.matches(userSignupDTO.getPassword(), user.getPasswordhash())) {
             user.setToken(UUID.randomUUID().toString());
             return user.getToken();
         } else {
