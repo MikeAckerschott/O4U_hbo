@@ -6,82 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="00514c56-7cff-492b-a1b8-96733569fb33" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deployment/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deployment/docker-compose.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ER_TEST.erd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ER_TEST.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/domeinmodel.drawio" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/domeinmodel.drawio.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/assets/base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/assets/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/assets/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/assets/onderwijs4u.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/assets/user.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/components/TheWelcome.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/components/WelcomeItem.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/components/icons/IconCommunity.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/components/icons/IconDocumentation.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/components/icons/IconEcosystem.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/components/icons/IconSupport.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/components/icons/IconTooling.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/router/router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/router/router.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/init-db.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/k8s/postgres-config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/k8s/postgres-secret.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/k8s/postgres.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/k8s/postgresql-data-persistentvolumeclaim.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/k8s/priemtester-secret.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/k8s/priemtester.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/PriemTesterApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/WebMvcConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/controller/StudentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/controller/priem/PriemTesterController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/data/AuthenticationDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/dto/CrebosDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/dto/Priem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/dto/ProjectDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/dto/StudentDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/dto/UserDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/dto/UserSignupDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/interceptor/TokenInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/repositories/CrebosRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/repositories/PriemRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/repositories/ProjectRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/repositories/StudentRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/repositories/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/service/AuthenticationService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/service/PasswordEncoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/service/StudentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/service/priem/ExternalPrimeServiceOpenNumeric.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/service/priem/FlawedPriemTester.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/service/priem/PriemTester.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/java/nl/han/devops/service/priem/PrimeServiceOpenNumeric.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/resources/application-pipeline.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/resources/db/migration/V1__Initial_setup.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/resources/db/migration/V2__create_priem_and_delete_users.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/main/resources/db/migration/V3__create_user.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/test/java/nl/han/devops/CucumberIntegrationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/test/java/nl/han/devops/ExternalPrimeServiceOpenNumericTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/test/java/nl/han/devops/PriemTesterTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/test/java/nl/han/devops/PrimeServiceOpenNumericTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/test/java/nl/han/devops/definitions/CucumberSpringConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/test/java/nl/han/devops/definitions/RestControllerSteps.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/test/resources/application-test.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/test/resources/application-test.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/onderwijs4u-back-end/src/test/resources/features/RestController.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/CoachView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/GameView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/GameView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/GraduationView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/PresentationView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/ProjectView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/ProjectsView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/RolesView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/RubricView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/RubricsView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/StudentView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/TeacherProjectView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/onderwijs4u/src/views/TeacherProjectsView.vue" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,13 +52,13 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/woute/Documents/GitHub/funny website",
+    "last_opened_file_path": "C:/Users/woute/Documents/GitHub/funnywebsite",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\woute\\AppData\\Local\\Programs\\PhpStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Users\\woute\\Documents\\GitHub\\funnywebsite\\front-end\\onderwijs4u\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -153,6 +91,7 @@
       <updated>1727955470549</updated>
       <workItem from="1727955471566" duration="366000" />
       <workItem from="1728752095567" duration="77000" />
+      <workItem from="1728752216486" duration="2408000" />
     </task>
     <servers />
   </component>
