@@ -106,53 +106,46 @@ const data = ref([
   {
     werkproces: [
       {
-        description: "Werkproces 1 Description",
+        description: "Jaar 1",
         criteria: [
-          { id: 1, beoordelingscriteria: '25192', fase: 'Ontwikkeling', beoordeling: 'Goed' },
-          { id: 2, beoordelingscriteria: '25194', fase: 'Uitvoerings', beoordeling: 'Voldoende' },
-          { id: 3, beoordelingscriteria: '25191', fase: 'Afronding', beoordeling: 'Onvoldoende' },
-          { id: 4, beoordelingscriteria: '25193', fase: 'Voorbereiding', beoordeling: 'Onvoldoende' },
-          { id: 5, beoordelingscriteria: '25195', fase: 'Ontwikkeling', beoordeling: 'Goed' },
-          { id: 6, beoordelingscriteria: '25196', fase: 'Uitvoerings', beoordeling: 'Voldoende' },
-          { id: 7, beoordelingscriteria: '25197', fase: 'Afronding', beoordeling: 'Goed' },
-          { id: 8, beoordelingscriteria: '25198', fase: 'Voorbereiding', beoordeling: 'Onvoldoende' },
-          { id: 9, beoordelingscriteria: '25199', fase: 'Ontwikkeling', beoordeling: 'Voldoende' },
-          { id: 10, beoordelingscriteria: '25200', fase: 'Uitvoerings', beoordeling: 'Goed' },
-          { id: 11, beoordelingscriteria: '25201', fase: 'Afronding', beoordeling: 'Onvoldoende' },
-          { id: 12, beoordelingscriteria: '25202', fase: 'Voorbereiding', beoordeling: 'Voldoende' },
-          { id: 13, beoordelingscriteria: '25203', fase: 'Ontwikkeling', beoordeling: 'Goed' },
-          { id: 14, beoordelingscriteria: '25204', fase: 'Uitvoerings', beoordeling: 'Onvoldoende' },
-          { id: 15, beoordelingscriteria: '25205', fase: 'Afronding', beoordeling: 'Voldoende' },
-          { id: 16, beoordelingscriteria: '25206', fase: 'Voorbereiding', beoordeling: 'Goed' },
-          { id: 17, beoordelingscriteria: '25207', fase: 'Ontwikkeling', beoordeling: 'Onvoldoende' },
-          { id: 18, beoordelingscriteria: '25208', fase: 'Uitvoerings', beoordeling: 'Voldoende' },
-          { id: 19, beoordelingscriteria: '25209', fase: 'Afronding', beoordeling: 'Goed' },
-          { id: 20, beoordelingscriteria: '25210', fase: 'Voorbereiding', beoordeling: 'Onvoldoende' }
+          { id: 1, beoordelingscriteria: 'IntroICT', fase: 'Ontwikkeling', beoordeling: 'Goed' },
+          { id: 2, beoordelingscriteria: 'OOPD', fase: 'Uitvoerings', beoordeling: 'Voldoende' },
+          { id: 3, beoordelingscriteria: 'EPD22', fase: 'Afronding', beoordeling: 'Onvoldoende' },
+          { id: 4, beoordelingscriteria: 'DBRP', fase: 'Voorbereiding', beoordeling: 'Onvoldoende' },
+          { id: 5, beoordelingscriteria: 'DBSQL', fase: 'Ontwikkeling', beoordeling: 'Goed' },
+          { id: 6, beoordelingscriteria: 'FAT', fase: 'Uitvoerings', beoordeling: 'Voldoende' },
+          { id: 7, beoordelingscriteria: 'PrIP', fase: 'Afronding', beoordeling: 'Goed' },
+          { id: 8, beoordelingscriteria: 'SPAD', fase: 'Voorbereiding', beoordeling: 'Onvoldoende' },
+          { id: 9, beoordelingscriteria: 'SPB', fase: 'Ontwikkeling', beoordeling: 'Voldoende' },
+          { id: 10, beoordelingscriteria: 'WTIS', fase: 'Uitvoerings', beoordeling: 'Goed' },
+          { id: 11, beoordelingscriteria: 'WTUX', fase: 'Afronding', beoordeling: 'Onvoldoende' }
         ]
       },
       {
-        description: "Werkproces 2 Description",
+        description: "Jaar 2",
         criteria: [
-          { id: 1, beoordelingscriteria: '26192', fase: 'Ontwikkeling', beoordeling: 'Goed' },
-          { id: 2, beoordelingscriteria: '26194', fase: 'Uitvoerings', beoordeling: 'Goed' },
-          { id: 3, beoordelingscriteria: '26191', fase: 'Afronding', beoordeling: 'Goed' },
-          { id: 4, beoordelingscriteria: '26193', fase: 'Voorbereiding', beoordeling: 'Goed' },
-          { id: 5, beoordelingscriteria: '26195', fase: 'Ontwikkeling', beoordeling: 'Goed' },
-          { id: 6, beoordelingscriteria: '26196', fase: 'Uitvoerings', beoordeling: 'Goed' },
-          { id: 7, beoordelingscriteria: '26197', fase: 'Afronding', beoordeling: 'Goed' },
-          { id: 8, beoordelingscriteria: '26198', fase: 'Voorbereiding', beoordeling: 'Onvoldoende' },
-          { id: 9, beoordelingscriteria: '26199', fase: 'Ontwikkeling', beoordeling: 'Voldoende' },
-          { id: 10, beoordelingscriteria: '26200', fase: 'Uitvoerings', beoordeling: 'Goed' },
-          { id: 11, beoordelingscriteria: '26201', fase: 'Afronding', beoordeling: 'Onvoldoende' },
-          { id: 12, beoordelingscriteria: '26202', fase: 'Voorbereiding', beoordeling: 'Voldoende' },
-          { id: 13, beoordelingscriteria: '26203', fase: 'Ontwikkeling', beoordeling: 'Goed' },
-          { id: 14, beoordelingscriteria: '26204', fase: 'Uitvoerings', beoordeling: 'Onvoldoende' },
-          { id: 15, beoordelingscriteria: '26205', fase: 'Afronding', beoordeling: 'Voldoende' },
-          { id: 16, beoordelingscriteria: '26206', fase: 'Voorbereiding', beoordeling: 'Goed' },
-          { id: 17, beoordelingscriteria: '26207', fase: 'Ontwikkeling', beoordeling: 'Onvoldoende' },
-          { id: 18, beoordelingscriteria: '26208', fase: 'Uitvoerings', beoordeling: 'Voldoende' },
-          { id: 19, beoordelingscriteria: '26209', fase: 'Afronding', beoordeling: 'Goed' },
-          { id: 20, beoordelingscriteria: '26210', fase: 'Voorbereiding', beoordeling: 'Onvoldoende' }
+          { id: 1, beoordelingscriteria: 'OSM-MO', fase: 'Ontwikkeling', beoordeling: 'Goed' },
+          { id: 2, beoordelingscriteria: 'OSM-SO', fase: 'Uitvoerings', beoordeling: 'Goed' },
+          { id: 3, beoordelingscriteria: 'OSM-Pr', fase: 'Afronding', beoordeling: 'Goed' },
+          { id: 4, beoordelingscriteria: 'IoT-S', fase: 'Voorbereiding', beoordeling: 'Goed' },
+          { id: 5, beoordelingscriteria: 'IoT-TE', fase: 'Ontwikkeling', beoordeling: 'Goed' },
+          { id: 6, beoordelingscriteria: 'IoT-Pr', fase: 'Uitvoerings', beoordeling: 'Goed' },
+        ]
+      },      {
+        description: "Jaar 3",
+        criteria: [
+          { id: 1, beoordelingscriteria: 'WoR-PrSk', fase: 'Ontwikkeling', beoordeling: 'Goed' },
+          { id: 2, beoordelingscriteria: 'WoR-Rbts', fase: 'Uitvoerings', beoordeling: 'Voldoende' },
+          { id: 3, beoordelingscriteria: 'WoR-Wrld', fase: 'Afronding', beoordeling: 'Onvoldoende' },
+          { id: 4, beoordelingscriteria: 'WoR-Pr', fase: 'Voorbereiding', beoordeling: 'Onvoldoende' },
+          { id: 5, beoordelingscriteria: 'Stage-ICT', fase: 'Ontwikkeling', beoordeling: 'Goed' },
+        ]
+      },
+      {
+        description: "Jaar 4",
+        criteria: [
+          { id: 1, beoordelingscriteria: 'M-DMP', fase: 'Ontwikkeling', beoordeling: 'Goed' },
+          { id: 2, beoordelingscriteria: 'AOD-ICT', fase: 'Uitvoerings', beoordeling: 'Voldoende' },
         ]
       }
     ]
