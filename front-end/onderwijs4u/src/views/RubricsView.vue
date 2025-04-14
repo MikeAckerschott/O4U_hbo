@@ -51,7 +51,7 @@
             <thead class="bg-light-blue text-white">
               <tr>
                 <th @click="sort('beoordelingscriteria')" class="cursor-pointer">
-                  Criteria
+                  Course
                   <i :class="getSortIcon('beoordelingscriteria')"></i>
                 </th>
                 <th @click="sort('fase')" class="cursor-pointer">
@@ -100,8 +100,6 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-
-
 const data = ref([
   {
     werkproces: [
@@ -112,12 +110,9 @@ const data = ref([
           { id: 2, beoordelingscriteria: 'OOPD', fase: 'Uitvoerings', beoordeling: 'Voldoende' },
           { id: 3, beoordelingscriteria: 'EPD22', fase: 'Afronding', beoordeling: 'Onvoldoende' },
           { id: 4, beoordelingscriteria: 'DBRP', fase: 'Voorbereiding', beoordeling: 'Onvoldoende' },
-          { id: 5, beoordelingscriteria: 'DBSQL', fase: 'Ontwikkeling', beoordeling: 'Goed' },
           { id: 6, beoordelingscriteria: 'FAT', fase: 'Uitvoerings', beoordeling: 'Voldoende' },
-          { id: 7, beoordelingscriteria: 'PrIP', fase: 'Afronding', beoordeling: 'Goed' },
           { id: 8, beoordelingscriteria: 'SPAD', fase: 'Voorbereiding', beoordeling: 'Onvoldoende' },
           { id: 9, beoordelingscriteria: 'SPB', fase: 'Ontwikkeling', beoordeling: 'Voldoende' },
-          { id: 10, beoordelingscriteria: 'WTIS', fase: 'Uitvoerings', beoordeling: 'Goed' },
           { id: 11, beoordelingscriteria: 'WTUX', fase: 'Afronding', beoordeling: 'Onvoldoende' }
         ]
       },
