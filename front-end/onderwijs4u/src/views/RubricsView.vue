@@ -54,10 +54,7 @@
                   Course
                   <i :class="getSortIcon('beoordelingscriteria')"></i>
                 </th>
-                <th @click="sort('fase')" class="cursor-pointer">
-                  Fase
-                  <i :class="getSortIcon('fase')"></i>
-                </th>
+
                 <th @click="sort('beoordeling')" class="cursor-pointer">
                   Beoordeling
                   <i :class="getSortIcon('beoordeling')"></i>
@@ -71,7 +68,6 @@
                     {{ item.beoordelingscriteria }}
                   </RouterLink>
                 </td>
-                <td>{{ item.fase }}</td>
                 <td>
                   <span :class="getBadgeClass(item.beoordeling)">{{ item.beoordeling }}</span>
                 </td>
