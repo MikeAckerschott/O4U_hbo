@@ -426,23 +426,11 @@ const paginatedData = computed(() => {
 
 // Calculate percentages
 const percentageCompleted = computed(() => {
-  const completed = data.value[0].werkproces[currentWerkProces.value].criteria.filter(item => item.beoordeling === 'Goed' || item.beoordeling === 'Voldoende').length;
-  return ((completed / data.value[0].werkproces[currentWerkProces.value].criteria.length) * 100).toFixed(2);
-});
-
-const percentageVoldoende = computed(() => {
-  const voldoende = data.value[0].werkproces[currentWerkProces.value].criteria.filter(item => item.beoordeling === 'Voldoende').length;
-  return ((voldoende / data.value[0].werkproces[currentWerkProces.value].criteria.length) * 100).toFixed(2);
-});
-
-const percentageGoed = computed(() => {
-  const goed = data.value[0].werkproces[currentWerkProces.value].criteria.filter(item => item.beoordeling === 'Goed').length;
-  return ((goed / data.value[0].werkproces[currentWerkProces.value].criteria.length) * 100).toFixed(2);
-});
-
-const percentageOnvoldoende = computed(() => {
-  const onvoldoende = data.value[0].werkproces[currentWerkProces.value].criteria.filter(item => item.beoordeling === 'Onvoldoende').length;
-  return ((onvoldoende / data.value[0].werkproces[currentWerkProces.value].criteria.length) * 100).toFixed(2);
+  // const completed = data.value[0].werkproces[currentWerkProces.value].criteria.filter(item => item.beoordeling === 'Goed' || item.beoordeling === 'Voldoende').length;
+  // return ((completed / data.value[0].werkproces[currentWerkProces.value].criteria.length) * 100).toFixed(2);
+  const completed = getTotalCompletedCriteria.value;
+  const total = getTotalCriteria.value;
+  return ((completed / total) * 100).toFixed(2);
 });
 
 // Donut chart styles
@@ -452,6 +440,24 @@ const getDonutStyle = (percentage, color) => {
     background: `conic-gradient(${color} ${rotation}deg, #e9ecef ${rotation}deg)`,
   };
 };
+
+const getTotalCriteria = computed(() => {
+  let totalCriteria = 0;
+  data.value[0].werkproces[currentWerkProces.value].criteria.forEach(criteria => {
+    totalCriteria += criteria.criteria.length;
+  });
+  console.log(totalCriteria);
+  return totalCriteria;
+});
+
+const getTotalCompletedCriteria = computed(() => {
+  let totalCompleted = 0;
+  data.value[0].werkproces[currentWerkProces.value].criteria.forEach(criteria => {
+    totalCompleted += criteria.criteria.filter(item => item.beoordeling === 'Goed' || item.beoordeling === 'Voldoende').length;
+  });
+  console.log(totalCompleted);
+  return totalCompleted;
+});
 </script>
 
 <style>
