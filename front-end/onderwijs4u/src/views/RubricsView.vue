@@ -15,18 +15,6 @@
             <div class="donut-chart" :style="getDonutStyle(percentageCompleted, '#007bff')"></div>
             <div class="chart-label">Completed</div>
           </div>
-          <div class="chart-container me-3">
-            <div class="donut-chart" :style="getDonutStyle(percentageVoldoende, '#ffc107')"></div>
-            <div class="chart-label">Voldoende</div>
-          </div>
-          <div class="chart-container me-3">
-            <div class="donut-chart" :style="getDonutStyle(percentageGoed, '#28a745')"></div>
-            <div class="chart-label">Goed</div>
-          </div>
-          <div class="chart-container">
-            <div class="donut-chart" :style="getDonutStyle(percentageOnvoldoende, '#dc3545')"></div>
-            <div class="chart-label">Onvoldoende</div>
-          </div>
         </div>
       </div>
     </div>
@@ -48,14 +36,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in paginatedData" :key="item.id" :class="getRowClass(item.beoordeling)">
+              <tr v-for="item in paginatedData" :key="item.id" :class="getRowClass(item.criteria)">
                 <td>
                   <RouterLink class="nav-link" :to="`/rubric/${item.beoordelingscriteria}`">
                     {{ item.beoordelingscriteria }}
                   </RouterLink>
                 </td>
                 <td>
-                  <span :class="getBadgeClass(completionCriteriaTracker(item.criteria) / item.criteria.length)">{{ completionCriteriaTracker(item.criteria) }}  / {{ item.criteria.length }}</span>
+                  <div class="progress" style="height: 20px;">
+                    <div class="progress-bar" role="progressbar"
+                      :style="{ width: (completionCriteriaTracker(item.criteria) / item.criteria.length * 100) + '%' }"
+                      :class="getBadgeClass(completionCriteriaTracker(item.criteria) / item.criteria.length)"
+                      :aria-valuenow="completionCriteriaTracker(item.criteria) / item.criteria.length" aria-valuemin="0"
+                      aria-valuemax="100">
+                      {{ completionCriteriaTracker(item.criteria) }} / {{ item.criteria.length }}
+                    </div>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -360,18 +356,20 @@ const changePage = (page) => {
 };
 
 const getRowClass = (beoordeling) => {
-  switch (beoordeling) {
-    case 'Goed':
-      return 'table-success';
-    case 'Voldoende':
-      return 'table-info';
-    case 'Onvoldoende':
-      return 'table-danger';
+  let beoordelingPercentage = completionCriteriaTracker(beoordeling) / beoordeling.length * 100;
+  if (beoordelingPercentage == 100) {
+    return 'table-success';
+  } else if (beoordelingPercentage >= 60) {
+    return 'table-info';
+  } else if (beoordelingPercentage >= 40) {
+    return 'table-warning';
+  } else {
+    return 'table-danger';
   }
 };
 
 const completionCriteriaTracker = (criteria) => {
-  return criteria.reduce((completed, item) => 
+  return criteria.reduce((completed, item) =>
     (item.beoordeling === 'Goed' || item.beoordeling === 'Voldoende') ? completed + 1 : completed, 0);
 };
 
