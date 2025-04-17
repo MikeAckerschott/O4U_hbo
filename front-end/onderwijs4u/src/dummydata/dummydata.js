@@ -1,6 +1,111 @@
 import { ref } from 'vue'
 
-const school_criteria = ref([
+export const student_projects = ref({
+    // "WoR-project": {
+    //     id: 1, running: false, description: 'Description of WoR-project ', criteriaToReach: {
+    //         "WoR-P-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for WoR-P-1", grade: "Goed" },
+    //         "WoR-P-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for WoR-P-2", grade: "Voldoende" },
+    //         "WoR-P-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for WoR-P-3", grade: "Goed" },
+    //         "WoR-P-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for WoR-P-4", grade: "Goed" },
+    //         "WoR-P-5": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for WoR-P-5", grade: "Voldoende" },
+    //         "WoR-P-6": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for WoR-P-6", grade: "Goed" },
+    //         "WoR-P-7": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for WoR-P-7", grade: "Goed" },
+    //         "WoR-P-8": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for WoR-P-8", grade: "Onvoldoende" },
+    //         "WoR-P-9": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for WoR-P-9", grade: "Goed" },
+    //         "WoR-P-10": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for WoR-P-10", grade: "Goed" },
+    //     }
+    // },
+    // "WoR-project 2": {
+    //     id: 1, running: false, description: 'Description of WoR-project ', criteriaToReach: {
+    //         "WoR-P-8": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for WoR-P-8", grade: "Voldoende" },
+    //     }
+    // },
+    // "IoT-project": {
+    //     id: 2, running: false, description: 'Description of IoT-project', criteriaToReach: {
+    //         "INTOFT25-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+    //         "INTOFT25-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-2", grade: "Voldoende" },
+    //         "INTOFT25-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-3", grade: "Voldoende" },
+    //         "INTOFT25-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-3", grade: "Voldoende" },
+    //         "INTOFT25-5": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-3", grade: "Voldoende" },
+    //     }
+    // },
+    "Intro ICT beroepsproduct": {
+        id: 3, running: true, description: 'beroepsproduct', criteriaToReach: {
+            "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...1", feedback: "Feedback", grade: "Voldoende" },
+            "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...2", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...3", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+        }
+    },
+    "Intro ICT beroepsproduct 2": {
+        id: 3, running: false, description: 'beroepsproduct', criteriaToReach: {
+            "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback", grade: "Goed" },
+            "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+        }
+    },
+    "OOPD Game": {
+        id: 4, running: false, description: 'beroepsproduct', criteriaToReach: {
+            "OOPD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "OOPD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "OOPD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "OOPD-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+        }
+    },
+    "EPD Spoorwegovergang simulatie": {
+        id: 4, running: false, description: 'beroepsproduct', criteriaToReach: {
+            "EPD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "EPD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "EPD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "EPD-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "EPD-7": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "EPD-8": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+        }
+    },
+    "DBRP - KPI's": {
+        id: 4, running: false, description: 'beroepsproduct', criteriaToReach: {
+            "DBRP-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "DBRP-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "DBRP-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+        }
+    },
+    "FAT Beroepsproduct": {
+        id: 4, running: false, description: 'beroepsproduct', criteriaToReach: {
+            "FAT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "FAT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "FAT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "FAT-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "FAT-5": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+        }
+    },
+    "SPAD Game": {
+        id: 4, running: false, description: 'beroepsproduct', criteriaToReach: {
+            "SPAD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "SPAD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "SPAD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "SPAD-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+        }
+    },
+    "SPB Huiswerkopdrachten": {
+        id: 4, running: false, description: 'beroepsproduct', criteriaToReach: {
+            "SPB-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "SPB-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "SPB-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "SPB-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "SPB-5": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "SPB-6": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+        }
+    },
+    "WTUX Fletnix": {
+        id: 4, running: false, description: 'beroepsproduct', criteriaToReach: {
+            "WTUX-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "WTUX-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "WTUX-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+        }
+    }
+
+})
+
+export const school_criteria = ref([
     {
         werkproces: [
             {
@@ -8,7 +113,7 @@ const school_criteria = ref([
                 criteria: [
                     {
                         id: 1, beoordelingscriteria: 'IntroICT', fase: 'Ontwikkeling', criteria: [
-                            { id: 1, project: 'INTROICT-1', verantwoording: '• Deelt een complexe ICT-situatie in in onderdelen en kan de samenhang tussen deze onderdelen benoemen (denk aan datastromen, communicatiestromen, verantwoordelijkheden, et cetera) en vastleggen in een model.\n• Onderbouwt keuzes bij het opstellen van een ICT-model.\n• ', },
+                            { id: 1, project: 'INTROICT-1', verantwoording: '• Deelt een complexe ICT-situatie in in onderdelen en kan de samenhang tussen deze onderdelen benoemen (denk aan datastromen, communicatiestromen, verantwoordelijkheden, et cetera) en vastleggen in een model.\n• Onderbouwt keuzes bij het opstellen van een ICT-model.', },
                             { id: 2, project: 'INTROICT-2', verantwoording: '• Doet gestructureerd onderzoek naar hoe ICT wordt toegepast binnen een bedrijf of organisatie.\n• Selecteert een of meerdere passende onderzoekstechnieken uit de ICT-methodenkaartenset en past deze op de juiste manier toe.', },
                             { id: 3, project: 'INTROICT-3', verantwoording: '• Formuleert eigen doelstellingen rondom opleiding en carrière en onderbouwt dit met argumenten.\n• Presenteert doelgroepgericht over de resultaten van het uitgevoerde onderzoek.\n• Rapporteert over het uitgevoerde onderzoek waarbij rekening wordt gehouden met de doelgroep.\n• Schrijft conform de controlekaart.', },
                         ],
@@ -219,5 +324,3 @@ const school_criteria = ref([
         ]
     }
 ]);
-
-export default school_criteria;

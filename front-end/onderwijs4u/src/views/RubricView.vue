@@ -93,8 +93,7 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router'; // Import useRoute
 
-import student_projects from '@/dummydata/studentProjects.js'; // Import student projects data
-import school_criteria from '@/dummydata/courseCriteria.js'; // Import course criteria data
+import {student_projects, school_criteria} from '@/dummydata/dummydata.js'
 
 const route = useRoute(); // Get the current route
 const rubricId = ref(route.params.rubric); // Access the dynamic route parameter

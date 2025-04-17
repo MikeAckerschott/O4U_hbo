@@ -92,8 +92,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-import student_projects from '@/dummydata/studentProjects.js'; // Import student projects data
-import school_criteria from '@/dummydata/courseCriteria.js'; // Import course criteria data
+import {student_projects, school_criteria} from '@/dummydata/dummydata.js'
 
 const data = ref(school_criteria); // Initialize data with student projects
 
@@ -167,11 +166,7 @@ const getRowClass = (beoordeling) => {
 };
 
 const completionCriteriaTracker = (projects, course) => {
-  console.log("projects: ", projects);
-  console.log("course: ", course);
-
-  // Access the correct werkproces and find the course by beoordelingscriteria
-  const werkproces = school_criteria.value[0].werkproces[currentWerkProces.value];
+  const werkproces = school_criteria.value[0]?.werkproces[currentWerkProces.value];
   if (!werkproces) {
     console.error(`Werkproces at index ${currentWerkProces.value} not found.`);
     return 0;
@@ -183,25 +178,27 @@ const completionCriteriaTracker = (projects, course) => {
     return 0;
   }
 
-  // Extract the criteria for the course
-  const courseCriteria = courseData.criteria;
-
-  // Check if criteria in projects match the course criteria and if the grade is "Voldoende" or "Goed"
-  let completedCount = 0;
-  for (let project of projects) {
-    if (project.project.criteriaToReach) {
-      for (let criterium of Object.keys(project.project.criteriaToReach)) {
-        if (
-          courseCriteria.some(c => c.project === criterium) &&
-          ["Voldoende", "Goed"].includes(project.project.criteriaToReach[criterium].grade)
-        ) {
-          completedCount++;
-        }
-      }
-    }
+  const courseCriteria = getCriteriaFromCourse(course);
+  if (!courseCriteria) {
+    console.error(`Criteria for course "${course}" not found.`);
+    return 0;
   }
 
-  return completedCount;
+  const completedCriteria = new Set();
+  projects.forEach(project => {
+    const criteriaToReach = project.project.criteriaToReach;
+    if (criteriaToReach) {
+      Object.entries(criteriaToReach).forEach(([criterium, details]) => {
+        if (["Voldoende", "Goed"].includes(details.grade)) {
+          if (courseCriteria.criteria.some(courseCriterium => courseCriterium.project === criterium)) {
+            completedCriteria.add(criterium);
+          }
+        }
+      });
+    }
+  });
+
+  return completedCriteria.size;
 };
 
 const getCriteriaDescription = (criterion) => {
@@ -216,12 +213,6 @@ const getCriteriaDescription = (criterion) => {
   const foundCriterion = allCriteria.find(courseCriteria => courseCriteria.project === criterion);
   return foundCriterion ? foundCriterion.verantwoording : '';
 };
-
-
-
-
-
-// console.log(getAttachedProjects("WoR-P-2"));
 
 
 const getBadgeClass = (completion) => {
@@ -336,6 +327,10 @@ const getAttachedProjectsFromCourse = (course) => {
 
   return Array.from(attachedProjects.values());
 };
+
+const getCriteriaFromCourse = (course) => {
+  return data.value[0].werkproces[currentWerkProces.value].criteria.find(item => item.beoordelingscriteria === course);
+}
 
 console.log("attached Projects course: ", getAttachedProjectsFromCourse("WoR-Pr"));
 console.log("attached Projects criterium: ", getAttachedProjectsFromCriterium("WoR-P-1"));

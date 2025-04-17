@@ -4,8 +4,8 @@
 
     <!-- Criteria Switches -->
     <div class="mb-4">
-      <h2 class="h4 mb-3">Select Criteria</h2>
-      <div class="list-group">
+      <h2 class="h4 mb-3" v-if="isProjectActive">Select Criteria</h2>
+      <div class="list-group" v-if="isProjectActive">
         <div v-for="criterion in onderbouwdeCriteria" :key="criterion.id" class="list-group-item">
           <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" :id="'criterion-' + criterion.id"
@@ -20,18 +20,29 @@
 
     <!-- Dynamic Text Boxes -->
     <div v-if="activeCriteria.length > 0">
-      <h2 class="h4 mb-3">Justify Your Work</h2>
-      <div v-for="criterion in activeCriteria" :key="criterion.id" class="card mb-3">
+      <h2 class="h4 mb-3" v-if="isProjectActive">Justify Your Work</h2>
+      <h2 class="h4 mb-3" v-if="!isProjectActive">Your Work</h2>
+      <div v-for="criterion in activeCriteria" :key="criterion.id"
+        :class="['card', 'mb-3', getCriteriumClass(criterion.grade)]">
         <div class="card-body">
-          <h3 class="card-title h5">{{ criterion.name }}</h3>
+          <div class="d-flex justify-content-between align-items-center">
+            <h3 :class="['card-title h5', getBadgeClass(criterion.grade)]">{{ criterion.name }}</h3>
+            <h3 :class="['card-title h5', getBadgeClass(criterion.grade)]">{{ criterion.grade }}</h3>
+          </div>
           <p class="card-text" v-html="getCriteriaDescription(criterion.name).replace(/\n/g, '<br>')"></p>
           <div class="mb-3">
-            <textarea v-model="criterion.text"
+            <textarea v-model="criterion.text" :disabled="!isProjectActive"
               :placeholder="`Explain why you deserve a good grade for ${criterion.name.toLowerCase()}...`" rows="3"
-              class="form-control"></textarea>
+              :class="['form-control']"></textarea>
           </div>
-          <button @click="saveText(criterion)" class="btn btn-primary">
-            <i class="bi bi-save me-2"></i> Save
+          <div v-if="criterion.feedback != ''" class="mb-3">
+            <div class="p-3 rounded bg-light text-muted border">
+              <strong class="d-block mb-1">Feedback:</strong>
+              <p class="mb-0">{{ criterion.feedback }}</p>
+            </div>
+          </div>
+          <button @click="saveText(criterion)" v-if="isProjectActive" class="btn btn-primary">
+            Save
           </button>
         </div>
       </div>
@@ -48,8 +59,7 @@
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 
-import student_projects from '@/dummydata/studentProjects.js'
-import school_criteria from '@/dummydata/courseCriteria.js'
+import { student_projects, school_criteria } from '@/dummydata/dummydata.js'
 
 const route = useRoute()
 const project = route.params.project
@@ -57,7 +67,8 @@ const project = route.params.project
 console.log(project)
 console.log(student_projects)
 
-
+const isProjectActive = student_projects.value[project].running
+console.log(isProjectActive)
 
 // Initialize criteria with existing data
 let projectInfo = Object.entries(student_projects.value[project].criteriaToReach).map(([key, item]) => {
@@ -65,7 +76,9 @@ let projectInfo = Object.entries(student_projects.value[project].criteriaToReach
     id: key,
     name: key,
     active: true,
-    text: item.studentVerantwoording
+    text: item.studentVerantwoording,
+    grade: item.grade,
+    feedback: item.feedback
   }
 })
 
@@ -90,6 +103,37 @@ const getCriteriaDescription = (criterion) => {
   return foundCriterion ? foundCriterion.verantwoording : '';
 };
 
+const getBadgeClass = (beoordeling) => {
+  if (beoordeling === "Goed") {
+    return 'badge bg-success';
+  } else if (beoordeling === "Voldoende") {
+    return 'badge bg-info';
+  } else {
+    return 'badge bg-danger';
+  }
+};
+
+const getCriteriumClass = (beoordeling) => {
+  if (beoordeling === "Goed") {
+    return 'bg-success-subtle';
+  } else if (beoordeling === "Voldoende") {
+    console.log("WOLVODENDE")
+    return 'bg-info-subtle';
+  } else {
+    return 'bg-danger-subtle';
+  }
+};
+
+const getTextAreaClass = (beoordeling) => {
+  if (beoordeling === "Goed") {
+    return 'bg-success';
+  } else if (beoordeling === "Voldoende") {
+    return 'bg-info';
+  } else {
+    return 'bg-danger';
+  }
+}
+
 const saveText = (criterion) => {
   // Emit an event to the parent component with the criterion and its text
   emit('save-criterion', { id: criterion.id, text: criterion.text })
@@ -102,6 +146,4 @@ const saveText = (criterion) => {
 const emit = defineEmits(['save-criterion'])
 </script>
 
-<style scoped>
-/* Custom styles can be added here if needed */
-</style>
+<style scoped></style>
