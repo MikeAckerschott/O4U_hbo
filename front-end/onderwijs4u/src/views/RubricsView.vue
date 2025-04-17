@@ -30,7 +30,7 @@
                 </th>
 
                 <th @click="sort('beoordeling')" class="cursor-pointer">
-                  Beoordeling
+                  Voortgang
                   <i :class="getSortIcon('beoordeling')"></i>
                 </th>
                 <th @click="" class="cursor-pointer">
