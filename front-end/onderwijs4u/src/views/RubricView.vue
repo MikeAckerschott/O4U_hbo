@@ -115,7 +115,7 @@ if (rubricId.value) {
       data.value = course.criteria.map(item => ({
         project: item.project,
         verantwoording: item.verantwoording,
-        linked_project: rubricId.value,
+        linked_project: '',
         feedback: '', // Placeholder for feedback
         beoordeling: '', // Placeholder for beoordeling
       }));
