@@ -1,36 +1,16 @@
 <template>
   <div class="container">
-    <button @click="enterAsStudent" class="left-button">Enter App as Student</button>
+
+    <router-link to="/game">
+    <button class="left-button">Play game</button>
+    </router-link>
     <div class="image-container">
       <img src="@/assets/onderwijs4u.png" alt="Spinning Image" class="spinning-image" />
     </div>
-    <button @click="enterAsTeacher" class="right-button">Enter App as Teacher</button>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'HomePage',
-  created() {
-    // Clear session variable when entering the homepage
-    sessionStorage.removeItem('role');
-    sessionStorage.removeItem('navcolor');
-  },
-  methods: {
-    enterAsStudent() {
-      sessionStorage.setItem('role', 'student');
-      this.$router.push('/rubrics').then(() => {
-        window.location.reload();
-      });
-    },
-    enterAsTeacher() {
-      sessionStorage.setItem('role', 'teacher');
-      this.$router.push('/roles').then(() => {
-        window.location.reload();
-      });
-    }
-  }
-};
 </script>
 
 <style scoped>
@@ -50,7 +30,7 @@ export default {
 
 .spinning-image {
   border-radius: 50%;
-  animation: spin 5s linear infinite;
+  animation: spin 15s linear infinite;
 }
 
 @keyframes spin {
