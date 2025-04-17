@@ -9,7 +9,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <!-- Existing nav items -->
           <li class="nav-item" v-if="role === 'student'">
             <RouterLink class="nav-link" to="/rubrics">Rubrics</RouterLink>
           </li>
@@ -25,15 +24,21 @@
           <li class="nav-item" v-if="role === 'student'">
             <RouterLink class="nav-link" to="/game">Rewards</RouterLink>
           </li>
+
+
           <li class="nav-item" v-if="role === 'teacher'">
             <RouterLink class="nav-link" to="/roles">Roles</RouterLink>
           </li>
+
           <li class="nav-item" v-if="role === 'teacher' && teacherrole === 'loopbaancoach'">
             <RouterLink class="nav-link" to="/coach">Students</RouterLink>
           </li>
+
+
           <li class="nav-item" v-if="role === 'teacher' && teacherrole === 'productowner'">
             <RouterLink class="nav-link" to="/teacherprojects">Projects</RouterLink>
           </li>
+
           <li class="nav-item dropdown" v-if="role === 'teacher' && teacherrole === 'loopbaancoach'">
             <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fas fa-bell"></i>
@@ -44,12 +49,6 @@
                 <RouterLink class="dropdown-item" to="/graduation">Rick passed their exam!!!! ^_^</RouterLink>
               </li>
             </ul>
-          </li>
-        </ul>
-        <!-- New RouterLink to /present -->
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <RouterLink class="nav-link" to="/present">Presentation</RouterLink>
           </li>
         </ul>
       </div>
