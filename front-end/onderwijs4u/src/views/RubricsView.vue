@@ -42,7 +42,7 @@
             <tbody>
               <tr v-for="item in paginatedData" :key="item.id" :class="getRowClass(item.criteria)">
                 <td>
-                  <RouterLink class="nav-link" :to="`/rubric/${item.beoordelingscriteria}`">
+                  <RouterLink class="nav-link text-nowrap" :to="`/rubric/${item.beoordelingscriteria}`">
                     {{ item.beoordelingscriteria }}
                   </RouterLink>
                 </td>
@@ -61,7 +61,11 @@
                   </template>
                 </td>
                 <td>
-                  <p v-for="project in getAttachedProjectsFromCourse(item.beoordelingscriteria)">{{ project.key }}</p>
+                  <!-- <a class="nav-link" v-for="project in getAttachedProjectsFromCourse(item.beoordelingscriteria)" :href="`/project/${project.key}`">{{ project.key }}</a> -->
+                  <RouterLink v-for="project in getAttachedProjectsFromCourse(item.beoordelingscriteria)"
+                    class="nav-link text-nowrap" :to="`/project/${project.key}`" style="white-space: nowrap;">
+                    {{ project.key }}
+                  </RouterLink>
                 </td>
               </tr>
             </tbody>
@@ -234,7 +238,7 @@ const getBadgeClass = (completion) => {
 };
 
 // Make currentWerkProces reactive
-const currentWerkProces = ref(2); // Wrap currentWerkProces in a ref
+const currentWerkProces = ref(0); // Wrap currentWerkProces in a ref
 
 const incrementWerkProces = () => {
   currentWerkProces.value += 1;

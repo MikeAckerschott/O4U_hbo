@@ -48,10 +48,6 @@
                   Gelinkt project
                   <i :class="getSortIcon('fase')"></i>
                 </th>
-                <th @click="sort('feedback')" class="cursor-pointer">
-                  Feedback
-                  <i :class="getSortIcon('feedback')"></i>
-                </th>
                 <th @click="sort('beoordeling')" class="cursor-pointer">
                   Beoordeling
                   <i :class="getSortIcon('beoordeling')"></i>
@@ -62,8 +58,12 @@
               <tr v-for="item in paginatedData" :key="item.id" :class="getRowClass(item.beoordeling)">
                 <td>{{ item.project }}</td>
                 <td style="white-space: pre-wrap;">{{ item.verantwoording }}</td>
-                <td>{{ item.linked_project }}</td>
-                <td>{{ item.feedback }}</td>
+                <td>
+                  <RouterLink v-for="studentProject in getAttachedProjectsFromCriterium(item.project)" class="nav-link text-nowrap"
+                    :to="`/project/${studentProject.key}`">
+                    {{ studentProject.key }}
+                  </RouterLink>
+                </td>
                 <td>
                   <span :class="getBadgeClass(item.beoordeling)">{{ item.beoordeling }}</span>
                 </td>
@@ -232,28 +232,28 @@ console.log("Data value 0: ", data.value);
 
 // Calculate percentages
 const percentageCompleted = computed(() => {
-  const totalCompleted = data.value.filter(item => 
+  const totalCompleted = data.value.filter(item =>
     item.beoordeling === "Goed" || item.beoordeling === "Voldoende"
   ).length;
   return ((totalCompleted / data.value.length) * 100).toFixed(2);
 });
 
 const percentageVoldoende = computed(() => {
-  const totalCompleted = data.value.filter(item => 
+  const totalCompleted = data.value.filter(item =>
     item.beoordeling === "Voldoende"
   ).length;
   return ((totalCompleted / data.value.length) * 100).toFixed(2);
 });
 
 const percentageGoed = computed(() => {
-  const totalCompleted = data.value.filter(item => 
+  const totalCompleted = data.value.filter(item =>
     item.beoordeling === "Goed"
   ).length;
   return ((totalCompleted / data.value.length) * 100).toFixed(2);
 });
 
 const percentageOnvoldoende = computed(() => {
-  const totalCompleted = data.value.filter(item => 
+  const totalCompleted = data.value.filter(item =>
     item.beoordeling === "Onvoldoende"
   ).length;
   return ((totalCompleted / data.value.length) * 100).toFixed(2);
@@ -265,6 +265,16 @@ const getDonutStyle = (percentage, color) => {
   return {
     background: `conic-gradient(${color} ${rotation}deg, #e9ecef ${rotation}deg)`,
   };
+};
+
+const getAttachedProjectsFromCriterium = (requiredCriteria) => {
+  const uniqueProjects = new Set();
+  Object.entries(student_projects.value).forEach(([key, project]) => {
+    if (project.criteriaToReach && project.criteriaToReach.hasOwnProperty(requiredCriteria)) {
+      uniqueProjects.add({ key, project });
+    }
+  });
+  return Array.from(uniqueProjects);
 };
 </script>
 
