@@ -102,11 +102,27 @@ const rubricId = ref(route.params.rubric); // Access the dynamic route parameter
 // Example: Log the rubric ID to verify
 console.log('Rubric ID:', rubricId.value);
 
+// Filter school_criteria based on rubricId
+const data = ref([]);
+if (rubricId.value) {
+  const werkproces = school_criteria.value[0].werkproces.find(wp =>
+    wp.criteria.some(c => c.beoordelingscriteria === rubricId.value)
+  );
 
+  if (werkproces) {
+    const course = werkproces.criteria.find(c => c.beoordelingscriteria === rubricId.value);
+    if (course) {
+      data.value = course.criteria.map(item => ({
+        project: item.project,
+        verantwoording: item.verantwoording,
+        linked_project: rubricId.value,
+        feedback: '', // Placeholder for feedback
+        beoordeling: '', // Placeholder for beoordeling
+      }));
+    }
+  }
+}
 
-const data = ref(mappedData.value[rubricId.value] || []); // Use the rubricId to filter the data
-
-console.log('Mapped Data:', mappedData.value); // Log the mapped data to verify
 console.log('Data:', data.value); // Log the data to verify
 
 const sortKey = ref('');
