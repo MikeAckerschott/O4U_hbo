@@ -15,10 +15,7 @@
             <div class="donut-chart" :style="getDonutStyle(percentageCompleted, '#007bff')"></div>
             <div class="chart-label">Completed</div>
           </div>
-          <div class="chart-container me-3">
-            <div class="donut-chart" :style="getDonutStyle(percentageVoldoende, '#ffc107')"></div>
-            <div class="chart-label">Voldoende</div>
-          </div>
+
           <div class="chart-container me-3">
             <div class="donut-chart" :style="getDonutStyle(percentageGoed, '#28a745')"></div>
             <div class="chart-label">Goed</div>
@@ -55,17 +52,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in paginatedData" :key="item.id" :class="getRowClass(item.beoordeling)">
+              <tr v-for="item in paginatedData" :key="item.id"
+                :class="getRowClass(getCriteriumBeoordeling(item.project))">
                 <td>{{ item.project }}</td>
                 <td style="white-space: pre-wrap;">{{ item.verantwoording }}</td>
                 <td>
-                  <RouterLink v-for="studentProject in getAttachedProjectsFromCriterium(item.project)" class="nav-link text-nowrap"
-                    :to="`/project/${studentProject.key}`">
+                  <RouterLink v-for="studentProject in getAttachedProjectsFromCriterium(item.project)"
+                    class="nav-link text-nowrap" :to="`/project/${studentProject.key}`">
                     {{ studentProject.key }}
                   </RouterLink>
                 </td>
                 <td>
-                  <span :class="getBadgeClass(item.beoordeling)">{{ item.beoordeling }}</span>
+                  <span :class="getBadgeClass(getCriteriumBeoordeling(item.project))">
+                    {{ getCriteriumBeoordeling(item.project) }} </span>
                 </td>
               </tr>
             </tbody>
@@ -93,13 +92,10 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router'; // Import useRoute
 
-import {student_projects, school_criteria} from '@/dummydata/dummydata.js'
+import { student_projects, school_criteria } from '@/dummydata/dummydata.js'
 
 const route = useRoute(); // Get the current route
 const rubricId = ref(route.params.rubric); // Access the dynamic route parameter
-
-// Example: Log the rubric ID to verify
-console.log('Rubric ID:', rubricId.value);
 
 // Filter school_criteria based on rubricId
 const data = ref([]);
@@ -121,8 +117,6 @@ if (rubricId.value) {
     }
   }
 }
-
-console.log('Data:', data.value); // Log the data to verify
 
 const sortKey = ref('');
 const sortOrder = ref('asc');
@@ -164,6 +158,34 @@ const sortedData = computed(() => {
     });
   }
   return sorted;
+});
+
+const percentageCompleted = computed(() => {
+  const total = data.value.length;
+  if (total === 0) return 0;
+  const completedCount = data.value.filter(item => getCriteriumBeoordeling(item.project) === 'Voldoende' || getCriteriumBeoordeling(item.project) === 'Goed').length;
+  return Math.round((completedCount / total) * 100);
+});
+
+const percentageVoldoende = computed(() => {
+  const total = data.value.length;
+  if (total === 0) return 0;
+  const voldoendeCount = data.value.filter(item => getCriteriumBeoordeling(item.project) === 'Voldoende').length;
+  return Math.round((voldoendeCount / total) * 100);
+});
+
+const percentageGoed = computed(() => {
+  const total = data.value.length;
+  if (total === 0) return 0;
+  const goedCount = data.value.filter(item => getCriteriumBeoordeling(item.project) === 'Goed').length;
+  return Math.round((goedCount / total) * 100);
+});
+
+const percentageOnvoldoende = computed(() => {
+  const total = data.value.length;
+  if (total === 0) return 0;
+  const onvoldoendeCount = data.value.filter(item => getCriteriumBeoordeling(item.project) === 'Onvoldoende').length;
+  return Math.round((onvoldoendeCount / total) * 100);
 });
 
 const uniqueFases = computed(() => {
@@ -227,37 +249,6 @@ const getBadgeClass = (beoordeling) => {
   }
 };
 
-console.log("Data value 0: ", data.value);
-
-// Calculate percentages
-const percentageCompleted = computed(() => {
-  const totalCompleted = data.value.filter(item =>
-    item.beoordeling === "Goed" || item.beoordeling === "Voldoende"
-  ).length;
-  return ((totalCompleted / data.value.length) * 100).toFixed(2);
-});
-
-const percentageVoldoende = computed(() => {
-  const totalCompleted = data.value.filter(item =>
-    item.beoordeling === "Voldoende"
-  ).length;
-  return ((totalCompleted / data.value.length) * 100).toFixed(2);
-});
-
-const percentageGoed = computed(() => {
-  const totalCompleted = data.value.filter(item =>
-    item.beoordeling === "Goed"
-  ).length;
-  return ((totalCompleted / data.value.length) * 100).toFixed(2);
-});
-
-const percentageOnvoldoende = computed(() => {
-  const totalCompleted = data.value.filter(item =>
-    item.beoordeling === "Onvoldoende"
-  ).length;
-  return ((totalCompleted / data.value.length) * 100).toFixed(2);
-});
-
 // Donut chart styles
 const getDonutStyle = (percentage, color) => {
   const rotation = (percentage / 100) * 360;
@@ -274,6 +265,22 @@ const getAttachedProjectsFromCriterium = (requiredCriteria) => {
     }
   });
   return Array.from(uniqueProjects);
+};
+
+const getCriteriumBeoordeling = (requiredCriterium) => {
+  let grade = "";
+  getAttachedProjectsFromCriterium(requiredCriterium).forEach(({ project }) => {
+    const criteriumData = project.criteriaToReach[requiredCriterium];
+    if (criteriumData) {
+      const projectGrade = criteriumData.grade;
+      if (!grade || (grade === "Onvoldoende" && projectGrade === "Voldoende") ||
+        (grade !== "Goed" && projectGrade === "Goed")) {
+        grade = projectGrade;
+      }
+      
+    }
+  });
+  return grade;
 };
 </script>
 

@@ -36,36 +36,21 @@
                   Linked projects
                   <i></i>
                 </th>
+                
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in paginatedData" :key="item.id" :class="getRowClass(item.criteria)">
-                <td>
-                  <RouterLink class="nav-link text-nowrap" :to="`/rubric/${item.beoordelingscriteria}`">
-                    {{ item.beoordelingscriteria }}
-                  </RouterLink>
-                </td>
-                <td>
-                  <template
-                    v-for="val in [completionCriteriaTracker(getAttachedProjectsFromCourse(item.beoordelingscriteria), item.beoordelingscriteria)]"
-                    :key="index">
-                    <div class="progress" style="height: 20px;">
-                      <div class="progress-bar" role="progressbar"
-                        :style="{ width: Math.max((val / item.criteria.length * 100), 10) + '%' }"
-                        :class="getBadgeClass(val / item.criteria.length)" :aria-valuenow="val / item.criteria.length"
-                        aria-valuemin="0" aria-valuemax="100">
-                        {{ val }} / {{ item.criteria.length }}
-                      </div>
-                    </div>
-                  </template>
-                </td>
-                <td>
-                  <RouterLink v-for="project in getAttachedProjectsFromCourse(item.beoordelingscriteria)"
-                    class="nav-link text-nowrap" :to="`/project/${project.key}`" style="white-space: nowrap;">
-                    {{ project.key }}
-                  </RouterLink>
-                </td>
-              </tr>
+              <!-- GET INFORMATION FOR EACH COURSE -->
+              <CourseTableRow
+                v-for="item in paginatedData"
+                :key="item.id"
+                :course="item"
+                :getAttachedProjectsFromCourse="getAttachedProjectsFromCourse"
+                :completionCriteriaTracker="completionCriteriaTracker"
+                :getRowClass="getRowClass"
+                :getBadgeClass="getBadgeClass"
+              />
+              <!-- INFORMATION FOR EACH COURSE -->
             </tbody>
           </table>
         </div>
@@ -91,6 +76,8 @@
 import { ref, computed } from 'vue';
 
 import {student_projects, school_criteria} from '@/dummydata/dummydata.js'
+import CourseTableRow from '@/components/CourseTableRow.vue'; // Import the new component
+
 
 const data = ref(school_criteria); // Initialize data with student projects
 

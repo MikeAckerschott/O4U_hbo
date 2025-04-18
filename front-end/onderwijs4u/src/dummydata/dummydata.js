@@ -36,13 +36,20 @@ export const student_projects = ref({
             "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...3", feedback: "Feedback for IoT-P-1", grade: "Goed" },
         }
     },
-    // "Intro ICT beroepsproduct 2": {
-    //     id: 3, running: false, description: 'beroepsproduct', criteriaToReach: {
-    //         "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback", grade: "Goed" },
-    //         "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-    //         "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-    //     }
-    // },
+    "Intro ICT beroepsproduct 2": {
+        id: 3, running: false, description: 'beroepsproduct', criteriaToReach: {
+            "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback", grade: "Voldoende" },
+            "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
+            "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
+        }
+    },
+    "Intro ICT beroepsproduct 3": {
+        id: 3, running: false, description: 'beroepsproduct', criteriaToReach: {
+            "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback", grade: "Onvoldoende" },
+            "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Onvoldoende" },
+            "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Onvoldoende" },
+        }
+    },
     "OOPD Game": {
         id: 4, running: false, description: 'beroepsproduct', criteriaToReach: {
             "OOPD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
@@ -54,8 +61,8 @@ export const student_projects = ref({
     "EPD Spoorwegovergang simulatie": {
         id: 4, running: false, description: 'beroepsproduct', criteriaToReach: {
             "EPD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "EPD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "EPD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "EPD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
+            "EPD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Onvoldoende" },
             "EPD-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "EPD-7": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "EPD-8": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
@@ -168,7 +175,6 @@ export const school_criteria = ref([
                             { id: 4, project: 'SPB-4', verantwoording: '• Is in staat om de verantwoordelijkheden van (een gegeven stuk) code te herkennen en te benoemen.\n• Is in staat om, op basis van gegeven verantwoordelijkheden, code gescheiden te implementeren in eenvoudige functies.', },
                             { id: 5, project: 'SPB-5', verantwoording: '• Kan een gegeven oplossingsalgoritme vertalen naar de in deze OWE-beschrijving genoemde programmeerconcepten.\n• Kan vanuit een gegeven probleemstelling de belangrijkste oplossingsalgoritmen uitschrijven.', },
                             { id: 6, project: 'SPB-6', verantwoording: '• Is in staat de Processing API te gebruiken bij het schrijven van een eigen programma.\n• Kan helder en eenduidig aangeven wat de Processing API is, waar je deze kunt vinden en wat je er kunt vinden.', },
-
                         ],
                     },
                     {
