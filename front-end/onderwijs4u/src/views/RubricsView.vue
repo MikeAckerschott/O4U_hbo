@@ -4,7 +4,6 @@
       <div class="col-md-2">
         <label for="WerkprocesFilter" class="form-label">Selected Workprocess:</label>
         <select id="WerkprocesFilter" v-model="currentWerkProces" @change="filterData" class="form-select">
-          <!-- <option v-for="beoordeling in uniqueBeoordelingen" :key="beoordeling" :value="beoordeling">{{ beoordeling }}          </option> -->
           <option v-for="werkproces, index in data[0].werkproces" :key="werkproces" :value="index">{{
             werkproces.description }}</option>
         </select>
@@ -48,7 +47,7 @@
                 </td>
                 <td>
                   <template
-                    v-for="(val, index) in [completionCriteriaTracker(getAttachedProjectsFromCourse(item.beoordelingscriteria), item.beoordelingscriteria)]"
+                    v-for="val in [completionCriteriaTracker(getAttachedProjectsFromCourse(item.beoordelingscriteria), item.beoordelingscriteria)]"
                     :key="index">
                     <div class="progress" style="height: 20px;">
                       <div class="progress-bar" role="progressbar"
@@ -61,7 +60,6 @@
                   </template>
                 </td>
                 <td>
-                  <!-- <a class="nav-link" v-for="project in getAttachedProjectsFromCourse(item.beoordelingscriteria)" :href="`/project/${project.key}`">{{ project.key }}</a> -->
                   <RouterLink v-for="project in getAttachedProjectsFromCourse(item.beoordelingscriteria)"
                     class="nav-link text-nowrap" :to="`/project/${project.key}`" style="white-space: nowrap;">
                     {{ project.key }}
@@ -120,7 +118,6 @@ const getSortIcon = (key) => {
 };
 
 const sortedData = computed(() => {
-  // console.log(data.value[0].werkproces);
   const sorted = [...data.value[0].werkproces[currentWerkProces.value].criteria];
   if (sortKey.value) {
     sorted.sort((a, b) => {
@@ -152,17 +149,8 @@ const changePage = (page) => {
   }
 };
 
-const getRowClass = (beoordeling) => {
-  // let beoordelingPercentage = completionCriteriaTracker(beoordeling) / beoordeling.length * 100;
-  // if (beoordelingPercentage == 100) {
-  //   return 'table-success';
-  // } else if (beoordelingPercentage >= 60) {
-  //   return 'table-info';
-  // } else if (beoordelingPercentage >= 40) {
-  //   return 'table-warning';
-  // } else {
-  //   return 'table-danger';
-  // }
+const getRowClass = () => {
+  // This function is unused and can be safely removed.
 };
 
 const completionCriteriaTracker = (projects, course) => {
@@ -202,14 +190,12 @@ const completionCriteriaTracker = (projects, course) => {
 };
 
 const getCriteriaDescription = (criterion) => {
-  // Flatten the criteria structure for easier searching
   const allCriteria = school_criteria.value.flatMap(year =>
     year.werkproces.flatMap(course =>
       course.criteria.flatMap(courseCriteria => courseCriteria.criteria)
     )
   );
 
-  // Find and return the matching criterion's description
   const foundCriterion = allCriteria.find(courseCriteria => courseCriteria.project === criterion);
   return foundCriterion ? foundCriterion.verantwoording : '';
 };
@@ -228,16 +214,13 @@ const getBadgeClass = (completion) => {
   }
 };
 
-// Make currentWerkProces reactive
-const currentWerkProces = ref(0); // Wrap currentWerkProces in a ref
+const currentWerkProces = ref(0);
 
 const incrementWerkProces = () => {
   currentWerkProces.value += 1;
-  // console.log(currentWerkProces.value);
 };
 
 const uniqueFases = computed(() => {
-  // console.log(data.value[0].werkproces[currentWerkProces.value].criteria)
   const fases = data.value[0].werkproces[currentWerkProces.value].criteria.map(item => item.fase);
   return [...new Set(fases)];
 });
@@ -266,16 +249,12 @@ const paginatedData = computed(() => {
   return filteredData.value.slice(start, end);
 });
 
-// Calculate percentages
 const percentageCompleted = computed(() => {
-  // const completed = data.value[0].werkproces[currentWerkProces.value].criteria.filter(item => item.beoordeling === 'Goed' || item.beoordeling === 'Voldoende').length;
-  // return ((completed / data.value[0].werkproces[currentWerkProces.value].criteria.length) * 100).toFixed(2);
   const completed = getTotalCompletedCriteria.value;
   const total = getTotalCriteria.value;
   return ((completed / total) * 100).toFixed(2);
 });
 
-// Donut chart styles
 const getDonutStyle = (percentage, color) => {
   const rotation = (percentage / 100) * 360;
   return {
@@ -288,17 +267,19 @@ const getTotalCriteria = computed(() => {
   data.value[0].werkproces[currentWerkProces.value].criteria.forEach(criteria => {
     totalCriteria += criteria.criteria.length;
   });
-  console.log(totalCriteria);
   return totalCriteria;
 });
 
 const getTotalCompletedCriteria = computed(() => {
-  let totalCompleted = 0;
-  data.value[0].werkproces[currentWerkProces.value].criteria.forEach(criteria => {
-    totalCompleted += criteria.criteria.filter(item => item.beoordeling === 'Goed' || item.beoordeling === 'Voldoende').length;
+  let completedCriteria = 0;
+  data.value[0].werkproces[currentWerkProces.value].criteria.forEach(course => {
+    const projects = getAttachedProjectsFromCourse(course.beoordelingscriteria);
+    const completed = completionCriteriaTracker(projects, course.beoordelingscriteria);
+    if (completed === course.criteria.length) {
+      completedCriteria += course.criteria.length;
+    }
   });
-  console.log(totalCompleted);
-  return totalCompleted;
+  return completedCriteria;
 });
 
 const getAttachedProjectsFromCriterium = (requiredCriteria) => {

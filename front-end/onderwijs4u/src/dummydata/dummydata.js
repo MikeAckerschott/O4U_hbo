@@ -31,18 +31,18 @@ export const student_projects = ref({
     // },
     "Intro ICT beroepsproduct": {
         id: 3, running: true, description: 'beroepsproduct', criteriaToReach: {
-            "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...1", feedback: "Feedback", grade: "Voldoende" },
+            "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...1", feedback: "Feedback", grade: "Goed" },
             "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...2", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...3", feedback: "Feedback for IoT-P-1", grade: "Goed" },
         }
     },
-    "Intro ICT beroepsproduct 2": {
-        id: 3, running: false, description: 'beroepsproduct', criteriaToReach: {
-            "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback", grade: "Goed" },
-            "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-        }
-    },
+    // "Intro ICT beroepsproduct 2": {
+    //     id: 3, running: false, description: 'beroepsproduct', criteriaToReach: {
+    //         "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback", grade: "Goed" },
+    //         "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+    //         "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+    //     }
+    // },
     "OOPD Game": {
         id: 4, running: false, description: 'beroepsproduct', criteriaToReach: {
             "OOPD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
