@@ -4,8 +4,8 @@
 
     <!-- Criteria Switches -->
     <div class="mb-4">
-      <h2 class="h4 mb-3" v-if="isProjectActive">Select Criteria</h2>
-      <div class="list-group" v-if="isProjectActive">
+      <h2 class="h4 mb-3">Select Criteria</h2>
+      <div class="list-group">
         <div v-for="criterion in onderbouwdeCriteria" :key="criterion.id" class="list-group-item">
           <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" :id="'criterion-' + criterion.id"

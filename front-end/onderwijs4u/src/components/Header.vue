@@ -12,14 +12,8 @@
           <li class="nav-item" v-if="role === 'student'">
             <RouterLink class="nav-link" to="/rubrics">Rubrics</RouterLink>
           </li>
-          <li class="nav-item dropdown" v-if="role === 'student'">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Projects
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <RouterLink class="nav-link" to="/project/1">Current project</RouterLink>
-              <RouterLink class="nav-link" to="/projects">All projects</RouterLink>
-            </ul>
+          <li class="nav-item" v-if="role === 'student'">
+            <RouterLink class="nav-link" to="/projects">Projects</RouterLink>
           </li>
           <li class="nav-item" v-if="role === 'student'">
             <RouterLink class="nav-link" to="/game">Rewards</RouterLink>

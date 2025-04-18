@@ -2,11 +2,7 @@
   <div class="container-fluid mt-5">
     <div class="row mb-3">
       <div class="col-md-3">
-        <label for="periodeFilter" class="form-label">Filter by Periode:</label>
-        <select id="periodeFilter" v-model="selectedPeriode" @change="filterData" class="form-select">
-          <option value="">All</option>
-          <option v-for="periode in uniquePeriodes" :key="periode" :value="periode">{{ periode }}</option>
-        </select>
+
       </div>
     </div>
     <div class="row">
@@ -15,12 +11,16 @@
           <table class="table table-striped table-hover table-bordered w-100">
             <thead class="bg-light-blue text-white">
               <tr>
-                <th @click="sort('project')" class="cursor-pointer">
+                <th class="cursor-pointer">
                   Project
                   <i :class="getSortIcon('project')"></i>
                 </th>
-                <th @click="sort('periode')" class="cursor-pointer">
-                  Periode
+                <th class="cursor-pointer">
+                  Beschrijving
+                  <i :class="getSortIcon('periode')"></i>
+                </th>
+                <th class="cursor-pointer">
+                  Status
                   <i :class="getSortIcon('periode')"></i>
                 </th>
               </tr>
@@ -28,11 +28,13 @@
             <tbody>
               <tr v-for="item in paginatedData" :key="item.id">
                 <td>
-                  <RouterLink class="nav-link" :to="`/project/${item.project}`">
-                    {{ item.project }}
+                  <RouterLink class="nav-link text-truncate" :to="`/project/${item.projectName}`"
+                    style="white-space: nowrap;">
+                    {{ item.projectName }}
                   </RouterLink>
                 </td>
-                <td>{{ item.periode }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.running ? 'Afgerond' : 'Draaiend' }}</td>
               </tr>
             </tbody>
           </table>
@@ -58,11 +60,18 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-const data = ref([
-  {id: 1, project: 'slagersportaal', periode: '1'},
-  {id: 2, project: 'gaming', periode: '2'},
-  // Add more data as needed
-]);
+import { student_projects } from '@/dummydata/dummydata.js'
+
+// const data = ref([
+//   { id: 1, project: 'slagersportaal', periode: '1' },
+//   { id: 2, project: 'gaming', periode: '2' },
+//   // Add more data as needed
+// ]);
+
+const data = ref(student_projects);
+
+console.log("DATA: ", data.value)
+// console.log("PROJECTRS: ",projects.value)
 
 const sortKey = ref('');
 const sortOrder = ref('asc');
@@ -85,9 +94,10 @@ const getSortIcon = (key) => {
 };
 
 const sortedData = computed(() => {
-  const sorted = [...data.value];
+  console.log(data.value);
+  const entries = Object.entries(data.value); // Convert object to array of key-value pairs
   if (sortKey.value) {
-    sorted.sort((a, b) => {
+    entries.sort(([, a], [, b]) => {
       const aValue = a[sortKey.value];
       const bValue = b[sortKey.value];
 
@@ -102,33 +112,32 @@ const sortedData = computed(() => {
       }
     });
   }
-  return sorted;
-});
-
-const uniquePeriodes = computed(() => {
-  const periodes = data.value.map(item => item.periode);
-  return [...new Set(periodes)];
+  return Object.fromEntries(entries); // Convert back to an object
 });
 
 const filteredData = computed(() => {
-  let filtered = sortedData.value;
+  let filtered = Object.entries(sortedData.value); // Convert to array for filtering
   if (selectedPeriode.value) {
-    filtered = filtered.filter(item => item.periode === selectedPeriode.value);
+    filtered = filtered.filter(([, value]) => value.periode === selectedPeriode.value);
   }
-  return filtered;
+  return Object.fromEntries(filtered); // Convert back to an object
 });
 
-const totalPages = computed(() => Math.ceil(filteredData.value.length / itemsPerPage));
+const totalPages = computed(() => {
+  const totalItems = Object.keys(filteredData.value).length; // Get the total number of items
+  return Math.ceil(totalItems / itemsPerPage); // Calculate the total number of pages
+});
 
 const paginatedData = computed(() => {
+  const entries = Object.entries(filteredData.value); // Convert to array for pagination
   const start = (currentPage.value - 1) * itemsPerPage;
   const end = start + itemsPerPage;
-  return filteredData.value.slice(start, end);
+  return entries.slice(start, end).map(([key, value]) => {
+    return { projectName: key, ...value }; // Include the key as part of the object
+  });
 });
 
-const filterData = () => {
-  currentPage.value = 1;
-};
+console.log("ITERATING: ", paginatedData.value)
 
 const changePage = (page) => {
   if (page >= 1 && page <= totalPages.value) {
@@ -136,4 +145,3 @@ const changePage = (page) => {
   }
 };
 </script>
-
