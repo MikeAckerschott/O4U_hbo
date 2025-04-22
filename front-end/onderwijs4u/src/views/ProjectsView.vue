@@ -26,7 +26,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in paginatedData" :key="item.id">
+              <tr v-for="item in paginatedData" :key="item.id"
+                :class="{ 'table-info': item.running === true, 'table-success': item.running === false }">
                 <td>
                   <RouterLink class="nav-link text-truncate" :to="`/project/${item.projectName}`"
                     style="white-space: nowrap;">
@@ -34,7 +35,11 @@
                   </RouterLink>
                 </td>
                 <td>{{ item.description }}</td>
-                <td>{{ item.running ? 'Afgerond' : 'Draaiend' }}</td>
+                <td><span
+                    :class="{ 'badge bg-info': item.running === true, 'badge bg-success': item.running === false }">
+                    {{ item.running === true ? 'Draaiend' : 'Afgerond' }}
+                  </span>
+                </td>
               </tr>
             </tbody>
           </table>
