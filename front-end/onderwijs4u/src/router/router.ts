@@ -11,6 +11,7 @@ import Game from '../views/GameView.vue';
 import Coach from '../views/CoachView.vue';
 import RubricDetail from '../views/RubricView.vue';
 import Graduation from '../views/GraduationView.vue';
+import NewProject from '../views/NewProjectView.vue';
 
 const routes = [
   { path: '/', component: Home },
@@ -25,6 +26,7 @@ const routes = [
   { path: '/coach', component: Coach},
   { path: '/rubric/:rubric', component: RubricDetail}, // Add dynamic route
   { path: '/project/:project', component: Project}, // Add dynamic route
+  { path: '/newproject', component: NewProject}, // Add dynamic route
 
 ];
 

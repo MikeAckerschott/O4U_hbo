@@ -2,9 +2,10 @@
   <nav :class="['navbar', 'navbar-expand-lg']" :style="{ backgroundColor: navbarColorClass }">
     <div class="container-fluid">
       <RouterLink class="nav-link" to="/" @click.native="reloadPage">
-        <img src="@/assets/onderwijs4u.png" alt="Onderwijs4U" class="navbar-logo"/>
+        <img src="@/assets/onderwijs4u.png" alt="Onderwijs4U" class="navbar-logo" />
       </RouterLink>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -12,9 +13,22 @@
           <li class="nav-item" v-if="role === 'student'">
             <RouterLink class="nav-link" to="/rubrics">Rubrics</RouterLink>
           </li>
-          <li class="nav-item" v-if="role === 'student'">
-            <RouterLink class="nav-link" to="/projects">Projects</RouterLink>
+
+          <li class="nav-item dropdown" v-if="role === 'student' && teacherrole === 'loopbaancoach'">
+            <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Projecten
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="notificationDropdown">
+              <li>
+                <RouterLink class="dropdown-item" to="/projects">Jouw Projecten</RouterLink>
+              </li>
+              <li>
+                <RouterLink class="dropdown-item" to="/newproject">Nieuw Project</RouterLink>
+              </li>
+            </ul>
           </li>
+
           <li class="nav-item" v-if="role === 'student'">
             <RouterLink class="nav-link" to="/game">Rewards</RouterLink>
           </li>
@@ -29,12 +43,10 @@
           </li>
 
 
-          <li class="nav-item" v-if="role === 'teacher' && teacherrole === 'productowner'">
-            <RouterLink class="nav-link" to="/teacherprojects">Projects</RouterLink>
-          </li>
 
           <li class="nav-item dropdown" v-if="role === 'teacher' && teacherrole === 'loopbaancoach'">
-            <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fas fa-bell"></i>
               <span class="badge">1</span>
             </a>
@@ -92,17 +104,22 @@ export default {
   left: 0;
   top: 0;
   width: 100%;
-  z-index: 1000; /* Ensures the navbar is above other elements */
+  z-index: 1000;
+  /* Ensures the navbar is above other elements */
 }
 
 .navbar-logo {
-  height: 56px; /* Adjust this value based on the height of your navbar */
-  width: 56px; /* Make it a square */
-  border-radius: 50%; /* Make it circular */
+  height: 56px;
+  /* Adjust this value based on the height of your navbar */
+  width: 56px;
+  /* Make it a square */
+  border-radius: 50%;
+  /* Make it circular */
 }
 
 body {
-  padding-top: 56px; /* Adjust this value based on the height of your navbar */
+  padding-top: 56px;
+  /* Adjust this value based on the height of your navbar */
 }
 
 .nav-link {
@@ -119,7 +136,7 @@ body {
   color: white;
 }
 
-.fa-bell{
+.fa-bell {
   padding-top: 8px;
 }
 </style>
