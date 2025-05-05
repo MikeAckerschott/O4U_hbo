@@ -100,12 +100,12 @@ const rubricId = ref(route.params.rubric); // Access the dynamic route parameter
 // Filter school_criteria based on rubricId
 const data = ref([]);
 if (rubricId.value) {
-  const werkproces = school_criteria.value[0].werkproces.find(wp =>
-    wp.criteria.some(c => c.beoordelingscriteria === rubricId.value)
+  const year = school_criteria.value[0].years.find(wp =>
+    wp.courses.some(c => c.beoordelingscriteria === rubricId.value)
   );
 
-  if (werkproces) {
-    const course = werkproces.criteria.find(c => c.beoordelingscriteria === rubricId.value);
+  if (year) {
+    const course = year.courses.find(c => c.beoordelingscriteria === rubricId.value);
     if (course) {
       data.value = course.criteria.map(item => ({
         project: item.project,

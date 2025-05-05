@@ -12,31 +12,46 @@
     <!-- Course Selection -->
     <div class="mb-4">
       <label for="courseSelection" class="form-label h5">Jaar: </label>
-      <select id="courseSelection" v-model="selectedCourse" class="form-select">
+      <select id="courseSelection" v-model="selectedYear" class="form-select">
         <option v-for="course in courses" :key="course.id" :value="course">
           {{ course.description }}
         </option>
       </select>
     </div>
 
-    <!-- Criteria Selection -->
-    <div v-if="selectedCourse" class="mb-4">
-      <h2 class="h5">Course: </h2>
-      <div class="list-group">
-        <div v-for="criterion in selectedCourse.criteria" :key="criterion.id" class="list-group-item">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" :id="'criterion-' + criterion.project" :value="criterion"
-              v-model="selectedCriteria" />
-            <label class="form-check-label" :for="'criterion-' + criterion.project">
-              {{ criterion.beoordelingscriteria }}
-            </label>
+    <!-- Criteria Selection and Selected Courses Box -->
+    <div v-if="selectedYear" class="mb-4 d-flex align-items-start">
+      <!-- Criteria Selection -->
+      <div class="flex-grow-1 me-3">
+        <h2 class="h5">Course: </h2>
+        <div class="list-group">
+          <div v-for="course in selectedYear.courses" :key="course.id" class="list-group-item">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" :id="'course-' + course.id" :value="course"
+                v-model="selectedCourses" />
+              <label class="form-check-label" :for="'course-' + course.id">
+                {{ course.beoordelingscriteria }}
+              </label>
+            </div>
           </div>
         </div>
+      </div>
+
+      <!-- Selected Courses Box -->
+      <div v-if="selectedCourses.length > 0" class="selected-courses-box">
+        <h2 class="h5">Selected Criteria</h2>
+        <ul class="list-group">
+          <li v-for="(course, index) in selectedCourses" :key="index"
+            class="list-group-item d-flex justify-content-between align-items-center">
+            <span class="me-3">{{ course.beoordelingscriteria }}</span>
+            <button @click="removeCourse(index)" class="btn btn-sm btn-danger">Remove</button>
+          </li>
+        </ul>
       </div>
     </div>
 
     <!-- Selected Criteria Details -->
-    <div v-if="selectedCriteria.length > 0" class="mb-4">
+    <div v-if="selectedCourses.length > 0" class="mb-4">
       <h2 class="h5">Selected Criteria Details</h2>
       <table class="table table-bordered">
         <thead>
@@ -46,7 +61,7 @@
           </tr>
         </thead>
         <tbody>
-          <template v-for="(criterion, index) in selectedCriteria" :key="criterion.project">
+          <template v-for="criterion in selectedCourses" :key="criterion.project">
             <!-- First row with rowspan -->
             <tr v-if="criterion.criteria && criterion.criteria.length > 0">
               <td :rowspan="criterion.criteria.length">
@@ -56,7 +71,7 @@
             </tr>
             <!-- Additional rows for remaining subcriteria -->
             <tr v-for="(subCriterion, subIndex) in criterion.criteria.slice(1)" :key="subIndex">
-              <td >{{ subCriterion.verantwoording }}</td>
+              <td>{{ subCriterion.verantwoording }}</td>
             </tr>
           </template>
         </tbody>
@@ -78,9 +93,13 @@ const newProject = ref({
   criteriaToReach: {},
 });
 
-const courses = school_criteria.value[0].werkproces; // Assuming "Jaar 1" is the first year
-const selectedCourse = ref(null);
-const selectedCriteria = ref([]);
+const courses = school_criteria.value[0].years; // Assuming "Jaar 1" is the first year
+const selectedYear = ref(null);
+const selectedCourses = ref([]);
+
+const removeCourse = (index) => {
+  selectedCourses.value.splice(index, 1);
+};
 
 const saveProject = () => {
   if (!newProject.value.name) {
@@ -88,14 +107,14 @@ const saveProject = () => {
     return;
   }
 
-  if (selectedCriteria.value.length === 0) {
+  if (selectedCourses.value.length === 0) {
     alert('Please select at least one criterion.');
     return;
   }
 
   // Map selected criteria to the required format
   const criteriaToReach = {};
-  selectedCriteria.value.forEach((criterion) => {
+  selectedCourses.value.forEach((criterion) => {
     criteriaToReach[criterion.project] = {
       studentVerantwoording: '',
       feedback: '',
@@ -115,11 +134,21 @@ const saveProject = () => {
   // Reset form
   newProject.value.name = '';
   newProject.value.running = true;
-  selectedCourse.value = null;
-  selectedCriteria.value = [];
+  selectedYear.value = null;
+  selectedCourses.value = [];
 };
+
+setInterval(() => {
+  console.log(selectedYear.value);
+}, 1000);
 </script>
 
 <style scoped>
 /* Add any custom styles here if needed */
+.selected-courses-box {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  margin-left: 20px;
+}
 </style>

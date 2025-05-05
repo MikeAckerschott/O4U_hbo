@@ -92,10 +92,12 @@ const activeCriteria = computed(() => {
 
 const getCriteriaDescription = (criterion) => {
   // Flatten the criteria structure for easier searching
-  const allCriteria = school_criteria.value.flatMap(year =>
-    year.werkproces.flatMap(course =>
-      course.criteria.flatMap(courseCriteria => courseCriteria.criteria)
-    )
+  console.log("school_criteria: ", school_criteria.value);
+  const allCriteria = school_criteria.value.flatMap(studentProgres =>
+    studentProgres.years.flatMap(course => {
+      console.log("course: ", course);
+      return course.courses.flatMap(courseCriteria => courseCriteria.criteria);
+    })
   );
 
   // Find and return the matching criterion's description

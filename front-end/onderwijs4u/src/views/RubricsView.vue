@@ -4,8 +4,8 @@
       <div class="col-md-2">
         <label for="WerkprocesFilter" class="form-label">Selected Workprocess:</label>
         <select id="WerkprocesFilter" v-model="currentWerkProces" @change="filterData" class="form-select">
-          <option v-for="werkproces, index in data[0].werkproces" :key="werkproces" :value="index">{{
-            werkproces.description }}</option>
+          <option v-for="year, index in data[0].years" :key="year" :value="index">{{
+            year.description }}</option>
         </select>
       </div>
       <div class="col-md-6 text-end">
@@ -36,20 +36,15 @@
                   Linked projects
                   <i></i>
                 </th>
-                
+
               </tr>
             </thead>
             <tbody>
               <!-- GET INFORMATION FOR EACH COURSE -->
-              <CourseTableRow
-                v-for="item in paginatedData"
-                :key="item.id"
-                :course="item"
+              <CourseTableRow v-for="item in paginatedData" :key="item.id" :course="item"
                 :getAttachedProjectsFromCourse="getAttachedProjectsFromCourse"
-                :completionCriteriaTracker="completionCriteriaTracker"
-                :getRowClass="getRowClass"
-                :getBadgeClass="getBadgeClass"
-              />
+                :completionCriteriaTracker="completionCriteriaTracker" :getRowClass="getRowClass"
+                :getBadgeClass="getBadgeClass" />
               <!-- INFORMATION FOR EACH COURSE -->
             </tbody>
           </table>
@@ -75,7 +70,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-import {student_projects, school_criteria} from '@/dummydata/dummydata.js'
+import { student_projects, school_criteria } from '@/dummydata/dummydata.js'
 import CourseTableRow from '@/components/CourseTableRow.vue'; // Import the new component
 
 
@@ -105,7 +100,7 @@ const getSortIcon = (key) => {
 };
 
 const sortedData = computed(() => {
-  const sorted = [...data.value[0].werkproces[currentWerkProces.value].criteria];
+  const sorted = [...data.value[0].years[currentWerkProces.value].courses];
   if (sortKey.value) {
     sorted.sort((a, b) => {
       const aValue = a[sortKey.value];
@@ -141,13 +136,13 @@ const getRowClass = () => {
 };
 
 const completionCriteriaTracker = (projects, course) => {
-  const werkproces = school_criteria.value[0]?.werkproces[currentWerkProces.value];
-  if (!werkproces) {
+  const year = school_criteria.value[0]?.years[currentWerkProces.value];
+  if (!year) {
     console.error(`Werkproces at index ${currentWerkProces.value} not found.`);
     return 0;
   }
 
-  const courseData = werkproces.criteria.find(item => item.beoordelingscriteria === course);
+  const courseData = year.courses.find(item => item.beoordelingscriteria === course);
   if (!courseData) {
     console.error(`Course with beoordelingscriteria "${course}" not found.`);
     return 0;
@@ -177,8 +172,8 @@ const completionCriteriaTracker = (projects, course) => {
 };
 
 const getCriteriaDescription = (criterion) => {
-  const allCriteria = school_criteria.value.flatMap(year =>
-    year.werkproces.flatMap(course =>
+  const allCriteria = school_criteria.value.flatMap(studentProgress =>
+    studentProgress.years.flatMap(course =>
       course.criteria.flatMap(courseCriteria => courseCriteria.criteria)
     )
   );
@@ -208,12 +203,12 @@ const incrementWerkProces = () => {
 };
 
 const uniqueFases = computed(() => {
-  const fases = data.value[0].werkproces[currentWerkProces.value].criteria.map(item => item.fase);
+  const fases = data.value[0].years[currentWerkProces.value].criteria.map(item => item.fase);
   return [...new Set(fases)];
 });
 
 const uniqueBeoordelingen = computed(() => {
-  const beoordelingen = data.value[0].werkproces[currentWerkProces.value].criteria.map(item => item.beoordeling);
+  const beoordelingen = data.value[0].years[currentWerkProces.value].criteria.map(item => item.beoordeling);
   return [...new Set(beoordelingen)];
 });
 
@@ -251,7 +246,7 @@ const getDonutStyle = (percentage, color) => {
 
 const getTotalCriteria = computed(() => {
   let totalCriteria = 0;
-  data.value[0].werkproces[currentWerkProces.value].criteria.forEach(criteria => {
+  data.value[0].years[currentWerkProces.value].courses.forEach(criteria => {
     totalCriteria += criteria.criteria.length;
   });
   return totalCriteria;
@@ -259,7 +254,7 @@ const getTotalCriteria = computed(() => {
 
 const getTotalCompletedCriteria = computed(() => {
   let completedCriteria = 0;
-  data.value[0].werkproces[currentWerkProces.value].criteria.forEach(course => {
+  data.value[0].years[currentWerkProces.value].courses.forEach(course => {
     const projects = getAttachedProjectsFromCourse(course.beoordelingscriteria);
     const completed = completionCriteriaTracker(projects, course.beoordelingscriteria);
     if (completed === course.criteria.length) {
@@ -281,7 +276,7 @@ const getAttachedProjectsFromCriterium = (requiredCriteria) => {
 
 //Input Course - WoR-Pr
 const getAttachedProjectsFromCourse = (course) => {
-  const courseData = data.value[0].werkproces[currentWerkProces.value].criteria.find(item => item.beoordelingscriteria === course);
+  const courseData = data.value[0].years[currentWerkProces.value].courses.find(item => item.beoordelingscriteria === course);
 
   if (!courseData) return [];
 
@@ -297,7 +292,7 @@ const getAttachedProjectsFromCourse = (course) => {
 };
 
 const getCriteriaFromCourse = (course) => {
-  return data.value[0].werkproces[currentWerkProces.value].criteria.find(item => item.beoordelingscriteria === course);
+  return data.value[0].years[currentWerkProces.value].courses.find(item => item.beoordelingscriteria === course);
 }
 
 console.log("attached Projects course: ", getAttachedProjectsFromCourse("WoR-Pr"));

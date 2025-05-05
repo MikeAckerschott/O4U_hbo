@@ -114,10 +114,10 @@ export const student_projects = ref({
 
 export const school_criteria = ref([
     {
-        werkproces: [
+        years: [
             {
                 description: "Jaar 1",
-                criteria: [
+                courses: [
                     {
                         id: 1, beoordelingscriteria: 'IntroICT', fase: 'Ontwikkeling', criteria: [
                             { id: 1, project: 'INTROICT-1', verantwoording: '• Deelt een complexe ICT-situatie in in onderdelen en kan de samenhang tussen deze onderdelen benoemen (denk aan datastromen, communicatiestromen, verantwoordelijkheden, et cetera) en vastleggen in een model.\n• Onderbouwt keuzes bij het opstellen van een ICT-model.', },
@@ -188,7 +188,7 @@ export const school_criteria = ref([
             },
             {
                 description: "Jaar 2",
-                criteria: [
+                courses: [
                     {
                         id: 1, beoordelingscriteria: 'OSM-MO', fase: 'Ontwikkeling', criteria: [
                             { id: 1, project: 'OSM-MO-1', verantwoording: '• Gebruikt en beschrijft op correcte wijze de UML syntax van een use case diagram (inclusief visualisatie).\n• Kan verwoorden hoe het ontwerpproces zich verhoudt tot het gehele software engineeringstraject.\n• Stelt use cases UI-onafhankelijk op en maakt gebruik van black-box formulering.', },
@@ -275,7 +275,7 @@ export const school_criteria = ref([
             },
             {
                 description: "Jaar 3",
-                criteria: [
+                courses: [
                     {
                         id: 2, beoordelingscriteria: 'WoR-Rbts', fase: 'Uitvoerings', criteria: [
                             { id: 1, project: 'WoR-R-1', verantwoording: '• Gebruikt relevante natuurkunde uit onder andere de mechanica en elektrotechniek.\n• Gebruikt relevante toegepaste wiskunde uit onder andere de discrete wiskunde, calculus, algebra, goniometrie, meetkunde en topologie.', },
