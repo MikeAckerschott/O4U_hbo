@@ -33,53 +33,62 @@
                 {{ course.beoordelingscriteria }}
               </label>
             </div>
+            <!-- Criteria Selection for the Course -->
+            <div v-if="selectedCourses.includes(course)" class="mt-2">
+              <h3 class="h6">Criteria:</h3>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Subcriteria</th>
+                    <th>Additional Info</th>
+                    <th>Select</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(subCriterion, subIndex) in course.criteria" :key="subIndex">
+                    <td style="white-space: pre-wrap;">{{ subCriterion.name }}</td>
+                    <td style="white-space: pre-wrap;">{{ subCriterion.verantwoording || 'N/A' }}</td>
+                    <td>
+                      <input class="form-check-input" type="checkbox" :id="'subCriterion-' + subCriterion.id"
+                        :value="subCriterion" v-model="selectedCriteria" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Selected Courses Box -->
-      <div v-if="selectedCourses.length > 0" class="selected-courses-box">
-        <h2 class="h5">Selected Criteria</h2>
-        <ul class="list-group">
-          <li v-for="(course, index) in selectedCourses" :key="index"
-            class="list-group-item d-flex justify-content-between align-items-center">
-            <span class="me-3">{{ course.beoordelingscriteria }}</span>
-            <button @click="removeCourse(index)" class="btn btn-sm btn-danger">Remove</button>
-          </li>
-        </ul>
+      <div class="selection-holders">
+        <div v-if="selectedCourses.length > 0" class="selected-courses-box mb-4">
+          <h2 class="h5">Selected Courses</h2>
+          <ul class="list-group">
+            <li v-for="(course, index) in selectedCourses" :key="index"
+              class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="me-3">{{ course.beoordelingscriteria }}</span>
+              <button @click="removeCourse(index)" class="btn btn-sm btn-danger">Remove</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Selected Criteria Box -->
+        <div v-if="selectedCriteria.length > 0" class="selected-courses-box">
+          <h2 class="h5">Selected Criteria</h2>
+          <ul class="list-group">
+            <li v-for="(criterion, index) in selectedCriteria" :key="index"
+              class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="me-3">{{ criterion.name }}</span>
+              <button @click="removeCriteria(index)" class="btn btn-sm btn-danger">Remove</button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <!-- Selected Criteria Details -->
-    <div v-if="selectedCourses.length > 0" class="mb-4">
-      <h2 class="h5">Selected Criteria Details</h2>
-      <table class="table table-bordered">
-      <thead>
-        <tr>
-        <th>Beoordelingscriteria</th>
-        <th>Subcriteria</th>
-        <th>Additional Info</th>
-        </tr>
-      </thead>
-      <tbody>
-        <template v-for="criterion in selectedCourses" :key="criterion.project">
-        <!-- First row with rowspan -->
-        <tr v-if="criterion.criteria && criterion.criteria.length > 0">
-          <td :rowspan="criterion.criteria.length" style="white-space: pre-wrap;">
-          {{ criterion.beoordelingscriteria }}
-          </td>
-          <td style="white-space: pre-wrap;">{{ criterion.criteria[0].name }}</td>
-          <td style="white-space: pre-wrap;">{{ criterion.criteria[0].verantwoording || 'N/A' }}</td>
-        </tr>
-        <!-- Additional rows for remaining subcriteria -->
-        <tr v-for="(subCriterion, subIndex) in criterion.criteria.slice(1)" :key="subIndex">
-          <td style="white-space: pre-wrap;">{{ subCriterion.name }}</td>
-          <td style="white-space: pre-wrap;">{{ subCriterion.verantwoording || 'N/A' }}</td>
-        </tr>
-        </template>
-      </tbody>
-      </table>
-    </div>
+
+
 
     <!-- Save Button -->
     <button @click="saveProject" class="btn btn-primary">Save Project</button>
@@ -99,9 +108,14 @@ const newProject = ref({
 const courses = school_criteria.value[0].years; // Assuming "Jaar 1" is the first year
 const selectedYear = ref(null);
 const selectedCourses = ref([]);
+const selectedCriteria = ref([]);
 
 const removeCourse = (index) => {
   selectedCourses.value.splice(index, 1);
+};
+
+const removeCriteria = (index) => {
+  selectedCriteria.value.splice(index, 1);
 };
 
 const saveProject = () => {
@@ -132,18 +146,19 @@ const saveProject = () => {
     description: 'Newly created project',
     criteriaToReach,
   };
-
+  console.log(selectedCriteria.value);
   alert('Project saved successfully!');
   // Reset form
   newProject.value.name = '';
   newProject.value.running = true;
   selectedYear.value = null;
   selectedCourses.value = [];
+  selectedCriteria.value = [];
+
+
 };
 
-setInterval(() => {
-  console.log(selectedYear.value);
-}, 1000);
+
 </script>
 
 <style scoped>
