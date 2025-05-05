@@ -35,13 +35,12 @@
             </div>
             <!-- Criteria Selection for the Course -->
             <div v-if="selectedCourses.includes(course)" class="mt-2">
-              <h3 class="h6">Criteria:</h3>
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>Subcriteria</th>
-                    <th>Additional Info</th>
-                    <th>Select</th>
+                    <th>Criteria</th>
+                    <th>Criteriabeschrijving</th>
+                    <th>Selecteer</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -62,7 +61,7 @@
 
       <!-- Selected Courses Box -->
       <div class="selection-holders">
-        <div v-if="selectedCourses.length > 0" class="selected-courses-box mb-4">
+        <!-- <div v-if="selectedCourses.length > 0" class="selected-courses-box mb-4">
           <h2 class="h5">Selected Courses</h2>
           <ul class="list-group">
             <li v-for="(course, index) in selectedCourses" :key="index"
@@ -71,7 +70,7 @@
               <button @click="removeCourse(index)" class="btn btn-sm btn-danger">Remove</button>
             </li>
           </ul>
-        </div>
+        </div> -->
 
         <!-- Selected Criteria Box -->
         <div v-if="selectedCriteria.length > 0" class="selected-courses-box">
@@ -79,7 +78,18 @@
           <ul class="list-group">
             <li v-for="(criterion, index) in selectedCriteria" :key="index"
               class="list-group-item d-flex justify-content-between align-items-center">
-              <span class="me-3">{{ criterion.name }}</span>
+              <span class="me-3" @click="openOverlay(criterion)" style="cursor: pointer;">
+                {{ criterion.name }}
+              </span>
+
+              <!-- Overlay -->
+              <div v-if="overlayVisible" class="overlay" @click="closeOverlay">
+                <div class="overlay-content" @click.stop>
+                  <h3 class="h5">{{ overlayContent.name }}</h3>
+                  <p>{{ overlayContent.verantwoording }}</p>
+                  <button @click="closeOverlay" class="btn btn-secondary mt-3">Close</button>
+                </div>
+              </div>
               <button @click="removeCriteria(index)" class="btn btn-sm btn-danger">Remove</button>
             </li>
           </ul>
@@ -99,6 +109,9 @@
 import { ref } from 'vue';
 import { student_projects, school_criteria } from '@/dummydata/dummydata.js';
 
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
 const newProject = ref({
   name: '',
   running: true,
@@ -106,7 +119,7 @@ const newProject = ref({
 });
 
 const courses = school_criteria.value[0].years; // Assuming "Jaar 1" is the first year
-const selectedYear = ref(null);
+const selectedYear = ref(courses[0]); // Default to the first year
 const selectedCourses = ref([]);
 const selectedCriteria = ref([]);
 
@@ -124,8 +137,8 @@ const saveProject = () => {
     return;
   }
 
-  if (selectedCourses.value.length === 0) {
-    alert('Please select at least one criterion.');
+  if (selectedCriteria.value.length === 0) {
+    alert('Minimaal 1 criteria moet geselecteerd worden.');
     return;
   }
 
@@ -139,15 +152,32 @@ const saveProject = () => {
     };
   });
 
+  // Computed selected criteria. Criteria should be key-value pairs. key is criteria name and value is an object with studentVerantwoording, feedback, and grade.
+  selectedCriteria.value.forEach((criterion) => {
+    criteriaToReach[criterion.name] = {
+      studentVerantwoording: 'Vul hier je bewijslast in.',
+      feedback: 'Leraar feedback',
+      grade: 'Onvoldoende',
+      awaitingTeacher: true,
+    };
+  });
+
+  delete criteriaToReach[undefined]
+  console.log(selectedCriteria.value)
+  // remove value of key undefined from criteriaToReach
+  selectedCriteria.value = criteriaToReach;
+
   // Save the new project
   student_projects.value[newProject.value.name] = {
     id: Object.keys(student_projects.value).length + 1,
-    running: newProject.value.running,
+    running: false,
     description: 'Newly created project',
-    criteriaToReach,
+    criteriaToReach: selectedCriteria.value,
+    awaitingTeacher: true,
   };
-  console.log(selectedCriteria.value);
-  alert('Project saved successfully!');
+
+  router.push(`/projects/`);
+
   // Reset form
   newProject.value.name = '';
   newProject.value.running = true;
@@ -155,7 +185,21 @@ const saveProject = () => {
   selectedCourses.value = [];
   selectedCriteria.value = [];
 
+  
 
+
+
+};
+
+const overlayVisible = ref(false);
+const overlayContent = ref('');
+const openOverlay = (content) => {
+  overlayContent.value = content;
+  overlayVisible.value = true;
+};
+const closeOverlay = () => {
+  overlayVisible.value = false;
+  overlayContent.value = '';
 };
 
 
@@ -168,5 +212,28 @@ const saveProject = () => {
   border-radius: 10px;
   background-color: #f7f7f7;
   margin-left: 20px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  white-space: pre-wrap;
 }
 </style>

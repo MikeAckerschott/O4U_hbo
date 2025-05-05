@@ -78,7 +78,6 @@ export default {
   },
   watch: {
     $route() {
-      console.log('Route changed, updating role and nav color from session storage.');
       this.getRoleFromSession();
       this.getNavColorFromSession();
     }

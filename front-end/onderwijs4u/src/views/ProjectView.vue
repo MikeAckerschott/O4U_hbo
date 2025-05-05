@@ -64,11 +64,10 @@ import { student_projects, school_criteria } from '@/dummydata/dummydata.js'
 const route = useRoute()
 const project = route.params.project
 
-console.log(project)
-console.log(student_projects)
-
 const isProjectActive = student_projects.value[project].running
-console.log(isProjectActive)
+
+const isProjectAwaitingTeacher = student_projects.value[project].awaitingTeacher
+console.log("Teacher validation required: ", student_projects.value[project])
 
 // Initialize criteria with existing data
 let projectInfo = Object.entries(student_projects.value[project].criteriaToReach).map(([key, item]) => {
@@ -78,7 +77,8 @@ let projectInfo = Object.entries(student_projects.value[project].criteriaToReach
     active: true,
     text: item.studentVerantwoording,
     grade: item.grade,
-    feedback: item.feedback
+    feedback: item.feedback,
+    awaitingTeacher: item.awaitingTeacher,
   }
 })
 
