@@ -20,13 +20,13 @@ export default {
     enterAsStudent() {
       sessionStorage.setItem('role', 'student');
       this.$router.push('/rubrics').then(() => {
-        window.location.reload();
+        // window.location.reload();
       });
     },
     enterAsTeacher() {
       sessionStorage.setItem('role', 'teacher');
       this.$router.push('/roles').then(() => {
-        window.location.reload();
+        // window.location.reload();
       });
     }
   }

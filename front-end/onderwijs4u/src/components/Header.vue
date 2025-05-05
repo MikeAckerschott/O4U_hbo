@@ -1,7 +1,7 @@
 <template>
   <nav :class="['navbar', 'navbar-expand-lg']" :style="{ backgroundColor: navbarColorClass }">
     <div class="container-fluid">
-      <RouterLink class="nav-link" to="/" @click.native="reloadPage">
+      <RouterLink class="nav-link" to="/" @click="this.role = 'guest'"> <!-- reset header bar  -->
         <img src="@/assets/onderwijs4u.png" alt="Onderwijs4U" class="navbar-logo" />
       </RouterLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -75,6 +75,13 @@ export default {
   created() {
     this.getRoleFromSession();
     this.getNavColorFromSession();
+  },
+  watch: {
+    $route() {
+      console.log('Route changed, updating role and nav color from session storage.');
+      this.getRoleFromSession();
+      this.getNavColorFromSession();
+    }
   },
   methods: {
     getRoleFromSession() {
