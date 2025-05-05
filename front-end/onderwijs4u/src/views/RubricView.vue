@@ -53,18 +53,18 @@
             </thead>
             <tbody>
               <tr v-for="item in paginatedData" :key="item.id"
-                :class="getRowClass(getCriteriumBeoordeling(item.project))">
-                <td>{{ item.project }}</td>
+                :class="getRowClass(getCriteriumBeoordeling(item.name))">
+                <td>{{ item.name }}</td>
                 <td style="white-space: pre-wrap;">{{ item.verantwoording }}</td>
                 <td>
-                  <RouterLink v-for="studentProject in getAttachedProjectsFromCriterium(item.project)"
+                  <RouterLink v-for="studentProject in getAttachedProjectsFromCriterium(item.name)"
                     class="nav-link text-nowrap" :to="`/project/${studentProject.key}`">
                     {{ studentProject.key }}
                   </RouterLink>
                 </td>
                 <td>
-                  <span :class="getBadgeClass(getCriteriumBeoordeling(item.project))">
-                    {{ getCriteriumBeoordeling(item.project) }} </span>
+                  <span :class="getBadgeClass(getCriteriumBeoordeling(item.name))">
+                    {{ getCriteriumBeoordeling(item.name) }} </span>
                 </td>
               </tr>
             </tbody>
@@ -107,8 +107,9 @@ if (rubricId.value) {
   if (year) {
     const course = year.courses.find(c => c.beoordelingscriteria === rubricId.value);
     if (course) {
+      console.log("course: ", course);
       data.value = course.criteria.map(item => ({
-        project: item.project,
+        name: item.name,
         verantwoording: item.verantwoording,
         linked_project: '',
         feedback: '', // Placeholder for feedback
@@ -163,28 +164,28 @@ const sortedData = computed(() => {
 const percentageCompleted = computed(() => {
   const total = data.value.length;
   if (total === 0) return 0;
-  const completedCount = data.value.filter(item => getCriteriumBeoordeling(item.project) === 'Voldoende' || getCriteriumBeoordeling(item.project) === 'Goed').length;
+  const completedCount = data.value.filter(item => getCriteriumBeoordeling(item.name) === 'Voldoende' || getCriteriumBeoordeling(item.name) === 'Goed').length;
   return Math.round((completedCount / total) * 100);
 });
 
 const percentageVoldoende = computed(() => {
   const total = data.value.length;
   if (total === 0) return 0;
-  const voldoendeCount = data.value.filter(item => getCriteriumBeoordeling(item.project) === 'Voldoende').length;
+  const voldoendeCount = data.value.filter(item => getCriteriumBeoordeling(item.name) === 'Voldoende').length;
   return Math.round((voldoendeCount / total) * 100);
 });
 
 const percentageGoed = computed(() => {
   const total = data.value.length;
   if (total === 0) return 0;
-  const goedCount = data.value.filter(item => getCriteriumBeoordeling(item.project) === 'Goed').length;
+  const goedCount = data.value.filter(item => getCriteriumBeoordeling(item.name) === 'Goed').length;
   return Math.round((goedCount / total) * 100);
 });
 
 const percentageOnvoldoende = computed(() => {
   const total = data.value.length;
   if (total === 0) return 0;
-  const onvoldoendeCount = data.value.filter(item => getCriteriumBeoordeling(item.project) === 'Onvoldoende').length;
+  const onvoldoendeCount = data.value.filter(item => getCriteriumBeoordeling(item.name) === 'Onvoldoende').length;
   return Math.round((onvoldoendeCount / total) * 100);
 });
 
@@ -258,6 +259,7 @@ const getDonutStyle = (percentage, color) => {
 };
 
 const getAttachedProjectsFromCriterium = (requiredCriteria) => {
+
   const uniqueProjects = new Set();
   Object.entries(student_projects.value).forEach(([key, project]) => {
     if (project.criteriaToReach && project.criteriaToReach.hasOwnProperty(requiredCriteria)) {

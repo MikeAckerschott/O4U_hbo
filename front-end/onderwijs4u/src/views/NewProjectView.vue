@@ -54,27 +54,30 @@
     <div v-if="selectedCourses.length > 0" class="mb-4">
       <h2 class="h5">Selected Criteria Details</h2>
       <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Beoordelingscriteria</th>
-            <th>Subcriteria</th>
-          </tr>
-        </thead>
-        <tbody>
-          <template v-for="criterion in selectedCourses" :key="criterion.project">
-            <!-- First row with rowspan -->
-            <tr v-if="criterion.criteria && criterion.criteria.length > 0">
-              <td :rowspan="criterion.criteria.length">
-                {{ criterion.beoordelingscriteria }}
-              </td>
-              <td style="white-space: pre-wrap;">{{ criterion.criteria[0].verantwoording }}</td>
-            </tr>
-            <!-- Additional rows for remaining subcriteria -->
-            <tr v-for="(subCriterion, subIndex) in criterion.criteria.slice(1)" :key="subIndex">
-              <td>{{ subCriterion.verantwoording }}</td>
-            </tr>
-          </template>
-        </tbody>
+      <thead>
+        <tr>
+        <th>Beoordelingscriteria</th>
+        <th>Subcriteria</th>
+        <th>Additional Info</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template v-for="criterion in selectedCourses" :key="criterion.project">
+        <!-- First row with rowspan -->
+        <tr v-if="criterion.criteria && criterion.criteria.length > 0">
+          <td :rowspan="criterion.criteria.length" style="white-space: pre-wrap;">
+          {{ criterion.beoordelingscriteria }}
+          </td>
+          <td style="white-space: pre-wrap;">{{ criterion.criteria[0].name }}</td>
+          <td style="white-space: pre-wrap;">{{ criterion.criteria[0].verantwoording || 'N/A' }}</td>
+        </tr>
+        <!-- Additional rows for remaining subcriteria -->
+        <tr v-for="(subCriterion, subIndex) in criterion.criteria.slice(1)" :key="subIndex">
+          <td style="white-space: pre-wrap;">{{ subCriterion.name }}</td>
+          <td style="white-space: pre-wrap;">{{ subCriterion.verantwoording || 'N/A' }}</td>
+        </tr>
+        </template>
+      </tbody>
       </table>
     </div>
 

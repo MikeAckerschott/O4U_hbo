@@ -160,7 +160,7 @@ const completionCriteriaTracker = (projects, course) => {
     if (criteriaToReach) {
       Object.entries(criteriaToReach).forEach(([criterium, details]) => {
         if (["Voldoende", "Goed"].includes(details.grade)) {
-          if (courseCriteria.criteria.some(courseCriterium => courseCriterium.project === criterium)) {
+          if (courseCriteria.criteria.some(courseCriterium => courseCriterium.name === criterium)) {
             completedCriteria.add(criterium);
           }
         }
@@ -178,7 +178,7 @@ const getCriteriaDescription = (criterion) => {
     )
   );
 
-  const foundCriterion = allCriteria.find(courseCriteria => courseCriteria.project === criterion);
+  const foundCriterion = allCriteria.find(courseCriteria => courseCriteria.name === criterion);
   return foundCriterion ? foundCriterion.verantwoording : '';
 };
 
@@ -283,7 +283,7 @@ const getAttachedProjectsFromCourse = (course) => {
   const attachedProjects = new Map();
 
   courseData.criteria.forEach(criteria => {
-    getAttachedProjectsFromCriterium(criteria.project).forEach(project => {
+    getAttachedProjectsFromCriterium(criteria.name).forEach(project => {
       attachedProjects.set(project.key, project);
     });
   });
