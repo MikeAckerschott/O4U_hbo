@@ -9,6 +9,13 @@
         placeholder="Enter project name" />
     </div>
 
+    <!-- Project Description Input -->
+    <div class="mb-4">
+      <label for="projectDescription" class="form-label h5">Project Description</label>
+      <textarea id="projectDescription" v-model="newProject.description" class="form-control"
+        placeholder="Enter project description" rows="4"></textarea>
+    </div>
+
     <!-- Course Selection -->
     <div class="mb-4">
       <label for="courseSelection" class="form-label h5">Jaar: </label>
@@ -40,6 +47,7 @@
                   <tr>
                     <th>Criteria</th>
                     <th>Criteriabeschrijving</th>
+                    <th>Huidige beoordeling</th>
                     <th>Selecteer</th>
                   </tr>
                 </thead>
@@ -47,6 +55,9 @@
                   <tr v-for="(subCriterion, subIndex) in course.criteria" :key="subIndex">
                     <td style="white-space: pre-wrap;">{{ subCriterion.name }}</td>
                     <td style="white-space: pre-wrap;">{{ subCriterion.verantwoording || 'N/A' }}</td>
+                    <td>
+                      {{ subCriterion.grade || 'N/A' }}
+                    </td>
                     <td>
                       <input class="form-check-input" type="checkbox" :id="'subCriterion-' + subCriterion.id"
                         :value="subCriterion" v-model="selectedCriteria" />
@@ -61,18 +72,6 @@
 
       <!-- Selected Courses Box -->
       <div class="selection-holders">
-        <!-- <div v-if="selectedCourses.length > 0" class="selected-courses-box mb-4">
-          <h2 class="h5">Selected Courses</h2>
-          <ul class="list-group">
-            <li v-for="(course, index) in selectedCourses" :key="index"
-              class="list-group-item d-flex justify-content-between align-items-center">
-              <span class="me-3">{{ course.beoordelingscriteria }}</span>
-              <button @click="removeCourse(index)" class="btn btn-sm btn-danger">Remove</button>
-            </li>
-          </ul>
-        </div> -->
-
-        <!-- Selected Criteria Box -->
         <div v-if="selectedCriteria.length > 0" class="selected-courses-box">
           <h2 class="h5">Selected Criteria</h2>
           <ul class="list-group">
@@ -97,9 +96,6 @@
       </div>
     </div>
 
-
-
-
     <!-- Save Button -->
     <button @click="saveProject" class="btn btn-primary">Save Project</button>
   </div>
@@ -114,6 +110,7 @@ const router = useRouter();
 
 const newProject = ref({
   name: '',
+  description: '', // Added description property
   running: true,
   criteriaToReach: {},
 });
@@ -134,6 +131,11 @@ const removeCriteria = (index) => {
 const saveProject = () => {
   if (!newProject.value.name) {
     alert('Please enter a project name.');
+    return;
+  }
+
+  if (!newProject.value.description) {
+    alert('Please enter a project description.');
     return;
   }
 
@@ -162,8 +164,8 @@ const saveProject = () => {
     };
   });
 
-  delete criteriaToReach[undefined]
-  console.log(selectedCriteria.value)
+  delete criteriaToReach[undefined];
+  console.log(selectedCriteria.value);
   // remove value of key undefined from criteriaToReach
   selectedCriteria.value = criteriaToReach;
 
@@ -171,7 +173,7 @@ const saveProject = () => {
   student_projects.value[newProject.value.name] = {
     id: Object.keys(student_projects.value).length + 1,
     running: false,
-    description: 'Newly created project',
+    description: newProject.value.description, // Save the description
     criteriaToReach: selectedCriteria.value,
     awaitingTeacher: true,
   };
@@ -180,15 +182,11 @@ const saveProject = () => {
 
   // Reset form
   newProject.value.name = '';
+  newProject.value.description = ''; // Reset description
   newProject.value.running = true;
   selectedYear.value = null;
   selectedCourses.value = [];
   selectedCriteria.value = [];
-
-  
-
-
-
 };
 
 const overlayVisible = ref(false);
@@ -201,8 +199,6 @@ const closeOverlay = () => {
   overlayVisible.value = false;
   overlayContent.value = '';
 };
-
-
 </script>
 
 <style scoped>
