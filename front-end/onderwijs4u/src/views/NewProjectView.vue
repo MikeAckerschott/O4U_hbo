@@ -16,23 +16,23 @@
         placeholder="Enter project description" rows="4"></textarea>
     </div>
 
-    <!-- Course Selection -->
+    <!-- Year Selection -->
     <div class="mb-4">
-      <label for="courseSelection" class="form-label h5">Jaar: </label>
-      <select id="courseSelection" v-model="selectedYear" class="form-select">
-        <option v-for="course in courses" :key="course.id" :value="course">
-          {{ course.description }}
+      <label for="yearSelection" class="form-label h5">Jaar: </label>
+      <select id="yearSelection" v-model="selectedYear" class="form-select">
+        <option v-for="year in student_progression" :key="year.description" :value="year">
+          {{ year.description }}
         </option>
       </select>
     </div>
 
-    <!-- Criteria Selection and Selected Courses Box -->
+    <!-- Course Selection and Selected Courses Box -->
     <div v-if="selectedYear" class="mb-4 d-flex align-items-start">
-      <!-- Criteria Selection -->
+      <!-- Course Selection -->
       <div class="flex-grow-1 me-3">
-        <h2 class="h5">Course: </h2>
+        <h2 class="h5">Courses: </h2>
         <div class="list-group">
-          <div v-for="course in selectedYear.courses" :key="course.id" class="list-group-item">
+          <div v-for="(course, courseIndex) in selectedYear.courses" :key="course.id" class="list-group-item">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" :id="'course-' + course.id" :value="course"
                 v-model="selectedCourses" />
@@ -52,15 +52,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(subCriterion, subIndex) in course.criteria" :key="subIndex">
-                    <td style="white-space: pre-wrap;">{{ subCriterion.name }}</td>
-                    <td style="white-space: pre-wrap;">{{ subCriterion.verantwoording || 'N/A' }}</td>
+                  <tr v-for="(criterion, criterionIndex) in course.criteriaProgress" :key="criterion.id">
+                    <td style="white-space: pre-wrap;">{{ criterion.name }}</td>
+                    <td style="white-space: pre-wrap;">{{ criterion.verantwoording || 'N/A' }}</td>
+                    <td>{{ criterion.grade }}</td>
                     <td>
-                      {{ subCriterion.grade || 'N/A' }}
-                    </td>
-                    <td>
-                      <input class="form-check-input" type="checkbox" :id="'subCriterion-' + subCriterion.id"
-                        :value="subCriterion" v-model="selectedCriteria" />
+                      <input class="form-check-input" type="checkbox" :id="'criterion-' + criterion.id"
+                        :value="criterion" v-model="selectedCriteria" />
                     </td>
                   </tr>
                 </tbody>
@@ -70,7 +68,7 @@
         </div>
       </div>
 
-      <!-- Selected Courses Box -->
+      <!-- Selected Criteria Box -->
       <div class="selection-holders">
         <div v-if="selectedCriteria.length > 0" class="selected-courses-box">
           <h2 class="h5">Selected Criteria</h2>
@@ -103,26 +101,21 @@
 
 <script setup>
 import { ref } from 'vue';
-import { student_projects, school_criteria } from '@/dummydata/dummydata.js';
+import { student_projects, student_progression } from '@/dummydata/dummydata.js';
 
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const newProject = ref({
   name: '',
-  description: '', // Added description property
+  description: '',
   running: true,
   criteriaToReach: {},
 });
 
-const courses = school_criteria.value[0].years; // Assuming "Jaar 1" is the first year
-const selectedYear = ref(courses[0]); // Default to the first year
+const selectedYear = ref(null);
 const selectedCourses = ref([]);
 const selectedCriteria = ref([]);
-
-const removeCourse = (index) => {
-  selectedCourses.value.splice(index, 1);
-};
 
 const removeCriteria = (index) => {
   selectedCriteria.value.splice(index, 1);
@@ -146,15 +139,6 @@ const saveProject = () => {
 
   // Map selected criteria to the required format
   const criteriaToReach = {};
-  selectedCourses.value.forEach((criterion) => {
-    criteriaToReach[criterion.project] = {
-      studentVerantwoording: '',
-      feedback: '',
-      grade: '',
-    };
-  });
-
-  // Computed selected criteria. Criteria should be key-value pairs. key is criteria name and value is an object with studentVerantwoording, feedback, and grade.
   selectedCriteria.value.forEach((criterion) => {
     criteriaToReach[criterion.name] = {
       studentVerantwoording: 'Vul hier je bewijslast in.',
@@ -164,17 +148,12 @@ const saveProject = () => {
     };
   });
 
-  delete criteriaToReach[undefined];
-  console.log(selectedCriteria.value);
-  // remove value of key undefined from criteriaToReach
-  selectedCriteria.value = criteriaToReach;
-
   // Save the new project
   student_projects.value[newProject.value.name] = {
     id: Object.keys(student_projects.value).length + 1,
     running: false,
-    description: newProject.value.description, // Save the description
-    criteriaToReach: selectedCriteria.value,
+    description: newProject.value.description,
+    criteriaToReach,
     awaitingTeacher: true,
   };
 
@@ -182,7 +161,7 @@ const saveProject = () => {
 
   // Reset form
   newProject.value.name = '';
-  newProject.value.description = ''; // Reset description
+  newProject.value.description = '';
   newProject.value.running = true;
   selectedYear.value = null;
   selectedCourses.value = [];
@@ -202,7 +181,6 @@ const closeOverlay = () => {
 </script>
 
 <style scoped>
-/* Add any custom styles here if needed */
 .selected-courses-box {
   padding: 10px;
   border-radius: 10px;

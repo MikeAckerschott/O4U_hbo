@@ -1,54 +1,41 @@
 import { ref } from 'vue'
 
 export const student_projects = ref({
+    "OOPD Game 2": {
+        id: 1, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
+            "OOPD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
+            "OOPD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
+            "OOPD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
+            "OOPD-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
+        }
+    },
     "Intro ICT beroepsproduct": {
-        id: 1, running: true, awaitingTeacher: false,  description: 'beroepsproduct', criteriaToReach: {
+        id: 1, running: true, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
             "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...1", feedback: "Feedback", grade: "Goed" },
             "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...2", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...3", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-        }
-    },
-    // "Intro ICT beroepsproduct 2": {
-    //     id: 3, running: false, awaitingTeacher: false,  description: 'beroepsproduct', criteriaToReach: {
-    //         "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback", grade: "Voldoende" },
-    //         "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
-    //         "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
-    //     }
-    // },
-    // "Intro ICT beroepsproduct 3": {
-    //     id: 3, running: false, awaitingTeacher: false,  description: 'beroepsproduct', criteriaToReach: {
-    //         "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback", grade: "Onvoldoende" },
-    //         "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Onvoldoende" },
-    //         "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Onvoldoende" },
-    //     }
-    // },
-    "OOPD Game": {
-        id: 2, running: false, awaitingTeacher: false,  description: 'beroepsproduct', criteriaToReach: {
-            "OOPD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "OOPD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "OOPD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "OOPD-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-        }
+        },
     },
     "EPD Spoorwegovergang simulatie": {
-        id: 3, running: false, awaitingTeacher: false,  description: 'beroepsproduct', criteriaToReach: {
+        id: 2, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
             "EPD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "EPD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
-            "EPD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Onvoldoende" },
+            "EPD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "EPD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "EPD-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "EPD-7": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "EPD-8": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
         }
     },
+
     "DBRP - KPI's": {
-        id: 4, running: false, awaitingTeacher: false,  description: 'beroepsproduct', criteriaToReach: {
+        id: 3, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
             "DBRP-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "DBRP-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "DBRP-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
         }
     },
     "FAT Beroepsproduct": {
-        id: 5, running: false, awaitingTeacher: false,  description: 'beroepsproduct', criteriaToReach: {
+        id: 4, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
             "FAT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "FAT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "FAT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
@@ -57,7 +44,7 @@ export const student_projects = ref({
         }
     },
     "SPAD Game": {
-        id: 5, running: false, awaitingTeacher: false,  description: 'beroepsproduct', criteriaToReach: {
+        id: 5, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
             "SPAD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "SPAD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "SPAD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
@@ -65,7 +52,7 @@ export const student_projects = ref({
         }
     },
     "SPB Huiswerkopdrachten": {
-        id: 6, running: false, awaitingTeacher: false,  description: 'beroepsproduct', criteriaToReach: {
+        id: 6, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
             "SPB-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "SPB-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "SPB-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
@@ -75,7 +62,7 @@ export const student_projects = ref({
         }
     },
     "WTUX Fletnix": {
-        id: 7, running: false, awaitingTeacher: false,  description: 'beroepsproduct', criteriaToReach: {
+        id: 7, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
             "WTUX-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "WTUX-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
             "WTUX-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
@@ -302,3 +289,60 @@ export const school_criteria = ref([
         ]
     }
 ]);
+
+export const student_progression = ref(
+    school_criteria.value.flatMap((schoolYear) => {
+        return schoolYear.years.map((year) => {
+            return {
+                description: year.description,
+                courses: year.courses.map((course) => {
+                    const criteriaKeys = course.criteria.map((criterion) => criterion.name);
+                    const projects = Object.values(student_projects.value).filter((proj) =>
+                        proj.criteriaToReach && Object.keys(proj.criteriaToReach).some((key) => criteriaKeys.includes(key))
+                    );
+
+                    console.log(`Projects linked to course "${course.beoordelingscriteria}":`, projects.map((proj) => ({
+                        id: proj.id,
+                        name: Object.keys(student_projects.value).find(key => student_projects.value[key] === proj),
+                        criteriaToReach: Object.keys(proj.criteriaToReach),
+                    })));
+
+                    const criteriaProgress = course.criteria.map((criterion) => {
+                        const projectCriteria = projects
+                            .map((project) => project.criteriaToReach[criterion.name])
+                            .filter((projectCriterion) => projectCriterion)
+                            .sort((a, b) => {
+                                const gradeOrder = ['Onvoldoende', 'Voldoende', 'Goed'];
+                                return gradeOrder.indexOf(b.grade) - gradeOrder.indexOf(a.grade);
+                            });
+
+                        const highestGradeCriterion = projectCriteria[0];
+
+                        return {
+                            id: criterion.id,
+                            name: criterion.name,
+                            verantwoording: criterion.verantwoording,
+                            grade: highestGradeCriterion?.grade || 'Not Graded',
+                            feedback: highestGradeCriterion?.feedback || 'No Feedback',
+                        };
+                    });
+
+                    const completedCriteria = criteriaProgress.filter((c) => c.grade !== 'Not Graded').length;
+                    const totalCriteria = criteriaProgress.length;
+
+                    return {
+                        id: course.id,
+                        beoordelingscriteria: course.beoordelingscriteria,
+                        fase: course.fase,
+                        criteriaProgress,
+                        progress: `${completedCriteria}/${totalCriteria}`,
+                    };
+                }),
+            };
+        });
+    })
+);
+
+console.log(student_progression.value);
+
+
