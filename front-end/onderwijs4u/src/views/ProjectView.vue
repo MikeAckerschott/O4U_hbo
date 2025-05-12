@@ -30,7 +30,7 @@
         :class="['card', 'mb-3', getCriteriumClass(criterion.grade)]">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center">
-            <h3 @click="openOverlay(criterion.name)" :class="['card-title h5', getBadgeClass(criterion.grade)]">{{
+            <h3 @click="openOverlay(criterion.name)" :class="['card-title h5 nav-link', getBadgeClass(criterion.grade)]">{{
               criterion.name }}</h3>
             <h3 v-if="!isProjectAwaitingTeacher" :class="['card-title h5', getBadgeClass(criterion.grade)]">{{ criterion.grade }}</h3>
           </div>

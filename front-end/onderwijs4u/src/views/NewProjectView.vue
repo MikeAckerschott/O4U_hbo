@@ -33,32 +33,32 @@
         <h2 class="h5">Courses: </h2>
         <div class="list-group">
           <div v-for="(course, courseIndex) in selectedYear.courses" :key="course.id" class="list-group-item">
-            <div class="form-check">
+            <div class="form-check" @click="toggleCourseSelection(course)">
               <input class="form-check-input" type="checkbox" :id="'course-' + course.id" :value="course"
                 v-model="selectedCourses" />
-              <label class="form-check-label" :for="'course-' + course.id">
+              <label @click="toggleCourseSelection(course)" class="form-check-label" :for="'course-' + course.id" >
                 {{ course.beoordelingscriteria }}
               </label>
             </div>
             <!-- Criteria Selection for the Course -->
             <div v-if="selectedCourses.includes(course)" class="mt-2">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-fixed">
                 <thead>
                   <tr>
-                    <th>Criteria</th>
-                    <th>Criteriabeschrijving</th>
-                    <th>Huidige beoordeling</th>
-                    <th>Selecteer</th>
+                    <th style="width: 10%;">Criteria</th>
+                    <th style="width: 60%;">Criteriabeschrijving</th>
+                    <th style="width: 10%;">Eindbeoordeling</th>
+                    <th style="width: 5%;">Selecteer</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="(criterion, criterionIndex) in course.criteriaProgress" :key="criterion.id">
                     <td style="white-space: pre-wrap;">{{ criterion.name }}</td>
                     <td style="white-space: pre-wrap;">{{ criterion.verantwoording || 'N/A' }}</td>
-                    <td>{{ criterion.grade }}</td>
-                    <td>
-                      <input class="form-check-input" type="checkbox" :id="'criterion-' + criterion.id"
-                        :value="criterion" v-model="selectedCriteria" />
+                    <td :class="getBadgeClass(criterion.grade)">{{ criterion.grade }}</td>
+                    <td @click="toggleCriterionSelection(criterion)" style="cursor: pointer;">
+                      <input class="form-check-input select-criteria-box" type="checkbox" :id="'criterion-' + criterion.id"
+                      :value="criterion" v-model="selectedCriteria" @click.stop />
                     </td>
                   </tr>
                 </tbody>
@@ -75,18 +75,9 @@
           <ul class="list-group">
             <li v-for="(criterion, index) in selectedCriteria" :key="index"
               class="list-group-item d-flex justify-content-between align-items-center">
-              <span class="me-3" @click="openOverlay(criterion)" style="cursor: pointer;">
+              <span class="me-3 nav-link" @click="openOverlay(criterion)" style="cursor: pointer;">
                 {{ criterion.name }}
               </span>
-
-              <!-- Overlay -->
-              <div v-if="overlayVisible" class="overlay" @click="closeOverlay">
-                <div class="overlay-content" @click.stop>
-                  <h3 class="h5">{{ overlayContent.name }}</h3>
-                  <p>{{ overlayContent.verantwoording }}</p>
-                  <button @click="closeOverlay" class="btn btn-secondary mt-3">Close</button>
-                </div>
-              </div>
               <button @click="removeCriteria(index)" class="btn btn-sm btn-danger">Remove</button>
             </li>
           </ul>
@@ -94,10 +85,21 @@
       </div>
     </div>
 
+    <!-- Overlay -->
+    <div v-if="overlayVisible" class="overlay" @click="closeOverlay">
+      <div class="overlay-content" @click.stop>
+        <h3 class="h5">{{ overlayContent.name }}</h3>
+        <p>{{ overlayContent.verantwoording }}</p>
+        <button @click="closeOverlay" class="btn btn-secondary mt-3">Close</button>
+      </div>
+    </div>
+
     <!-- Save Button -->
     <button @click="saveProject" class="btn btn-primary">Save Project</button>
   </div>
 </template>
+
+<style scoped></style>
 
 <script setup>
 import { ref } from 'vue';
@@ -178,6 +180,59 @@ const closeOverlay = () => {
   overlayVisible.value = false;
   overlayContent.value = '';
 };
+
+const getBadgeClass = (beoordeling) => {
+  // if(isProjectAwaitingTeacher) {
+  //   return 'badge bg-warning text-white';
+  // }
+  if (beoordeling === "Goed") {
+    return 'badge bg-success text-white';
+  } else if (beoordeling === "Voldoende") {
+    return 'badge bg-info text-white';
+  } else {
+    return 'badge bg-danger text-white';
+  }
+};
+
+const getCriteriumClass = (beoordeling) => {
+  if (beoordeling === "Goed") {
+    return 'bg-success-subtle';
+  } else if (beoordeling === "Voldoende") {
+    return 'bg-info-subtle';
+  } else {
+    return 'bg-danger-subtle';
+  }
+};
+
+const getRowClass = (beoordeling) => {
+  switch (beoordeling) {
+    case 'Goed':
+      return 'table-success';
+    case 'Voldoende':
+      return 'table-info';
+    case 'Onvoldoende':
+      return 'table-danger';
+  }
+};
+
+const toggleCriterionSelection = (criterion) => {
+  const index = selectedCriteria.value.indexOf(criterion);
+  if (index > -1) {
+    selectedCriteria.value.splice(index, 1);
+  } else {
+    selectedCriteria.value.push(criterion);
+  }
+};
+
+const toggleCourseSelection = (course) => {
+  const index = selectedCourses.value.indexOf(course);
+  if (index > -1) {
+    selectedCourses.value.splice(index, 1);
+  } else {
+    selectedCourses.value.push(course);
+  }
+};
+
 </script>
 
 <style scoped>
