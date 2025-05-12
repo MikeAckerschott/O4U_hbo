@@ -8,7 +8,7 @@
 
     <!-- Criteria Switches -->
     <div class="mb-4">
-      <h2 class="h4 mb-3">Select Criteria</h2>
+      <h2 class="h4 mb-3">Geselecteerde criteria</h2>
       <div class="list-group">
         <div v-for="criterion in onderbouwdeCriteria" :key="criterion.id" class="list-group-item">
           <div class="form-check form-switch">
@@ -24,8 +24,8 @@
 
     <!-- Dynamic Text Boxes -->
     <div v-if="activeCriteria.length > 0">
-      <h2 class="h4 mb-3" v-if="isProjectActive">Justify Your Work</h2>
-      <h2 class="h4 mb-3" v-if="!isProjectActive">Your Work</h2>
+      <h2 class="h4 mb-3" v-if="isProjectActive">Onderbouw je werk</h2>
+      <h2 class="h4 mb-3" v-if="!isProjectActive">Onderbouwing</h2>
       <div v-for="criterion in activeCriteria" :key="criterion.id"
         :class="['card', 'mb-3', getCriteriumClass(criterion.grade)]">
         <div class="card-body">

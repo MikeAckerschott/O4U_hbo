@@ -11,9 +11,9 @@ export const student_projects = ref({
     },
     "Intro ICT beroepsproduct": {
         id: 1, running: true, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
-            "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...1", feedback: "Feedback", grade: "Goed" },
-            "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...2", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...3", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback", grade: "Goed" },
+            "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
         },
     },
     "EPD Spoorwegovergang simulatie": {

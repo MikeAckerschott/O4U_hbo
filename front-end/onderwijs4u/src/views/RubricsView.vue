@@ -2,7 +2,7 @@
   <div class="container-fluid mt-5">
     <div class="row mb-3">
       <div class="col-md-2">
-        <label for="WerkprocesFilter" class="form-label">Selected Workprocess:</label>
+        <label for="WerkprocesFilter" class="form-label">Jaar:</label>
         <select id="WerkprocesFilter" v-model="currentWerkProces" @change="filterData" class="form-select">
           <option v-for="year, index in data[0].years" :key="year" :value="index">{{
             year.description }}</option>
@@ -12,7 +12,7 @@
         <div class="d-flex justify-content-end">
           <div class="chart-container me-3">
             <div class="donut-chart" :style="getDonutStyle(percentageCompleted, '#007bff')"></div>
-            <div class="chart-label">Completed</div>
+            <div class="chart-label">Voltooid</div>
           </div>
         </div>
       </div>

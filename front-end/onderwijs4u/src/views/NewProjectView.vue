@@ -1,17 +1,17 @@
 <template>
   <div class="container mt-5">
-    <h1 class="mb-4">Create a New Project</h1>
+    <h1 class="mb-4">Vraag een nieuw project aan</h1>
 
     <!-- Project Name Input -->
     <div class="mb-4">
-      <label for="projectName" class="form-label h5">Project Name</label>
+      <label for="projectName" class="form-label h5">Projectnaam</label>
       <input id="projectName" v-model="newProject.name" type="text" class="form-control"
         placeholder="Enter project name" />
     </div>
 
     <!-- Project Description Input -->
     <div class="mb-4">
-      <label for="projectDescription" class="form-label h5">Project Description</label>
+      <label for="projectDescription" class="form-label h5">Projectbeschrijving</label>
       <textarea id="projectDescription" v-model="newProject.description" class="form-control"
         placeholder="Enter project description" rows="4"></textarea>
     </div>
@@ -30,7 +30,7 @@
     <div v-if="selectedYear" class="mb-4 d-flex align-items-start">
       <!-- Course Selection -->
       <div class="flex-grow-1 me-3">
-        <h2 class="h5">Courses: </h2>
+        <h2 class="h5">Course: </h2>
         <div class="list-group">
           <div v-for="(course, courseIndex) in selectedYear.courses" :key="course.id" class="list-group-item">
             <div class="form-check" @click="toggleCourseSelection(course)">
