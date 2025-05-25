@@ -33,7 +33,7 @@
                   <i :class="getSortIcon('beoordeling')"></i>
                 </th>
                 <th @click="" class="cursor-pointer">
-                  Linked projects
+                  Projecten
                   <i></i>
                 </th>
 

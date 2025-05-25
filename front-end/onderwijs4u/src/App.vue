@@ -11,7 +11,7 @@
       <div class="blob"></div>
     </main>
     <footer>
-      <p>© 2024 My Website</p>
+      <p>© 2025 Onderwijs4U</p>
     </footer>
   </div>
 </template>

@@ -1,21 +1,21 @@
 <template>
   <div class="container mt-5">
-    <h1 class="mb-4">Student Progress Overview</h1>
+    <h1 class="mb-4">Studentenvoortgang</h1>
 
     <div class="table-responsive">
       <table class="table table-hover">
         <thead>
           <tr>
             <th @click="sort('name')" class="sortable">
-              Name
+              Naamn
               <SortIcon :active="sortColumn === 'name'" :ascending="sortOrder === 'asc'" />
             </th>
             <th @click="sort('progress')" class="sortable">
-              Progress
+              Voortgang
               <SortIcon :active="sortColumn === 'progress'" :ascending="sortOrder === 'asc'" />
             </th>
             <th @click="sort('yearOfStudy')" class="sortable">
-              Year of Study
+              Studiejaar
               <SortIcon :active="sortColumn === 'yearOfStudy'" :ascending="sortOrder === 'asc'" />
             </th>
             <th @click="sort('needForHelp')" class="sortable">
@@ -92,46 +92,46 @@ const SortIcon = {
 }
 
 const students = ref([
-  { id: 1, name: 'Alice Johnson', progress: 75, yearOfStudy: 3 },
-  { id: 2, name: 'Bob Smith', progress: 45, yearOfStudy: 2 },
-  { id: 3, name: 'Charlie Brown', progress: 90, yearOfStudy: 4 },
-  { id: 4, name: 'Diana Prince', progress: 30, yearOfStudy: 4 },
-  { id: 5, name: 'Ethan Hunt', progress: 60, yearOfStudy: 3 },
-  { id: 6, name: 'Fiona Gallagher', progress: 15, yearOfStudy: 1 },
-  { id: 7, name: 'George Weasley', progress: 50, yearOfStudy: 2 },
-  { id: 8, name: 'Hermione Granger', progress: 95, yearOfStudy: 3 },
-  { id: 9, name: 'Ian Malcolm', progress: 40, yearOfStudy: 4 },
-  { id: 10, name: 'Julia Child', progress: 70, yearOfStudy: 3 },
-  { id: 11, name: 'Kevin Hart', progress: 55, yearOfStudy: 2 },
-  { id: 12, name: 'Lila Rodriguez', progress: 85, yearOfStudy: 4 },
-  { id: 13, name: 'Mike Tyson', progress: 20, yearOfStudy: 1 },
-  { id: 14, name: 'Nancy Drew', progress: 65, yearOfStudy: 3 },
-  { id: 15, name: 'Oscar Wilde', progress: 60, yearOfStudy: 4 },
-  { id: 16, name: 'Penny Lane', progress: 35, yearOfStudy: 2 },
-  { id: 17, name: 'Quentin Tarantino', progress: 70, yearOfStudy: 3 },
-  { id: 18, name: 'Rachel Green', progress: 50, yearOfStudy: 2 },
-  { id: 19, name: 'Steve Jobs', progress: 95, yearOfStudy: 4 },
-  { id: 20, name: 'Tina Fey', progress: 60, yearOfStudy: 3 },
-  { id: 21, name: 'Uma Thurman', progress: 40, yearOfStudy: 2 },
-  { id: 22, name: 'Vincent Vega', progress: 75, yearOfStudy: 3 },
-  { id: 23, name: 'Walter White', progress: 85, yearOfStudy: 4 },
-  { id: 24, name: 'Xena Warrior', progress: 30, yearOfStudy: 1 },
-  { id: 25, name: 'Yoda Master', progress: 100, yearOfStudy: 4 },
-  { id: 26, name: 'Zack Morris', progress: 55, yearOfStudy: 2 },
-  { id: 27, name: 'Amy Winehouse', progress: 70, yearOfStudy: 3 },
-  { id: 28, name: 'Bruce Wayne', progress: 90, yearOfStudy: 4 },
-  { id: 29, name: 'Carrie Bradshaw', progress: 65, yearOfStudy: 3 },
-  { id: 30, name: 'Darth Vader', progress: 80, yearOfStudy: 4 },
-  { id: 31, name: 'Emma Watson', progress: 95, yearOfStudy: 4 },
-  { id: 32, name: 'Frodo Baggins', progress: 50, yearOfStudy: 2 },
-  { id: 33, name: 'Gollum Smeagol', progress: 25, yearOfStudy: 1 },
-  { id: 34, name: 'Harry Potter', progress: 85, yearOfStudy: 4 },
-  { id: 35, name: 'Indiana Jones', progress: 70, yearOfStudy: 3 },
-  { id: 36, name: 'Jack Sparrow', progress: 60, yearOfStudy: 2 },
-  { id: 37, name: 'Katniss Everdeen', progress: 80, yearOfStudy: 3 },
-  { id: 38, name: 'Luke Skywalker', progress: 90, yearOfStudy: 4 },
-  { id: 39, name: 'Marty McFly', progress: 75, yearOfStudy: 3 },
-  { id: 40, name: 'Neo Anderson', progress: 95, yearOfStudy: 4 },
+  { id: 1, name: 'Jan de Vries', progress: 75, yearOfStudy: 3 },
+  { id: 2, name: 'Sanne Jansen', progress: 45, yearOfStudy: 2 },
+  { id: 3, name: 'Pieter Bakker', progress: 90, yearOfStudy: 4 },
+  { id: 4, name: 'Lisa Visser', progress: 30, yearOfStudy: 4 },
+  { id: 5, name: 'Tom Smit', progress: 60, yearOfStudy: 3 },
+  { id: 6, name: 'Emma de Jong', progress: 15, yearOfStudy: 1 },
+  { id: 7, name: 'Daan Mulder', progress: 50, yearOfStudy: 2 },
+  { id: 8, name: 'Sophie Meijer', progress: 95, yearOfStudy: 3 },
+  { id: 9, name: 'Lars de Boer', progress: 40, yearOfStudy: 4 },
+  { id: 10, name: 'Julia de Groot', progress: 70, yearOfStudy: 3 },
+  { id: 11, name: 'Rik Bos', progress: 55, yearOfStudy: 2 },
+  { id: 12, name: 'Noa Vos', progress: 85, yearOfStudy: 4 },
+  { id: 13, name: 'Milan Kuiper', progress: 20, yearOfStudy: 1 },
+  { id: 14, name: 'Eva de Leeuw', progress: 65, yearOfStudy: 3 },
+  { id: 15, name: 'Luuk de Bruin', progress: 60, yearOfStudy: 4 },
+  { id: 16, name: 'Tess de Wit', progress: 35, yearOfStudy: 2 },
+  { id: 17, name: 'Bram van Dijk', progress: 70, yearOfStudy: 3 },
+  { id: 18, name: 'Lotte van Dam', progress: 50, yearOfStudy: 2 },
+  { id: 19, name: 'Finn van den Berg', progress: 95, yearOfStudy: 4 },
+  { id: 20, name: 'Sara van der Meer', progress: 60, yearOfStudy: 3 },
+  { id: 21, name: 'Jesse de Lange', progress: 40, yearOfStudy: 2 },
+  { id: 22, name: 'Nina van Vliet', progress: 75, yearOfStudy: 3 },
+  { id: 23, name: 'Sem van Leeuwen', progress: 85, yearOfStudy: 4 },
+  { id: 24, name: 'Fleur van den Heuvel', progress: 30, yearOfStudy: 1 },
+  { id: 25, name: 'Timo van Beek', progress: 100, yearOfStudy: 4 },
+  { id: 26, name: 'Maud van der Linden', progress: 55, yearOfStudy: 2 },
+  { id: 27, name: 'Stijn van der Wal', progress: 70, yearOfStudy: 3 },
+  { id: 28, name: 'Lieke van der Ven', progress: 90, yearOfStudy: 4 },
+  { id: 29, name: 'Jill van der Laan', progress: 65, yearOfStudy: 3 },
+  { id: 30, name: 'Koen van der Horst', progress: 80, yearOfStudy: 4 },
+  { id: 31, name: 'Roos van der Pol', progress: 95, yearOfStudy: 4 },
+  { id: 32, name: 'Sven van der Zee', progress: 50, yearOfStudy: 2 },
+  { id: 33, name: 'Mila van der Meulen', progress: 25, yearOfStudy: 1 },
+  { id: 34, name: 'Sam van der Linden', progress: 85, yearOfStudy: 4 },
+  { id: 35, name: 'Jade van der Steen', progress: 70, yearOfStudy: 3 },
+  { id: 36, name: 'Thijs van der Werf', progress: 60, yearOfStudy: 2 },
+  { id: 37, name: 'Lynn van der Heijden', progress: 80, yearOfStudy: 3 },
+  { id: 38, name: 'Gijs van der Veer', progress: 90, yearOfStudy: 4 },
+  { id: 39, name: 'Mick van der Linden', progress: 75, yearOfStudy: 3 },
+  { id: 40, name: 'Saar van der Linden', progress: 95, yearOfStudy: 4 },
 ])
 
 const sortColumn = ref('needForHelp')

@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <button @click="enterAsStudent" class="left-button">Enter App as Student</button>
+    <button @click="enterAsStudent" class="left-button">Studentenportaal</button>
     <div class="image-container">
       <img src="@/assets/onderwijs4u.png" alt="Spinning Image" class="spinning-image" />
     </div>
-    <button @click="enterAsTeacher" class="right-button">Enter App as Teacher</button>
+    <button @click="enterAsTeacher" class="right-button">Leraarportaal</button>
   </div>
 </template>
 

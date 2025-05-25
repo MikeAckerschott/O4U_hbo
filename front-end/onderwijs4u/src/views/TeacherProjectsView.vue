@@ -27,14 +27,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in paginatedData" :key="item.id" :class="{'table-success': item.status === 'active', 'table-danger': item.status === 'inactive'}">
+              <tr v-for="item in paginatedData" :key="item.id"
+                :class="{ 'table-success': item.status === 'active', 'table-danger': item.status === 'inactive' }">
                 <td>
-                  <RouterLink class="nav-link" :to="`/teacherproject/${item.project}`">
-                    {{ item.project }}
+                  <RouterLink class="nav-link text-nowrap" :to="`/teacherproject/${item.projectName}`">
+                    {{ item.projectName }}
                   </RouterLink>
                 </td>
                 <td>
-                  <span :class="{'badge bg-success': item.status === 'active', 'badge bg-danger': item.status === 'inactive'}">
+                  <span
+                    :class="{ 'badge bg-success': item.status === 'active', 'badge bg-danger': item.status === 'inactive' }">
                     {{ item.status === 'active' ? 'Active' : 'Inactive' }}
                   </span>
                 </td>
@@ -61,17 +63,32 @@
 </template>
 
 <script>
+import { student_projects } from '@/dummydata/dummydata.js';
+
 export default {
   data() {
+    // If student_projects is a ref, use .value
+    const projectsRaw = student_projects.value ? student_projects.value : student_projects;
+
+    // Only include actual project keys (filter out anything that's not an object with expected fields)
+    const projectsArray = Object.entries(projectsRaw)
+      .filter(([key, value]) => value && typeof value === 'object' && 'running' in value)
+      .map(([key, value], idx) => ({
+        id: idx + 1,
+        projectName: key,
+        ...value,
+        status: value.awaitingTeacher
+          ? 'awaiting'
+          : value.running === true
+            ? 'active'
+            : 'inactive',
+      }));
+
     return {
       selectedStatus: '',
       currentPage: 1,
       itemsPerPage: 10,
-      projects: [
-        { id: 1, project: 'Project A', status: 'active' },
-        { id: 2, project: 'Project B', status: 'inactive' },
-        // Add more project data here
-      ],
+      projects: projectsArray,
       sortKey: '',
       sortOrders: {
         project: 1,

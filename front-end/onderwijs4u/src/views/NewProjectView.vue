@@ -6,14 +6,14 @@
     <div class="mb-4">
       <label for="projectName" class="form-label h5">Projectnaam</label>
       <input id="projectName" v-model="newProject.name" type="text" class="form-control"
-        placeholder="Enter project name" />
+        placeholder="" />
     </div>
 
     <!-- Project Description Input -->
     <div class="mb-4">
       <label for="projectDescription" class="form-label h5">Projectbeschrijving</label>
       <textarea id="projectDescription" v-model="newProject.description" class="form-control"
-        placeholder="Enter project description" rows="4"></textarea>
+        placeholder="In dit project maak ik..." rows="4"></textarea>
     </div>
 
     <!-- Year Selection -->
@@ -71,14 +71,14 @@
       <!-- Selected Criteria Box -->
       <div class="selection-holders">
         <div v-if="selectedCriteria.length > 0" class="selected-courses-box">
-          <h2 class="h5">Selected Criteria</h2>
+          <h2 class="h5">Geselecteerde criteria</h2>
           <ul class="list-group">
             <li v-for="(criterion, index) in selectedCriteria" :key="index"
               class="list-group-item d-flex justify-content-between align-items-center">
               <span class="me-3 nav-link" @click="openOverlay(criterion)" style="cursor: pointer;">
                 {{ criterion.name }}
               </span>
-              <button @click="removeCriteria(index)" class="btn btn-sm btn-danger">Remove</button>
+              <button @click="removeCriteria(index)" class="btn btn-sm btn-danger">Verwijder</button>
             </li>
           </ul>
         </div>
@@ -87,15 +87,15 @@
 
     <!-- Overlay -->
     <div v-if="overlayVisible" class="overlay" @click="closeOverlay">
-      <div class="overlay-content" @click.stop>
-        <h3 class="h5">{{ overlayContent.name }}</h3>
-        <p>{{ overlayContent.verantwoording }}</p>
-        <button @click="closeOverlay" class="btn btn-secondary mt-3">Close</button>
+      <div class="overlay-content position-relative" @click.stop>
+      <button @click="closeOverlay" class="btn btn-close position-absolute top-0 end-0 m-2" aria-label="Close"></button>
+      <h3 class="h5 mt-2">{{ overlayContent.name }}</h3>
+      <p>{{ overlayContent.verantwoording }}</p>
       </div>
     </div>
 
     <!-- Save Button -->
-    <button @click="saveProject" class="btn btn-primary">Save Project</button>
+    <button @click="saveProject" class="btn btn-primary">Verstuur aanvraag</button>
   </div>
 </template>
 
