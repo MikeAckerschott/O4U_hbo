@@ -143,8 +143,8 @@ const saveProject = () => {
   const criteriaToReach = {};
   selectedCriteria.value.forEach((criterion) => {
     criteriaToReach[criterion.name] = {
-      studentVerantwoording: 'Vul hier je bewijslast in.',
-      feedback: 'Leraar feedback',
+      studentVerantwoording: '',
+      feedback: '',
       grade: 'Onvoldoende',
       awaitingTeacher: true,
     };

@@ -4,7 +4,7 @@
 
     <!-- Students Row -->
     <div class="row mb-4">
-      <h3 class="mb-3">Project Participants</h3>
+      <h3 class="mb-3">Project deelnemers</h3>
       <div v-for="student in students" :key="student.id" class="col-md-2 col-sm-4 col-6 mb-3 text-center">
         <div class="d-flex flex-column align-items-center">
           <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center" style="width: 100px; height: 100px;">
@@ -55,12 +55,12 @@ const project = route.params.project
 
 // Mock data for students
 const students = ref([
-  { id: 1, name: 'Alice' },
-  { id: 2, name: 'Bob' },
-  { id: 3, name: 'Charlie' },
-  { id: 4, name: 'Diana' },
-  { id: 5, name: 'Ethan' },
-  { id: 6, name: 'Fiona' },
+  { id: 1, name: 'Jan' },
+  { id: 2, name: 'Sanne' },
+  { id: 3, name: 'Pieter' },
+  { id: 4, name: 'Lisa' },
+  { id: 5, name: 'Tom' },
+  { id: 6, name: 'Emma' },
 ]);
 
 // Mock data for project timeline

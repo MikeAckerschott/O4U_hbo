@@ -4,9 +4,10 @@
       <div class="col-md-3">
         <label for="statusFilter" class="form-label">Filter op Status:</label>
         <select id="statusFilter" v-model="selectedStatus" @change="filterData" class="form-select">
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
-          <option value="">All</option>
+          <option value="active">Draaiend</option>
+          <option value="inactive">Afgerond</option>
+          <option value="awaiting">Afwachtend op goedkeuring</option>
+          <option value="">Alles</option>
         </select>
       </div>
     </div>
