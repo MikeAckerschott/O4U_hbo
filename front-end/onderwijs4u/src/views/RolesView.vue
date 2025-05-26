@@ -19,13 +19,13 @@ export default {
     enterAsLoopbaancoach() {
       sessionStorage.setItem('teacherrole', 'loopbaancoach');
       this.$router.push('/coach').then(() => {
-        window.location.reload();
+        // window.location.reload();
       });
     },
     enterAsProductowner() {
       sessionStorage.setItem('teacherrole', 'productowner');
       this.$router.push('/teacherprojects').then(() => {
-        window.location.reload();
+        // window.location.reload();
       });
     }
   }

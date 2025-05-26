@@ -7,7 +7,7 @@
         <thead>
           <tr>
             <th @click="sort('name')" class="sortable">
-              Naamn
+              Naam
               <SortIcon :active="sortColumn === 'name'" :ascending="sortOrder === 'asc'" />
             </th>
             <th @click="sort('progress')" class="sortable">

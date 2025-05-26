@@ -2,11 +2,11 @@
   <div class="container-fluid mt-5">
     <div class="row mb-3">
       <div class="col-md-3">
-        <label for="statusFilter" class="form-label">Filter by Status:</label>
+        <label for="statusFilter" class="form-label">Filter op Status:</label>
         <select id="statusFilter" v-model="selectedStatus" @change="filterData" class="form-select">
-          <option value="">All</option>
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
+          <option value="">All</option>
         </select>
       </div>
     </div>
@@ -27,17 +27,25 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in paginatedData" :key="item.id"
-                :class="{ 'table-success': item.status === 'active', 'table-danger': item.status === 'inactive' }">
+              <tr v-for="item in paginatedData" :key="item.id" :class="{
+                'table-warning': item.status === 'awaiting',
+                'table-info': item.status === 'active',
+                'table-success': item.status === 'inactive'
+              }">
                 <td>
                   <RouterLink class="nav-link text-nowrap" :to="`/teacherproject/${item.projectName}`">
                     {{ item.projectName }}
                   </RouterLink>
                 </td>
                 <td>
-                  <span
-                    :class="{ 'badge bg-success': item.status === 'active', 'badge bg-danger': item.status === 'inactive' }">
-                    {{ item.status === 'active' ? 'Active' : 'Inactive' }}
+                  <span :class="{
+                    'badge text-bg-warning text-white': item.status === 'awaiting',
+                    'badge text-bg-info text-white': item.status === 'active',
+                    'badge text-bg-success text-white': item.status === 'inactive'
+                  }">
+                    {{ item.status === 'awaiting'
+                      ? 'Afwachtend op goedkeuring'
+                      : (item.status === 'active' ? 'Draaiend' : 'Afgerond') }}
                   </span>
                 </td>
               </tr>
@@ -85,7 +93,7 @@ export default {
       }));
 
     return {
-      selectedStatus: '',
+      selectedStatus: 'active',
       currentPage: 1,
       itemsPerPage: 10,
       projects: projectsArray,

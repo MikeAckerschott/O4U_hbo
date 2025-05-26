@@ -2,7 +2,7 @@
   <div class="container-fluid mt-5">
     <div class="row mb-3">
       <div class="col-md-3">
-        <label for="beoordelingFilter" class="form-label">Filter by Beoordeling:</label>
+        <label for="beoordelingFilter" class="form-label">Filter op Beoordeling:</label>
         <select id="beoordelingFilter" v-model="selectedBeoordeling" @change="filterData" class="form-select">
           <option value="">All</option>
           <option v-for="beoordeling in uniqueBeoordelingen" :key="beoordeling" :value="beoordeling">{{ beoordeling }}

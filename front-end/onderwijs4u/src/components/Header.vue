@@ -1,7 +1,7 @@
 <template>
   <nav :class="['navbar', 'navbar-expand-lg']" :style="{ backgroundColor: navbarColorClass }">
     <div class="container-fluid">
-      <RouterLink class="nav-link" to="/" @click="this.role = 'guest'"> <!-- reset header bar  -->
+      <RouterLink class="nav-link" @click.prevent="resetHeaderBar" to="/"> <!-- reset header bar  -->
         <img src="@/assets/onderwijs4u.png" alt="Onderwijs4U" class="navbar-logo" />
       </RouterLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -14,7 +14,7 @@
             <RouterLink class="nav-link" to="/rubrics">Rubrics</RouterLink>
           </li>
 
-          <li class="nav-item dropdown" v-if="role === 'student' && teacherrole === 'loopbaancoach'">
+          <li class="nav-item dropdown" v-if="role === 'student'">
             <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
               Projecten
@@ -35,11 +35,11 @@
 
 
           <li class="nav-item" v-if="role === 'teacher'">
-            <RouterLink class="nav-link" to="/roles">Roles</RouterLink>
+            <RouterLink class="nav-link" to="/roles">Portal</RouterLink>
           </li>
 
           <li class="nav-item" v-if="role === 'teacher' && teacherrole === 'loopbaancoach'">
-            <RouterLink class="nav-link" to="/coach">Students</RouterLink>
+            <RouterLink class="nav-link" to="/coach">Studenten</RouterLink>
           </li>
 
 
@@ -94,6 +94,14 @@ export default {
       this.$router.push('/').then(() => {
         window.location.reload();
       });
+    },
+    resetHeaderBar() {
+      sessionStorage.setItem('role', 'guest');
+      sessionStorage.setItem('teacherrole', 'loopbaancoach');
+      sessionStorage.setItem('navcolor', '#f8f9fa');
+      this.getRoleFromSession();
+      this.getNavColorFromSession();
+      this.$router.push('/');
     }
   },
   computed: {
