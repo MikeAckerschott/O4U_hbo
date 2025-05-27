@@ -2,7 +2,7 @@ import { ref } from 'vue'
 
 export const student_projects = ref({
     "OOPD Game 2": {
-        id: 1, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
+        id: 1, running: false, awaitingTeacher: true, description: 'beroepsproduct', criteriaToReach: {
             "OOPD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
             "OOPD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
             "OOPD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
@@ -151,7 +151,7 @@ export const school_criteria = ref([
                     {
                         id: 1, beoordelingscriteria: 'OSM-MO', fase: 'Ontwikkeling', criteria: [
                             { id: 1, name: 'OSM-MO-1', verantwoording: '• Gebruikt en beschrijft op correcte wijze de UML syntax van een use case diagram (inclusief visualisatie).\n• Kan verwoorden hoe het ontwerpproces zich verhoudt tot het gehele software engineeringstraject.\n• Stelt use cases UI-onafhankelijk op en maakt gebruik van black-box formulering.', },
-                            { id: 2, name: 'OSM-MO-2', verantwoording: '• Kan motiveren waarom en wanneer we een modelling-taal en in het bijzonder UML gebruikt wordt.\n• Kan software/hardware-systemen benoemen met daarbij een use-case.\n• Kan uitleggen wat het verschil tussen abstract en concreet is en wat dat betekent in het kader van een softwareontwerp.\n• Maakt gebruik van tooling die beschikbaar is voor het maken van een ontwerp met behulp van UML.\n• ', },
+                            { id: 2, name: 'OSM-MO-2', verantwoording: '• Kan motiveren waarom en wanneer we een modelling-taal en in het bijzonder UML gebruikt wordt.\n• Kan software/hardware-systemen benoemen met daarbij een use-case.\n• Kan uitleggen wat het verschil tussen abstract en concreet is en wat dat betekent in het kader van een softwareontwerp.\n• Maakt gebruik van tooling die beschikbaar is voor het maken van een ontwerp met behulp van UML.', },
                             { id: 3, name: 'OSM-MO-3', verantwoording: '• Gebruikt en beschrijft op correcte wijze de UML syntax van een sequence-diagram (inclusief visualisatie).', },
                             { id: 4, name: 'OSM-MO-4', verantwoording: '• Gebruikt en beschrijft op correcte wijze de UML syntax van een activity- en state-diagram (inclusief visualisatie).', },
                             { id: 5, name: 'OSM-MO-5', verantwoording: '• Gebruikt en beschrijft op correcte wijze de UML syntax van een class-diagram (inclusief visualisatie).\n• Geeft visibility aan van alle operaties en attributen in een class diagram en toont welke rollen van een associatie navigeerbaar zijn.', },
@@ -290,6 +290,23 @@ export const school_criteria = ref([
     }
 ]);
 
+// Make an object where each key is the criteria name and the value is the verantwoording
+
+export const mappedCriteria = ref(
+    school_criteria.value.reduce((acc, schoolYear) => {
+        schoolYear.years.forEach((year) => {
+            year.courses.forEach((course) => {
+                course.criteria.forEach((criterion) => {
+                    acc[criterion.name] = criterion.verantwoording;
+                });
+            });
+        });
+        return acc;
+    }, {})
+);
+
+console.log("Mapped Criteria:", mappedCriteria.value);
+
 export const student_progression = ref(
     school_criteria.value.flatMap((schoolYear) => {
         return schoolYear.years.map((year) => {
@@ -342,6 +359,9 @@ export const student_progression = ref(
         });
     })
 );
+
+
+
 
 console.log(student_progression.value);
 

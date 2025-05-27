@@ -155,12 +155,21 @@ const getCriteriaDescriptionFromName = (name) => {
 };
 
 const saveText = (criterion) => {
+  // Save the text to the correct project and criterion in student_projects
+  if (
+    student_projects.value[project] &&
+    student_projects.value[project].criteriaToReach &&
+    student_projects.value[project].criteriaToReach[criterion.id]
+  ) {
+    student_projects.value[project].criteriaToReach[criterion.id].studentVerantwoording = criterion.text;
+  }
+
   // Emit an event to the parent component with the criterion and its text
-  emit('save-criterion', { id: criterion.id, text: criterion.text })
+  emit('save-criterion', { id: criterion.id, text: criterion.text });
 
   // For demonstration purposes, we'll just log to the console
-  console.log(`Saving for ${criterion.name}:`, criterion.text)
-}
+  console.log(`Saving for ${criterion.name}:`, criterion.text);
+};
 
 // Define the emit function for use in the template
 const emit = defineEmits(['save-criterion'])

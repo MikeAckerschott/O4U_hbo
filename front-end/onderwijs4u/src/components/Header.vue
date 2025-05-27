@@ -28,33 +28,17 @@
               </li>
             </ul>
           </li>
-
           <li class="nav-item" v-if="role === 'student'">
             <RouterLink class="nav-link" to="/game">Rewards</RouterLink>
           </li>
-
-
           <li class="nav-item" v-if="role === 'teacher'">
             <RouterLink class="nav-link" to="/roles">Portal</RouterLink>
           </li>
-
+          <li class="nav-item" v-if="role === 'teacher' && teacherrole === 'productowner'">
+            <RouterLink class="nav-link" to="/teacherprojects">Projecten</RouterLink>
+          </li>
           <li class="nav-item" v-if="role === 'teacher' && teacherrole === 'loopbaancoach'">
             <RouterLink class="nav-link" to="/coach">Studenten</RouterLink>
-          </li>
-
-
-
-          <li class="nav-item dropdown" v-if="role === 'teacher' && teacherrole === 'loopbaancoach'">
-            <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-bell"></i>
-              <span class="badge">1</span>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="notificationDropdown">
-              <li>
-                <RouterLink class="dropdown-item" to="/graduation">Rick passed their exam!!!! ^_^</RouterLink>
-              </li>
-            </ul>
           </li>
         </ul>
       </div>
