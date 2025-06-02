@@ -20,7 +20,7 @@
         <thead class="table-light">
           <tr>
             <th @click="sort('beoordelingscriteria')" class="cursor-pointer">
-              Rubrics
+              Courses
               <i :class="getSortIcon('beoordelingscriteria')"></i>
             </th>
             <th @click="sort('fase')" class="cursor-pointer">

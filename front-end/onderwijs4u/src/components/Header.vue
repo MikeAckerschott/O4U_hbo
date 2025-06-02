@@ -11,7 +11,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item" v-if="role === 'student'">
-            <RouterLink class="nav-link" to="/rubrics">Rubrics</RouterLink>
+            <RouterLink class="nav-link" to="/rubrics">Courses</RouterLink>
           </li>
 
           <li class="nav-item dropdown" v-if="role === 'student'">

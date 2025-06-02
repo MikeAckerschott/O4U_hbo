@@ -47,13 +47,13 @@
         <nav aria-label="Page navigation">
           <ul class="pagination justify-content-center">
             <li class="page-item" :class="{ disabled: currentPage === 1 }">
-              <a class="page-link" href="#" @click.prevent="changePage(currentPage - 1)">Previous</a>
+              <a class="page-link" href="#" @click.prevent="changePage(currentPage - 1)">Vorige</a>
             </li>
             <li v-for="page in totalPages" :key="page" class="page-item" :class="{ active: currentPage === page }">
               <a class="page-link" href="#" @click.prevent="changePage(page)">{{ page }}</a>
             </li>
             <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-              <a class="page-link" href="#" @click.prevent="changePage(currentPage + 1)">Next</a>
+              <a class="page-link" href="#" @click.prevent="changePage(currentPage + 1)">Volgende</a>
             </li>
           </ul>
         </nav>

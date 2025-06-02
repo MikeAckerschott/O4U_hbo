@@ -2,7 +2,7 @@
   <div class="container">
     <button @click="enterAsStudent" class="left-button">Studentenportaal</button>
     <div class="image-container">
-      <img src="@/assets/onderwijs4u.png" alt="Spinning Image" class="spinning-image" />
+      <img src="@/assets/onderwijs4u_center.png" alt="Spinning Image" class="spinning-image" />
     </div>
     <button @click="enterAsTeacher" class="right-button">Leraarportaal</button>
   </div>
