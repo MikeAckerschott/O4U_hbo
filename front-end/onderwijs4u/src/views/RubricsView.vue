@@ -76,7 +76,6 @@ import CourseTableRow from '@/components/CourseTableRow.vue'; // Import the new 
 
 const data = ref(school_criteria); // Initialize data with student projects
 
-console.log("DATA", data.value)
 
 const sortKey = ref('');
 const sortOrder = ref('asc');
@@ -295,8 +294,6 @@ const getCriteriaFromCourse = (course) => {
   return data.value[0].years[currentWerkProces.value].courses.find(item => item.beoordelingscriteria === course);
 }
 
-console.log("attached Projects course: ", getAttachedProjectsFromCourse("WoR-Pr"));
-console.log("attached Projects criterium: ", getAttachedProjectsFromCriterium("WoR-P-1"));
 </script>
 
 <style>

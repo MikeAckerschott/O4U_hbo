@@ -28,9 +28,6 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item" v-if="role === 'student'">
-            <RouterLink class="nav-link" to="/game">Rewards</RouterLink>
-          </li>
           <li class="nav-item" v-if="role === 'teacher'">
             <RouterLink class="nav-link" to="/roles">Portal</RouterLink>
           </li>

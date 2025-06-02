@@ -107,7 +107,6 @@ if (rubricId.value) {
   if (year) {
     const course = year.courses.find(c => c.beoordelingscriteria === rubricId.value);
     if (course) {
-      console.log("course: ", course);
       data.value = course.criteria.map(item => ({
         name: item.name,
         verantwoording: item.verantwoording,

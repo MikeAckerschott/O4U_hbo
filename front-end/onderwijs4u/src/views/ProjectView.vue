@@ -6,6 +6,12 @@
         goedkeuring</span>
     </h1>
 
+    <!-- Project Description -->
+    <div class="mb-4">
+      <h2 class="h4 mb-3">Projectbeschrijving</h2>
+      <p>{{ student_projects[project].description }}</p>
+    </div>
+
     <!-- Criteria Switches -->
     <div class="mb-4">
       <h2 class="h4 mb-3">Geselecteerde criteria</h2>
@@ -30,13 +36,16 @@
         :class="['card', 'mb-3', getCriteriumClass(criterion.grade)]">
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center">
-            <h3 @click="openOverlay(criterion.name)" :class="['card-title h5 nav-link', getBadgeClass(criterion.grade)]">{{
-              criterion.name }}</h3>
-            <h3 v-if="!isProjectAwaitingTeacher" :class="['card-title h5', getBadgeClass(criterion.grade)]">{{ criterion.grade }}</h3>
+            <h3 @click="openOverlay(criterion.name)"
+              :class="['card-title h5 nav-link', getBadgeClass(criterion.grade)]">{{
+                criterion.name }}</h3>
+            <h3 v-if="!isProjectAwaitingTeacher" :class="['card-title h5', getBadgeClass(criterion.grade)]">{{
+              criterion.grade }}</h3>
           </div>
           <p class="card-text" v-html="getCriteriaDescription(criterion.name).replace(/\n/g, '<br>')"></p>
           <div class="mb-3" v-if="!isProjectAwaitingTeacher">
-            <textarea v-model="criterion.text" :disabled="!isProjectActive"
+            <textarea v-model="criterion.text"
+              :disabled="!isProjectActive || teacherRole === 'loopbaancoach' || teacherRole === 'productowner'"
               :placeholder="`Explain why you deserve a good grade for ${criterion.name.toLowerCase()}...`" rows="3"
               :class="['form-control']"></textarea>
           </div>
@@ -83,6 +92,8 @@ const isProjectActive = student_projects.value[project].running
 
 const isProjectAwaitingTeacher = student_projects.value[project].awaitingTeacher
 
+const teacherRole = sessionStorage.getItem('teacherrole') || 'loopbaancoach';
+
 // Initialize criteria with existing data
 let projectInfo = Object.entries(student_projects.value[project].criteriaToReach).map(([key, item]) => {
   return {
@@ -118,7 +129,7 @@ const getCriteriaDescription = (criterion) => {
 };
 
 const getBadgeClass = (beoordeling) => {
-  if(isProjectAwaitingTeacher) {
+  if (isProjectAwaitingTeacher) {
     return 'badge bg-warning text-white';
   }
   if (beoordeling === "Goed") {
@@ -131,7 +142,7 @@ const getBadgeClass = (beoordeling) => {
 };
 
 const getCriteriumClass = (beoordeling) => {
-  if(isProjectAwaitingTeacher) {
+  if (isProjectAwaitingTeacher) {
     return 'bg-warning-subtle';
   }
   if (beoordeling === "Goed") {
@@ -166,9 +177,6 @@ const saveText = (criterion) => {
 
   // Emit an event to the parent component with the criterion and its text
   emit('save-criterion', { id: criterion.id, text: criterion.text });
-
-  // For demonstration purposes, we'll just log to the console
-  console.log(`Saving for ${criterion.name}:`, criterion.text);
 };
 
 // Define the emit function for use in the template

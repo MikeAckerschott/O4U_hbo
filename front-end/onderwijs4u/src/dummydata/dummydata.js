@@ -2,31 +2,39 @@ import { ref } from 'vue'
 
 export const student_projects = ref({
     "OOPD Game 2": {
-        id: 1, running: false, awaitingTeacher: true, description: 'beroepsproduct', criteriaToReach: {
+        id: 1,
+        running: false,
+        awaitingTeacher: true,
+        description: 'Ontwikkel een game in het kader van het vak Objectgeoriënteerd Programmeren en Design, waarbij je de geleerde programmeerprincipes toepast.',
+        criteriaToReach: {
             "OOPD-1": {
-                studentVerantwoording: "Ik heb innovatieve oplossingen toegepast door tijdens het project verschillende programmeertechnieken te combineren om problemen efficiënt op te lossen. Bijvoorbeeld, bij het debuggen van een fout in de game-logica heb ik een nieuwe aanpak bedacht die het probleem structureel verhielp.",
+                studentVerantwoording: "",
                 feedback: "Feedback for OOPD-1",
                 grade: "Onvoldoende"
             },
             "OOPD-2": {
-                studentVerantwoording: "Ik heb alle taken binnen de afgesproken deadlines afgerond door een duidelijke planning te maken en deze consequent te volgen. Hierdoor kon ik mijn werk tijdig opleveren en was er ruimte voor feedback en verbetering.",
+                studentVerantwoording: "",
                 feedback: "Feedback for OOPD-2",
                 grade: "Onvoldoende"
             },
             "OOPD-3": {
-                studentVerantwoording: "Voor het inleveren van mijn werk heb ik alles grondig gecontroleerd op fouten en consistentie. Ik heb peer reviews laten uitvoeren en zelf meerdere testrondes gedaan om de kwaliteit te waarborgen.",
+                studentVerantwoording: "",
                 feedback: "Feedback for OOPD-3",
                 grade: "Onvoldoende"
             },
             "OOPD-4": {
-                studentVerantwoording: "Tijdens het project ben ik verschillende uitdagingen tegengekomen, zoals bugs in de code en onduidelijke requirements. Door door te zetten, hulp te vragen en alternatieve oplossingen te zoeken, heb ik deze obstakels overwonnen.",
+                studentVerantwoording: "",
                 feedback: "Feedback for OOPD-4",
                 grade: "Onvoldoende"
             },
         }
     },
     "Intro ICT beroepsproduct": {
-        id: 1, running: true, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
+        id: 1,
+        running: true,
+        awaitingTeacher: false,
+        description: 'Voer een praktijkopdracht uit waarin je ICT-toepassingen onderzoekt binnen een organisatie en rapporteer hierover volgens de gestelde eisen.',
+        criteriaToReach: {
             "INTROICT-1": {
                 studentVerantwoording: "Ik heb een complexe ICT-situatie geanalyseerd door deze op te delen in verschillende onderdelen, zoals datastromen en verantwoordelijkheden. Deze heb ik vastgelegd in een model en mijn keuzes onderbouwd met argumenten tijdens de presentatie.",
                 feedback: "Feedback",
@@ -45,7 +53,11 @@ export const student_projects = ref({
         },
     },
     "EPD Spoorwegovergang simulatie": {
-        id: 2, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
+        id: 2,
+        running: false,
+        awaitingTeacher: false,
+        description: 'Simuleer een spoorwegovergang met embedded systemen waarbij je sensoren en actuatoren aanstuurt en de software volgens de eisen ontwikkelt.',
+        criteriaToReach: {
             "EPD-1": {
                 studentVerantwoording: "Ik heb sensoren correct uitgelezen en de waarden verwerkt in de software, wat zichtbaar werd in de juiste werking van het systeem tijdens de demonstratie.",
                 feedback: "Feedback for EPD-1",
@@ -80,7 +92,11 @@ export const student_projects = ref({
     },
 
     "DBRP - KPI's": {
-        id: 3, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
+        id: 3,
+        running: false,
+        awaitingTeacher: false,
+        description: 'Ontwerp en realiseer rapportages en KPI’s met behulp van databases en rapportagesoftware, inclusief passende visualisaties en queries.',
+        criteriaToReach: {
             "DBRP-1": {
                 studentVerantwoording: "Ik heb de rapportagesoftware gebruikt om automatische groeperingen en subtotalen te maken. Voor elke KPI heb ik een passend grafiektype gekozen en de informatiebehoefte gerealiseerd.",
                 feedback: "Feedback for DBRP-1",
@@ -99,7 +115,11 @@ export const student_projects = ref({
         }
     },
     "FAT Beroepsproduct": {
-        id: 4, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
+        id: 4,
+        running: false,
+        awaitingTeacher: false,
+        description: 'Werk een beroepsproduct uit waarin je functionele analyse en ontwerpmodellen maakt, inclusief user stories, usecases en businessclassdiagrammen.',
+        criteriaToReach: {
             "FAT-1": {
                 studentVerantwoording: "Ik heb relevante user requirements beschreven en deze als userstory's geformuleerd. De systeemgrens en actoren zijn correct vastgelegd in het usecasemodel.",
                 feedback: "Feedback for FAT-1",
@@ -128,7 +148,11 @@ export const student_projects = ref({
         }
     },
     "SPAD Game": {
-        id: 5, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
+        id: 5,
+        running: false,
+        awaitingTeacher: false,
+        description: 'Ontwikkel een game waarbij je oplossingsalgoritmen, softwarearchitectuur en testplannen uitwerkt en documenteert volgens de controlekaart.',
+        criteriaToReach: {
             "SPAD-1": {
                 studentVerantwoording: "Ik heb de oplossingsalgoritmen en softwarearchitectuur beschreven in een professioneel document dat voldoet aan de controlekaart. De algoritmen sluiten aan bij de functionele eisen.",
                 feedback: "Feedback for SPAD-1",
@@ -152,7 +176,11 @@ export const student_projects = ref({
         }
     },
     "SPB Huiswerkopdrachten": {
-        id: 6, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
+        id: 6,
+        running: false,
+        awaitingTeacher: false,
+        description: 'Maak en lever huiswerkopdrachten in waarin je basisvaardigheden in programmeren, zoals variabelen, lussen en functies, aantoont.',
+        criteriaToReach: {
             "SPB-1": {
                 studentVerantwoording: "Ik begrijp de scope van variabelen en het verschil tussen declareren en initialiseren. Ik kan elk datatype correct declareren en initialiseren.",
                 feedback: "Feedback for SPB-1",
@@ -186,7 +214,11 @@ export const student_projects = ref({
         }
     },
     "WTUX Fletnix": {
-        id: 7, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
+        id: 7,
+        running: false,
+        awaitingTeacher: false,
+        description: 'Ontwerp en bouw een webapplicatie met wireframes, formulieren en moderne CSS-technieken, waarbij gebruiksvriendelijkheid en validatie centraal staan.',
+        criteriaToReach: {
             "WTUX-1": {
                 studentVerantwoording: "Ik heb alle specificaties verwerkt in wireframes en deze volledig uitgewerkt in het ontwerp.",
                 feedback: "Feedback for WTUX-1",
@@ -204,7 +236,6 @@ export const student_projects = ref({
             },
         }
     }
-
 })
 
 
@@ -444,7 +475,6 @@ export const mappedCriteria = ref(
     }, {})
 );
 
-console.log("Mapped Criteria:", mappedCriteria.value);
 
 export const student_progression = ref(
     school_criteria.value.flatMap((schoolYear) => {
@@ -457,11 +487,7 @@ export const student_progression = ref(
                         proj.criteriaToReach && Object.keys(proj.criteriaToReach).some((key) => criteriaKeys.includes(key))
                     );
 
-                    console.log(`Projects linked to course "${course.beoordelingscriteria}":`, projects.map((proj) => ({
-                        id: proj.id,
-                        name: Object.keys(student_projects.value).find(key => student_projects.value[key] === proj),
-                        criteriaToReach: Object.keys(proj.criteriaToReach),
-                    })));
+
 
                     const criteriaProgress = course.criteria.map((criterion) => {
                         const projectCriteria = projects
@@ -498,10 +524,5 @@ export const student_progression = ref(
         });
     })
 );
-
-
-
-
-console.log(student_progression.value);
 
 

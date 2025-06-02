@@ -75,9 +75,6 @@ import { student_projects } from '@/dummydata/dummydata.js'
 
 const data = ref(student_projects);
 
-console.log("DATA: ", data.value)
-// console.log("PROJECTRS: ",projects.value)
-
 const sortKey = ref('');
 const sortOrder = ref('asc');
 const selectedPeriode = ref('');
@@ -99,7 +96,6 @@ const getSortIcon = (key) => {
 };
 
 const sortedData = computed(() => {
-  console.log(data.value);
   const entries = Object.entries(data.value); // Convert object to array of key-value pairs
   if (sortKey.value) {
     entries.sort(([, a], [, b]) => {
@@ -141,8 +137,6 @@ const paginatedData = computed(() => {
     return { projectName: key, ...value }; // Include the key as part of the object
   });
 });
-
-console.log("ITERATING: ", paginatedData.value)
 
 const changePage = (page) => {
   if (page >= 1 && page <= totalPages.value) {
