@@ -3,73 +3,210 @@ import { ref } from 'vue'
 export const student_projects = ref({
     "OOPD Game 2": {
         id: 1, running: false, awaitingTeacher: true, description: 'beroepsproduct', criteriaToReach: {
-            "OOPD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
-            "OOPD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
-            "OOPD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
-            "OOPD-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Voldoende" },
+            "OOPD-1": {
+                studentVerantwoording: "Ik heb innovatieve oplossingen toegepast door tijdens het project verschillende programmeertechnieken te combineren om problemen efficiënt op te lossen. Bijvoorbeeld, bij het debuggen van een fout in de game-logica heb ik een nieuwe aanpak bedacht die het probleem structureel verhielp.",
+                feedback: "Feedback for OOPD-1",
+                grade: "Onvoldoende"
+            },
+            "OOPD-2": {
+                studentVerantwoording: "Ik heb alle taken binnen de afgesproken deadlines afgerond door een duidelijke planning te maken en deze consequent te volgen. Hierdoor kon ik mijn werk tijdig opleveren en was er ruimte voor feedback en verbetering.",
+                feedback: "Feedback for OOPD-2",
+                grade: "Onvoldoende"
+            },
+            "OOPD-3": {
+                studentVerantwoording: "Voor het inleveren van mijn werk heb ik alles grondig gecontroleerd op fouten en consistentie. Ik heb peer reviews laten uitvoeren en zelf meerdere testrondes gedaan om de kwaliteit te waarborgen.",
+                feedback: "Feedback for OOPD-3",
+                grade: "Onvoldoende"
+            },
+            "OOPD-4": {
+                studentVerantwoording: "Tijdens het project ben ik verschillende uitdagingen tegengekomen, zoals bugs in de code en onduidelijke requirements. Door door te zetten, hulp te vragen en alternatieve oplossingen te zoeken, heb ik deze obstakels overwonnen.",
+                feedback: "Feedback for OOPD-4",
+                grade: "Onvoldoende"
+            },
         }
     },
     "Intro ICT beroepsproduct": {
         id: 1, running: true, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
-            "INTROICT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback", grade: "Goed" },
-            "INTROICT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "INTROICT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "INTROICT-1": {
+                studentVerantwoording: "Ik heb een complexe ICT-situatie geanalyseerd door deze op te delen in verschillende onderdelen, zoals datastromen en verantwoordelijkheden. Deze heb ik vastgelegd in een model en mijn keuzes onderbouwd met argumenten tijdens de presentatie.",
+                feedback: "Feedback",
+                grade: "Goed"
+            },
+            "INTROICT-2": {
+                studentVerantwoording: "Ik heb onderzoek gedaan naar ICT-toepassingen binnen een bedrijf door interviews af te nemen en relevante onderzoekstechnieken uit de ICT-methodenkaart toe te passen. Mijn bevindingen heb ik gestructureerd gerapporteerd.",
+                feedback: "Feedback for INTROICT-2",
+                grade: "Goed"
+            },
+            "INTROICT-3": {
+                studentVerantwoording: "Ik heb mijn persoonlijke leerdoelen en carrièredoelen geformuleerd en deze onderbouwd met argumenten. De resultaten van mijn onderzoek heb ik doelgroepgericht gepresenteerd en gerapporteerd volgens de controlekaart.",
+                feedback: "Feedback for INTROICT-3",
+                grade: "Goed"
+            },
         },
     },
     "EPD Spoorwegovergang simulatie": {
         id: 2, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
-            "EPD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "EPD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "EPD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "EPD-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "EPD-7": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "EPD-8": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "EPD-1": {
+                studentVerantwoording: "Ik heb sensoren correct uitgelezen en de waarden verwerkt in de software, wat zichtbaar werd in de juiste werking van het systeem tijdens de demonstratie.",
+                feedback: "Feedback for EPD-1",
+                grade: "Goed"
+            },
+            "EPD-2": {
+                studentVerantwoording: "Ik heb de requirements geprioriteerd met de MoSCoW-methode en volledige, concrete requirements geschreven volgens de controlekaart.",
+                feedback: "Feedback for EPD-2",
+                grade: "Goed"
+            },
+            "EPD-3": {
+                studentVerantwoording: "Ik heb functies en globale variabelen toegelicht en mijn ontwerpbeslissingen onderbouwd. Het aansluit- en bedradingsschema is compleet en overzichtelijk uitgewerkt.",
+                feedback: "Feedback for EPD-3",
+                grade: "Goed"
+            },
+            "EPD-4": {
+                studentVerantwoording: "Ik heb mijn softwarebeslissingen toegelicht en een statemachine geïmplementeerd volgens het sjabloon. De code is leesbaar en onderhoudbaar geschreven.",
+                feedback: "Feedback for EPD-4",
+                grade: "Goed"
+            },
+            "EPD-7": {
+                studentVerantwoording: "Ik heb rekening gehouden met de traagheid van actuatoren in mijn ontwerp en de sensoren en actuatoren correct aangesloten.",
+                feedback: "Feedback for EPD-7",
+                grade: "Goed"
+            },
+            "EPD-8": {
+                studentVerantwoording: "Ik heb software-timers geïmplementeerd zonder gebruik van delay, zodat meerdere taken gelijktijdig konden worden uitgevoerd.",
+                feedback: "Feedback for EPD-8",
+                grade: "Goed"
+            },
         }
     },
 
     "DBRP - KPI's": {
         id: 3, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
-            "DBRP-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "DBRP-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "DBRP-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "DBRP-1": {
+                studentVerantwoording: "Ik heb de rapportagesoftware gebruikt om automatische groeperingen en subtotalen te maken. Voor elke KPI heb ik een passend grafiektype gekozen en de informatiebehoefte gerealiseerd.",
+                feedback: "Feedback for DBRP-1",
+                grade: "Goed"
+            },
+            "DBRP-2": {
+                studentVerantwoording: "Ik heb een KPI geformuleerd op basis van de informatiebehoefte en alle benodigde data opgehaald uit de database met efficiënte queries.",
+                feedback: "Feedback for DBRP-2",
+                grade: "Goed"
+            },
+            "DBRP-3": {
+                studentVerantwoording: "Voor elk rapport en grafiek heb ik een voorbeeldscreenshot gemaakt en de bijbehorende SELECT-query geschreven. De meetgegevens komen overeen met de screenshots.",
+                feedback: "Feedback for DBRP-3",
+                grade: "Goed"
+            },
         }
     },
     "FAT Beroepsproduct": {
         id: 4, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
-            "FAT-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "FAT-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "FAT-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "FAT-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "FAT-5": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "FAT-1": {
+                studentVerantwoording: "Ik heb relevante user requirements beschreven en deze als userstory's geformuleerd. De systeemgrens en actoren zijn correct vastgelegd in het usecasemodel.",
+                feedback: "Feedback for FAT-1",
+                grade: "Goed"
+            },
+            "FAT-2": {
+                studentVerantwoording: "Ik heb de actoren, namen en stakeholders correct beschreven en pre- en post-condities toegevoegd. Alternatieve scenario's zijn duidelijk uitgewerkt.",
+                feedback: "Feedback for FAT-2",
+                grade: "Goed"
+            },
+            "FAT-3": {
+                studentVerantwoording: "Ik heb concept-klassen benoemd, attributen gemodelleerd en associaties correct weergegeven in het businessclassdiagram met een verklarende toelichting.",
+                feedback: "Feedback for FAT-3",
+                grade: "Goed"
+            },
+            "FAT-4": {
+                studentVerantwoording: "Ik heb de consistentie tussen het activitydiagram en de usecase geverifieerd en alternatieve scenario's uitgewerkt.",
+                feedback: "Feedback for FAT-4",
+                grade: "Goed"
+            },
+            "FAT-5": {
+                studentVerantwoording: "Ik heb noodzakelijke scenario's voor testmaat-1 vastgelegd en de deelpaden in het activitydiagram onderkend en uitgewerkt.",
+                feedback: "Feedback for FAT-5",
+                grade: "Goed"
+            },
         }
     },
     "SPAD Game": {
         id: 5, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
-            "SPAD-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "SPAD-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "SPAD-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "SPAD-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "SPAD-1": {
+                studentVerantwoording: "Ik heb de oplossingsalgoritmen en softwarearchitectuur beschreven in een professioneel document dat voldoet aan de controlekaart. De algoritmen sluiten aan bij de functionele eisen.",
+                feedback: "Feedback for SPAD-1",
+                grade: "Goed"
+            },
+            "SPAD-2": {
+                studentVerantwoording: "Ik heb de juiste datatypen gebruikt, events correct toegepast en requirements gerealiseerd volgens de MoSCoW-methode. Herhalings- en controlestructuren zijn correct geïmplementeerd.",
+                feedback: "Feedback for SPAD-2",
+                grade: "Goed"
+            },
+            "SPAD-3": {
+                studentVerantwoording: "Ik heb methoden met parameters en returnwaarden van het juiste datatype gedefinieerd. De code is leesbaar, goed gestructureerd en voldoet aan de coderingsstandaarden.",
+                feedback: "Feedback for SPAD-3",
+                grade: "Goed"
+            },
+            "SPAD-4": {
+                studentVerantwoording: "Ik heb tests uitgevoerd met concrete testdata en de resultaten beschreven in een opleverdocument. Het testplan dekt de functionele eisen voldoende af.",
+                feedback: "Feedback for SPAD-4",
+                grade: "Goed"
+            },
         }
     },
     "SPB Huiswerkopdrachten": {
         id: 6, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
-            "SPB-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "SPB-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "SPB-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "SPB-4": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "SPB-5": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "SPB-6": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "SPB-1": {
+                studentVerantwoording: "Ik begrijp de scope van variabelen en het verschil tussen declareren en initialiseren. Ik kan elk datatype correct declareren en initialiseren.",
+                feedback: "Feedback for SPB-1",
+                grade: "Goed"
+            },
+            "SPB-2": {
+                studentVerantwoording: "Ik kan onderbouwd kiezen tussen verschillende lussen en deze zelfstandig implementeren in mijn code.",
+                feedback: "Feedback for SPB-2",
+                grade: "Goed"
+            },
+            "SPB-3": {
+                studentVerantwoording: "Ik kan booleaanse expressies lezen, schrijven en toepassen in conditionele constructies. Ik ken de verschillende operatoren en pas deze correct toe.",
+                feedback: "Feedback for SPB-3",
+                grade: "Goed"
+            },
+            "SPB-4": {
+                studentVerantwoording: "Ik herken en benoem verantwoordelijkheden van code en kan deze gescheiden implementeren in eenvoudige functies.",
+                feedback: "Feedback for SPB-4",
+                grade: "Goed"
+            },
+            "SPB-5": {
+                studentVerantwoording: "Ik kan oplossingsalgoritmen vertalen naar programmeerconcepten en de belangrijkste algoritmen uitschrijven vanuit een probleemstelling.",
+                feedback: "Feedback for SPB-5",
+                grade: "Goed"
+            },
+            "SPB-6": {
+                studentVerantwoording: "Ik kan de Processing API gebruiken bij het schrijven van programma's en uitleggen wat de API is en waar deze te vinden is.",
+                feedback: "Feedback for SPB-6",
+                grade: "Goed"
+            },
         }
     },
     "WTUX Fletnix": {
         id: 7, running: false, awaitingTeacher: false, description: 'beroepsproduct', criteriaToReach: {
-            "WTUX-1": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "WTUX-2": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
-            "WTUX-3": { studentVerantwoording: "Ik heb deze criteria behaald door...", feedback: "Feedback for IoT-P-1", grade: "Goed" },
+            "WTUX-1": {
+                studentVerantwoording: "Ik heb alle specificaties verwerkt in wireframes en deze volledig uitgewerkt in het ontwerp.",
+                feedback: "Feedback for WTUX-1",
+                grade: "Goed"
+            },
+            "WTUX-2": {
+                studentVerantwoording: "Ik heb formulieren voorzien van validatie en gezorgd voor correcte werking. De HTML is semantisch en syntactisch correct.",
+                feedback: "Feedback for WTUX-2",
+                grade: "Goed"
+            },
+            "WTUX-3": {
+                studentVerantwoording: "Ik heb stylesheets opgezet met herbruikbare onderdelen en de website vormgegeven met moderne CSS-technieken zoals flexbox en grid.",
+                feedback: "Feedback for WTUX-3",
+                grade: "Goed"
+            },
         }
     }
 
 })
+
 
 export const school_criteria = ref([
     {
@@ -289,6 +426,8 @@ export const school_criteria = ref([
         ]
     }
 ]);
+
+
 
 // Make an object where each key is the criteria name and the value is the verantwoording
 
