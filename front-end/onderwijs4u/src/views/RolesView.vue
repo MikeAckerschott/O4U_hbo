@@ -2,7 +2,7 @@
   <div class="container d-flex justify-content-between align-items-center vh-100">
     <button @click="enterAsLoopbaancoach" class="left-button">SLB-portaal</button>
         <div class="image-container">
-      <img src="@/assets/onderwijs4u.png" alt="Spinning Image" class="spinning-image" />
+      <img src="@/assets/onderwijs4u_center.png" alt="Spinning Image" class="spinning-image" />
     </div>
     <button @click="enterAsProductowner" class="right-button">Opdrachtgeversportaal</button>
   </div>
