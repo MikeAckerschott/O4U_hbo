@@ -254,10 +254,10 @@ export const school_criteria = ref([
                     },
                     {
                         id: 2, beoordelingscriteria: 'OOPD', fase: 'Uitvoerings', criteria: [
-                            { id: 1, name: 'OOPD-1', verantwoording: '• I applied innovative solutions to solve problems.', },
-                            { id: 2, name: 'OOPD-2', verantwoording: '• I ensured all tasks were completed on time.', },
-                            { id: 3, name: 'OOPD-3', verantwoording: '• I reviewed all work thoroughly before submission.', },
-                            { id: 4, name: 'OOPD-4', verantwoording: '• I faced challenges but overcame them with persistence.', },
+                            { id: 1, name: 'OOPD-1', verantwoording: '• Ik heb innovatieve oplossingen toegepast om problemen op te lossen.', },
+                            { id: 2, name: 'OOPD-2', verantwoording: '• Ik heb ervoor gezorgd dat alle taken op tijd zijn afgerond.', },
+                            { id: 3, name: 'OOPD-3', verantwoording: '• Ik heb al het werk grondig gecontroleerd voordat ik het inleverde.', },
+                            { id: 4, name: 'OOPD-4', verantwoording: '• Ik ben uitdagingen tegengekomen, maar heb deze overwonnen met doorzettingsvermogen.', },
                         ],
                     },
                     {

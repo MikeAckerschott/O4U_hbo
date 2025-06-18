@@ -99,8 +99,8 @@ const students = ref([
 ]);
 
 // Mock data for project timeline
-const projectStartDate = ref(new Date('2024-05-27'));
-const projectEndDate = ref(new Date('2025-07-30'));
+const projectStartDate = ref(new Date('2025-06-12'));
+const projectEndDate = ref(new Date('2025-06-30'));
 
 // Calculate days remaining
 const daysRemaining = computed(() => {
@@ -133,12 +133,22 @@ onMounted(() => {
     awaitingTeacher.value = !!projectData.awaitingTeacher;
     projectDescription.value = projectData.description || '';
     criteriaToReach.value = projectData.criteriaToReach || {};
+    // if awaitingTeacher is true, projectStartDate is today
+    if (awaitingTeacher.value) {
+      projectStartDate.value = new Date();
+    }
+    if(!projectData.running && !awaitingTeacher.value) {
+      projectEndDate.value = new Date();
+    }
   } else {
     awaitingTeacher.value = false;
     projectDescription.value = '';
     criteriaToReach.value = {};
   }
 });
+
+
+
 
 const allowProject = () => {
   const projectData = student_projects.value[project];
@@ -147,10 +157,10 @@ const allowProject = () => {
     awaitingTeacher.value = false;
     projectData.running = true;
   }
-  alert('Project is now allowed to be run.');
+  alert('Project is nu draaiende.');
 };
 
 const requestInfo = () => {
-  alert('Requested additional information from the student.');
+  alert('Extra informatie is opgevraagd bij de student.');
 };
 </script>

@@ -126,7 +126,7 @@ const saveFeedback = (criterion) => {
       ? criterion.teacherReview.charAt(0).toUpperCase() + criterion.teacherReview.slice(1)
       : ''
   }
-  alert(`Feedback for ${criterion.name} has been saved!`)
+  alert(`Feedback voor ${criterion.name} is opgeslagen!`)
 }
 
 const requestInfo = () => {

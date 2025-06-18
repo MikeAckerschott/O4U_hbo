@@ -45,7 +45,7 @@
           <p class="card-text" v-html="getCriteriaDescription(criterion.name).replace(/\n/g, '<br>')"></p>
           <div class="mb-3" v-if="!isProjectAwaitingTeacher">
             <textarea v-model="criterion.text"
-              :disabled="!isProjectActive || teacherRole === 'loopbaancoach' || teacherRole === 'productowner'"
+              :disabled="!isProjectActive || ((teacherRole === 'loopbaancoach' || teacherRole === 'productowner') && role !== 'student')"
               :placeholder="`Explain why you deserve a good grade for ${criterion.name.toLowerCase()}...`" rows="3"
               :class="['form-control']"></textarea>
           </div>
@@ -93,6 +93,7 @@ const isProjectActive = student_projects.value[project].running
 const isProjectAwaitingTeacher = student_projects.value[project].awaitingTeacher
 
 const teacherRole = sessionStorage.getItem('teacherrole') || 'loopbaancoach';
+const role = sessionStorage.getItem('role');
 
 // Initialize criteria with existing data
 let projectInfo = Object.entries(student_projects.value[project].criteriaToReach).map(([key, item]) => {

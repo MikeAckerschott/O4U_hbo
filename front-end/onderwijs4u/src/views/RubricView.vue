@@ -2,18 +2,12 @@
   <div class="container-fluid mt-5">
     <div class="row mb-3">
       <div class="col-md-3">
-        <label for="beoordelingFilter" class="form-label">Filter op Beoordeling:</label>
-        <select id="beoordelingFilter" v-model="selectedBeoordeling" @change="filterData" class="form-select">
-          <option value="">All</option>
-          <option v-for="beoordeling in uniqueBeoordelingen" :key="beoordeling" :value="beoordeling">{{ beoordeling }}
-          </option>
-        </select>
       </div>
       <div class="col-md-6 text-end">
         <div class="d-flex justify-content-end">
           <div class="chart-container me-3">
             <div class="donut-chart" :style="getDonutStyle(percentageCompleted, '#007bff')"></div>
-            <div class="chart-label">Completed</div>
+            <div class="chart-label">Voltooid</div>
           </div>
 
           <div class="chart-container me-3">

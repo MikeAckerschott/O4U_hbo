@@ -92,7 +92,7 @@ const SortIcon = {
 }
 
 const students = ref([
-  { id: 1, name: 'Jan de Vries', progress: 75, yearOfStudy: 3 },
+  { id: 1, name: 'Jan de Vries', progress: 25, yearOfStudy: 1 },
   { id: 2, name: 'Sanne Jansen', progress: 45, yearOfStudy: 2 },
   { id: 3, name: 'Pieter Bakker', progress: 90, yearOfStudy: 3 },
   { id: 4, name: 'Lisa Visser', progress: 30, yearOfStudy: 3 },
