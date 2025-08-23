@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
-    <button @click="enterAsStudent" class="left-button">Studentenportaal</button>
-    <div class="image-container">
+  <div class="container d-flex justify-content-between align-items-center vh-100">
+    <button @click="enterAsLoopbaancoach" class="left-button">SLB-portaal</button>
+        <div class="image-container">
       <img src="@/assets/onderwijs4u_center.png" alt="Spinning Image" class="spinning-image" />
     </div>
-    <button @click="enterAsTeacher" class="right-button">Leraarportaal</button>
+    <button @click="enterAsProductowner" class="right-button">Opdrachtgeversportaal</button>
   </div>
 </template>
 
@@ -13,19 +13,18 @@ export default {
   name: 'HomePage',
   created() {
     // Clear session variable when entering the homepage
-    sessionStorage.removeItem('role');
-    sessionStorage.removeItem('navcolor');
+    sessionStorage.removeItem('teacherrole');
   },
   methods: {
-    enterAsStudent() {
-      sessionStorage.setItem('role', 'student');
-      this.$router.push('/rubrics').then(() => {
+    enterAsLoopbaancoach() {
+      sessionStorage.setItem('teacherrole', 'loopbaancoach');
+      this.$router.push('/coach').then(() => {
         // window.location.reload();
       });
     },
-    enterAsTeacher() {
-      sessionStorage.setItem('role', 'teacher');
-      this.$router.push('/roles').then(() => {
+    enterAsProductowner() {
+      sessionStorage.setItem('teacherrole', 'productowner');
+      this.$router.push('/teacherprojects').then(() => {
         // window.location.reload();
       });
     }
@@ -34,6 +33,19 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -62,3 +74,4 @@ export default {
   }
 }
 </style>
+
