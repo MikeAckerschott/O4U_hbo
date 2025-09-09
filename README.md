@@ -1,6 +1,6 @@
 # O4U HBO
 
-Dit project begon tijdens een hackathon van Avisi. De opdracht was om een studentenportaal te maken voor RijnIJssel waar [kwalificerend leren](https://onderwijsenexaminering.nl/lerend-kwalificeren/) Deze hackathon hebben we gewonnen. Het concept kwalificerend leren trok mijn aandacht. Ik wilde onderzoeken of dit ook op HBO-niveau werkt. Daarom ging ik zelf verder met het project en paste ik het aan voor HBO-ICT met de richting Embedded Software Development.
+Dit project begon tijdens een hackathon van Avisi. De opdracht was om een studentenportaal te maken voor RijnIJssel waar [kwalificerend leren](https://onderwijsenexaminering.nl/lerend-kwalificeren/) Deze hackathon hebben we gewonnen. Het concept kwalificerend leren trok mijn aandacht. Ik wilde onderzoeken of dit ook op HBO-niveau werkt. Daarom ging ik zelf verder met het project en paste ik het aan voor HBO-ICT met de richting Embedded Software Development. Dit project wordt gehost op https://mikeackerschott.github.io/O4U_hbo/
 
 # onderwijs4u
 
