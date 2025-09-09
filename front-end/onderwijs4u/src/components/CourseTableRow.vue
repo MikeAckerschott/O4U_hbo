@@ -2,7 +2,7 @@
 <template>
     <tr :class="getRowClass(course.criteria)">
       <td>
-        <RouterLink class="nav-link text-nowrap" :to="`/rubric/${course.beoordelingscriteria}`">
+        <RouterLink class="nav-link text-nowrap" :to="`/O4U_hbo/rubric/${course.beoordelingscriteria}`">
           {{ course.beoordelingscriteria }}
         </RouterLink>
       </td>
@@ -29,7 +29,7 @@
         <RouterLink
           v-for="project in getAttachedProjectsFromCourse(course.beoordelingscriteria)"
           class="nav-link text-nowrap"
-          :to="`/project/${project.key}`"
+          :to="`/O4U_hbo/project/${project.key}`"
           :key="project.key"
           style="white-space: nowrap;"
         >

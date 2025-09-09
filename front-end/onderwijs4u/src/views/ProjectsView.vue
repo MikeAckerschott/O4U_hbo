@@ -29,7 +29,7 @@
               <tr v-for="item in paginatedData" :key="item.id"
                 :class="{ 'table-warning':item.awaitingTeacher , 'table-info': item.running === true, 'table-success': item.running === false }">
                 <td>
-                  <RouterLink class="nav-link text-truncate" :to="`/project/${item.projectName}`"
+                  <RouterLink class="nav-link text-truncate" :to="`/O4U_hbo/project/${item.projectName}`"
                     style="white-space: nowrap;">
                     {{ item.projectName }}
                   </RouterLink>

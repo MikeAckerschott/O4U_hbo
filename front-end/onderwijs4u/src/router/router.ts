@@ -14,19 +14,19 @@ import Graduation from '../views/GraduationView.vue';
 import NewProject from '../views/NewProjectView.vue';
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/projects', component: Projects },
-  { path: '/graduation', component: Graduation },
-  { path: '/teacherprojects', component: TeacherProjects },
-  { path: '/teacherproject/:project', component: TeacherProject },
-  { path: '/student/:project/:student', component: Student },
-  { path: '/rubrics', component: Rubrics },
-  { path: '/game', component: Game },
-  { path: '/roles', component: Roles },
-  { path: '/coach', component: Coach},
-  { path: '/rubric/:rubric', component: RubricDetail}, // Add dynamic route
-  { path: '/project/:project', component: Project}, // Add dynamic route
-  { path: '/newproject', component: NewProject}, // Add dynamic route
+  { path: '/O4U_hbo/', component: Home },
+  { path: '/O4U_hbo/projects', component: Projects },
+  { path: '/O4U_hbo/graduation', component: Graduation },
+  { path: '/O4U_hbo/teacherprojects', component: TeacherProjects },
+  { path: '/O4U_hbo/teacherproject/:project', component: TeacherProject },
+  { path: '/O4U_hbo/student/:project/:student', component: Student },
+  { path: '/O4U_hbo/rubrics', component: Rubrics },
+  { path: '/O4U_hbo/game', component: Game },
+  { path: '/O4U_hbo/roles', component: Roles },
+  { path: '/O4U_hbo/coach', component: Coach},
+  { path: '/O4U_hbo/rubric/:rubric', component: RubricDetail}, // Add dynamic route
+  { path: '/O4U_hbo/project/:project', component: Project}, // Add dynamic route
+  { path: '/O4U_hbo/newproject', component: NewProject}, // Add dynamic route
 
 ];
 

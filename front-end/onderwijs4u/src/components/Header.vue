@@ -1,7 +1,7 @@
 <template>
   <nav :class="['navbar', 'navbar-expand-lg']" :style="{ backgroundColor: navbarColorClass }">
     <div class="container-fluid">
-      <RouterLink class="nav-link" @click.prevent="resetHeaderBar" to="/"> <!-- reset header bar  -->
+      <RouterLink class="nav-link" @click.prevent="resetHeaderBar" to="/O4U_hbo/"> <!-- reset header bar  -->
         <img src="@/assets/onderwijs4u.png" alt="Onderwijs4U" class="navbar-logo" />
       </RouterLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -11,7 +11,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item" v-if="role === 'student'">
-            <RouterLink class="nav-link" to="/rubrics">Courses</RouterLink>
+            <RouterLink class="nav-link" to="/O4U_hbo/rubrics">Courses</RouterLink>
           </li>
 
           <li class="nav-item dropdown" v-if="role === 'student'">
@@ -21,21 +21,21 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="notificationDropdown">
               <li>
-                <RouterLink class="dropdown-item" to="/projects">Jouw Projecten</RouterLink>
+                <RouterLink class="dropdown-item" to="/O4U_hbo/projects">Jouw Projecten</RouterLink>
               </li>
               <li>
-                <RouterLink class="dropdown-item" to="/newproject">Nieuw Project</RouterLink>
+                <RouterLink class="dropdown-item" to="/O4U_hbo/newproject">Nieuw Project</RouterLink>
               </li>
             </ul>
           </li>
           <li class="nav-item" v-if="role === 'teacher'">
-            <RouterLink class="nav-link" to="/roles">Portal</RouterLink>
+            <RouterLink class="nav-link" to="/O4U_hbo/roles">Portal</RouterLink>
           </li>
           <li class="nav-item" v-if="role === 'teacher' && teacherrole === 'productowner'">
-            <RouterLink class="nav-link" to="/teacherprojects">Projecten</RouterLink>
+            <RouterLink class="nav-link" to="/O4U_hbo/teacherprojects">Projecten</RouterLink>
           </li>
           <li class="nav-item" v-if="role === 'teacher' && teacherrole === 'loopbaancoach'">
-            <RouterLink class="nav-link" to="/coach">Studenten</RouterLink>
+            <RouterLink class="nav-link" to="/O4U_hbo/coach">Studenten</RouterLink>
           </li>
         </ul>
       </div>
@@ -72,7 +72,7 @@ export default {
       this.navcolor = sessionStorage.getItem('navcolor') || '#f8f9fa';
     },
     reloadPage() {
-      this.$router.push('/').then(() => {
+      this.$router.push('/O4U_hbo/').then(() => {
         window.location.reload();
       });
     },
@@ -82,7 +82,7 @@ export default {
       sessionStorage.setItem('navcolor', '#f8f9fa');
       this.getRoleFromSession();
       this.getNavColorFromSession();
-      this.$router.push('/');
+      this.$router.push('/O4U_hbo/');
     }
   },
   computed: {

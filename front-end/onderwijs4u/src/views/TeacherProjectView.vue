@@ -10,7 +10,7 @@
           <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center"
             style="width: 100px; height: 100px;">
             <template v-if="!awaitingTeacher">
-              <RouterLink class="nav-link" :to="'/student/' + project + '/' + student.name">
+              <RouterLink class="nav-link" :to="'/O4U_hbo/student/' + project + '/' + student.name">
                 <img src="@/assets/user.jpg" alt="Onderwijs4U" class="navbar-logo"
                   style="width: 100px; height: 100px; border-radius: 50%;" />
               </RouterLink>

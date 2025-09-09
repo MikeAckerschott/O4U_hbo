@@ -52,7 +52,7 @@
                 <td style="white-space: pre-wrap;">{{ item.verantwoording }}</td>
                 <td>
                   <RouterLink v-for="studentProject in getAttachedProjectsFromCriterium(item.name)"
-                    class="nav-link text-nowrap" :to="`/project/${studentProject.key}`">
+                    class="nav-link text-nowrap" :to="`/O4U_hbo/project/${studentProject.key}`">
                     {{ studentProject.key }}
                   </RouterLink>
                 </td>

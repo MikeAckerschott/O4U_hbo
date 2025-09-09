@@ -27,7 +27,7 @@
         <tbody>
           <tr v-for="student in paginatedStudents" :key="student.id" :class="getRowClass(student.needForHelp)">
             <td class="name-cell">
-              <RouterLink class="nav-link" :to="`/rubrics`">
+              <RouterLink class="nav-link" :to="`/O4U_hbo/rubrics`">
                 {{ student.name }}
               </RouterLink>
             </td>

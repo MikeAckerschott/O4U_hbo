@@ -18,13 +18,13 @@ export default {
   methods: {
     enterAsLoopbaancoach() {
       sessionStorage.setItem('teacherrole', 'loopbaancoach');
-      this.$router.push('/coach').then(() => {
+      this.$router.push('/O4U_hbo/coach').then(() => {
         // window.location.reload();
       });
     },
     enterAsProductowner() {
       sessionStorage.setItem('teacherrole', 'productowner');
-      this.$router.push('/teacherprojects').then(() => {
+      this.$router.push('/O4U_hbo/teacherprojects').then(() => {
         // window.location.reload();
       });
     }

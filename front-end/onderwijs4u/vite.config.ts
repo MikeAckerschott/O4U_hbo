@@ -10,6 +10,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
   ],
+  base: '/O4U_hbo/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

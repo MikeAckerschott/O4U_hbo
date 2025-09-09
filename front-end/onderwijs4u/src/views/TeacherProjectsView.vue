@@ -34,7 +34,7 @@
                 'table-success': item.status === 'inactive'
               }">
                 <td>
-                  <RouterLink class="nav-link text-nowrap" :to="`/teacherproject/${item.projectName}`">
+                  <RouterLink class="nav-link text-nowrap" :to="`/O4U_hbo/teacherproject/${item.projectName}`">
                     {{ item.projectName }}
                   </RouterLink>
                 </td>

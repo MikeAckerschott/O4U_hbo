@@ -19,13 +19,13 @@ export default {
   methods: {
     enterAsStudent() {
       sessionStorage.setItem('role', 'student');
-      this.$router.push('/rubrics').then(() => {
+      this.$router.push('/O4U_hbo/rubrics').then(() => {
         // window.location.reload();
       });
     },
     enterAsTeacher() {
       sessionStorage.setItem('role', 'teacher');
-      this.$router.push('/roles').then(() => {
+      this.$router.push('/O4U_hbo/roles').then(() => {
         // window.location.reload();
       });
     }
